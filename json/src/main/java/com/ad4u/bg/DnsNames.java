@@ -19,17 +19,20 @@ public class DnsNames {
     private Boolean isMail;
     @JsonProperty
     private String document_root;
+    @JsonProperty
+    private String ip;
 
     public DnsNames() {
     }
 
-    public DnsNames(String id, Boolean active, String wwwwexist, Boolean isNs, Boolean isMail, String document_root) {
+    public DnsNames(String id, Boolean active, String wwwwexist, Boolean isNs, Boolean isMail, String document_root, String ip) {
         this.id = id;
         this.active = active;
         this.wwwwexist = wwwwexist;
         this.isNs = isNs;
         this.isMail = isMail;
         this.document_root = document_root;
+        this.ip = ip;
     }
 
     public String getId() {
@@ -54,6 +57,10 @@ public class DnsNames {
 
     public String getDocument_root() {
         return document_root;
+    }
+
+    public String getIp() {
+        return ip;
     }
 
     @Override

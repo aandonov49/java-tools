@@ -1,0 +1,2114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Version:    4.81
+    
+    History:
+    Version     Changes
+    =======     =======
+        4.81        Added:
+                    -ctwOtherRequest into ccbd
+                    - new Element TripDetail/TripDetailsWizard
+                    - new Element TripDetailsWizzardOther
+                    - new attribue TripDetailsWizzardOther /@ctwRequestCode
+                    - new attribue TripDetailsWizzardOther /@origin
+                    - new attribue TripDetailsWizzardOther /@destination
+                    - new attribue TripDetailsWizzardOther /@prefStartDate
+                    - new attribue TripDetailsWizzardOther /@prefEndDate
+                    - new attribue TripDetailsWizzardOther /@remark
+                    - new attribue TripDetailsWizzardOther /@bookingSource
+                    - new attribue TripDetailsWizzardOther/@otherTravelCategory
+                    - new attribue TripDetailsWizzardOther/@supplierName
+                    - new attribue TripDetailsWizzardOther/@estimatedPrice
+                    - new attribue TripDetailsWizzardOther/@canceled
+        4.80    Removed HILTON, HOTDE, PHOXML from EnumInventorySystem CYT-15990
+        4.79    Added support LowestFare, LowestFare Hotel Chain, Lowest Fare Hotel Program to Hotel trip detail
+        4.78    Added:
+                     - new attribute RailSubsegment/@id
+                     - new attribute RailSubsegment/@vehicle
+                     - new attribute RailSubsegment/@vehicleDescription
+                     - new attribute RailSubsegment/@railCompanyCode
+                     - new attribute RailSubsegment/@railCompanyName
+                     - new attribute RailSubsegment/@operatedByAirline
+                     - new attribute AirSubsegment/@operatedByAirline
+                     - new attribute RailSubsegment/@destinationCityIATACode
+                     - new attribute RailSubsegment/@originCityName
+                     - new attribute RailSubsegment/@destinationCityName
+                     - new element AirlineLogos
+                     - new element OperatedByAirlineLogos
+                     - new element ProviderLogos
+                     - new element ChainLogos
+                     - new element Image
+                     - new element RailCompanyLogos
+                     - new element CarModel
+                     - new element CarCompanyLogos
+        4.77    including carbon-emission for railsubsegment
+        4.76    Added:
+                     - Added SPS to EnumInventorySystem
+                     - Added new attribute TripDetail/@delayedTicketing
+        4.75    Added AHM_AVH Hotel supplier
+        4.74    Added new value BSP_PAYMENT to EnumPaymentType
+        4.73    Added new attribute OriginalCreditCard/@accountNumber
+        4.72    Added new element TripDetailsCar/CarFees CYT-13492
+        4.71    Removed CARO, BEST_WESTERN and EAN from EnumInventorySystem CYT-3498 CYT-5300
+        4.70    Added attribute RailSubsegment/@totalPrice
+        4.69    Added: MANUAL to EnumAirTicketType
+        4.68    Added:
+                     - new enumeration POLICY_GROUP in EnumCorporateOrganization
+                     - new element AirSubsegment/FlightBaggage
+                     - new element AirSubsegment/FlightSeat
+                     - new element AirSubsegment/FlightMeal
+        4.67    Added AHM_HCORPO Hotel supplier
+        4.66    Added:
+                     - new attribute Profile/@gender
+                     - new enumeration for EnumGender
+        4.65    Added:
+                     - new attribute TripDetailsHotel/@fax
+                     - new attribute TripDetailsHotel/@postalcode
+                     - new attribute TripDetailsHotel/@email
+                     - new attribute TripDetailsEvent/@fax
+                     - new attribute TripDetailsEvent/@postalcode
+                     - new attribute TripDetailsEvent/@email
+        4.64    Added:
+                     - new values ACCOUNT_WITH_AIRLINE to EnumPaymentType
+                     - new attribute Payment/@paidByCompany
+        4.63    Added attribute TripDetail/@fareLogixLocator
+        4.62    Added OBB (Austrian Rail) to EnumInventorySystem
+        4.61    Added:
+                    - attribute Price/@source (CYT-7474 Display price in the currency of the provider, company or
+                     first destination)
+        4.60    Extended the list of supported user titles
+        4.59    Added:
+                    - GSN to EnumInventorySystem
+                    - attribute AirSubsegment/@codeShared
+                    - attribute TripDetailsHotel/@statusCode
+                    - attribute TripDetailsHotel/@planCode
+                    - attribute TripDetailsHotel/@roomCode
+                    - attribute TripDetailsCar/@statusCode
+                    - attribute TripDetailsCar/@rateCode
+                    - attribute Profile/@GUID
+        4.58    Removed TRAVELRES, PHOXML from EnumInventorySystem
+                Removed CMSF from EnumInventorySystem
+        4.57    Added:
+                    - TXO to EnumInventorySystem
+                    - element  AirSubSegment/CarbonEmission
+                    - attribute  TravelPolicyAlert/@noHotelReasonCode
+                    - attribute  TravelPolicyAlert/@noHotelExplanation
+        4.56    Added:
+                    - FR_1A (SNCF PAO)
+        4.55    Added:
+                    - AHM_HRS Hotel supplier
+                    - element OriginalCreditCard
+                    - Payment/OriginalCreditCard
+        4.54    Added BCD_TSH
+                Added AOT Hotel supplier
+        4.53    Added:
+                    - attribute AirSubSegment/@originIATACode
+                    - attribute AirSubSegment/@destinationIATACode
+                    - attribute RailSubSegment/@originIATACode
+                    - attribute RailSubSegment/@destinationIATACode
+        =.==    Added:
+                    - element GeoLocation
+                    - EnumRailTicketType
+                    - EnumAirTicketType
+                    - attribute Action/@creationDate
+                    - attribute TripDetailsAir/@ticketType
+                    - TripDetailsHotel/GeoLocation
+                    - attribute TripDetailsRail/@ticketType
+                    - RailSubsegment/GeoLocation
+                    - TripDetailsCar/GeoLocation
+        4.52    Added advanceReasonCode in TravelPolicyAlert
+                Enhance cCBD with Flexible Format for AirPlus/Itelya
+        4.51    Added (FGT Amadeus GRT supplier FlygTaxi)
+        4.50    Added (MYC Amadeus GRT supplier MyCab)
+                Added RENFE_1A to EnumInventorySystem
+        =.==    Added AVIANCA_BR, AZUL, GOL, VOLARIS to EnumInventorySystem
+        =.==    Added new values PAY_LATER to EnumPaymentType
+        4.49    Added (IT_1A Amadeus RWS supplier TrenItalia)
+        =.==    Added new values AGENCY, BILLBACK, AMABILLBACK, CENTRALBILLING, ECREDIT to EnumPaymentType
+        4.48    Added TripDetailsEvent/@cancellationPolicy
+        4.47    Removed THRIFTY, ALAMO, TERSTAPPEN, HDESSO, HOTELZON, TQ3_EBOOK,
+                RAIL1, RAIL1WEB, EVOLVIWEB from EnumInventorySystem.
+        4.46    Added Amadeus Web Service Provider - Swedish Rail - SE_1A
+        4.45    CYT-1930 Enhancement for Spanish Resident Discounts
+        =.==    Added:
+                    - attribute AirPrices/@spanishResidentFare
+        =.==    CYT-2867 BMW: Reason Code Free Text for Hotel Booking must be transferred via cCODT
+                Added:
+                    - attribute TravelPolicyAlert/@reasonCodeComment
+        4.44    DT 1982 Implement New Hotel VDA Provider CWT Client Hotel Platform - Iteration 1
+        4.43    DT 33216 cCBD: Additional Information Needed for Booking Data Transmission to Amadeus BI (Priority 1 Data)
+        =.==    attribute preferred was moved from AirSubSegment to TripDetailsAir and from RailSubSegment to TripDetailsRail
+        4.42    DT#32754 cAE: Introduce Middle Name in Personal Data
+        4.41    Changed LC2A to SWAB
+        4.40    Added LC2A to EnumInventorySystem
+                Added CDS to EnumInventorySystem
+        4.39    Support New GDS 'MEETAGO'
+        4.38    Added a new price type PENALTY, NONREF_FARE, NONREF_TAX (DT #28077)
+        4.37    Support New GDS Cube Channel 'AIDL' for Flight Bookings
+        4.36    Added Trip/@globalTripId
+        4.35    Added EAN to EnumInventorySystem
+        4.34    Add Rail provider confirmation number
+        4.33    Added MYDRIVER (DT #28213)
+        4.32    Added cytric appCLOUD Bookings data (DT #28181)
+        =.==    Added:
+                    - CLOUDAPP_PROVIDER to EnumInventorySystem
+                    - CLOUDAPP to EnumTripDetailType
+                    - TripDetailsCloud element to TripDetail
+        4.31    Added CPK to EnumInventorySystem
+        4.30    Added NS to EnumInventorySystem
+                Renamed RAIL1 to SNCB in EnumInventorySystem
+        4.29    Added BUSINESS and PREMIER to EnumRailServiceClass
+        4.28    Added BOOKCOM, SJ to EnumInventorySystem
+        4.27    Added BUDGET to EnumInventorySystem
+        =.==    Added REJECTEDNOTCANCELED to EnumApprovalStatus
+        4.26    Added EHOTEL to EnumInventorySystem
+        =.==    Added AMTRAK, RENFE and VIARAIL to EnumInventorySystem
+        4.25    Added Trip/@approvalRejectReasonCode
+        =.==    Added:
+                    - attribute TripDetail/@originIATACode
+                    - attribute TripDetail/@originIATAName
+                    - attribute TripDetail/@destinationIATACode
+                    - attribute TripDetail/@destinationIATAName
+                    - element HotelRate
+                    - element HotelRateInfo
+                    - element RailSeat
+        4.24    Added cTW expense data
+        =.==    Added:
+                    - attribute TripDetail/@originCountry
+                    - attribute TripDetail/@destinationCountry
+                    - attribute TripDetailsHotel/@cancellationPolicy
+                    - attribute AirSubsegment/@direction
+                    - attribute AirSubsegment/@operatedByAirlineCode
+                    - attribute AirSubsegment/@originTerminal
+                    - attribute AirSubsegment/@destinationTerminal
+                    - attribute AirSubsegment/@originCityCode
+                    - attribute AirSubsegment/@originCity
+                    - attribute AirSubsegment/@destinationCityCode
+                    - attribute AirSubsegment/@destinationCity
+                    - attribute AirSubsegment/@originCountry
+                    - attribute AirSubsegment/@destinationCountry
+                    - attribute AirSubsegment/@equipment
+                    - attribute RailSubsegment/@direction
+                    - attribute RailSubsegment/@originTrack
+                    - attribute RailSubsegment/@destinationTrack
+                    - attribute RailSubsegment/@trainNumber
+                    - attribute FreeDataField/@costCenter
+                    - attribute Trip/@lastUpdatedDateAndTime
+                Removed ASSISTED_BOOKING from EnumPassiveType.
+        4.23    Added CRC to EnumInventorySystem
+        4.23    Removed type EnumRailCardType.
+                Changed type of attribute RailCard/@type from EnumRailCardType to String.
+        4.22    Added GERMANWINGS to EnumInventorySystem
+        4.21    Added NONREF, CASH, CHECK to EnumPaymentType
+        4.20    Added a new price type TRAVELER_FEE.
+                Added optional attributes Price/@profileId, Price/@providerFeeCode and Price/@feeDescription
+        4.19    Added EnumBookingSource.
+                Added attributes:
+                  TripDetail/@bookingSource
+        4.18    Added Tickets element to AirSubsegment. Tickets has the attributes:
+                  Tickets/@number
+                  Tickets/@profileId
+        4.17    Added EVOLVI_XML to EnumInventorySystem
+        4.16    Added ENTERPRISE to EnumInventorySystem
+        4.15    Added attributes TripDetailsAir/@ticketIssued, /CorporateOrganization/@id and /CorporateOrganization/@extRef
+                New elements added to EnumRailCardType:
+                  DBAHN_BCB25_1, DBAHN_BCB25_2, DBAHN_BCB50_1, DBAHN_BCB50_2.
+                New element added to EnumProfileRole: APPROVER.
+                Added EnumApprovalStatus and EnumApprovalSource.
+                Added attributes:
+                  Trip/@approvalStatus
+                  Trip/@approvalSource
+                  Trip/@approvalDueDate
+                  Trip/@approvalDateAndTime
+                  Trip/@approverComment
+                  Trip/@reasonForThisTrip
+                  TripDetail/@onHold
+                Added optional Alternatives to BookingDetails, to list for instance
+                 the unselected Air Options available for this trip.
+        4.14    Added telefaxPickUpStation, telefaxReturnStation, emailPickUpStation, emailReturnStation to TripDetailsCar
+        4.13    Added Phoenix Unlimited XML to EnumInventorySystem
+        4.12    Added Best Western to EnumInventorySystem
+        4.11    Added Trip/@cytricRequestCode
+                Added TripDetail/@cytricRequestDetailNumber
+        4.10    Removed type EnumCreditCardType.
+                Added new type CCCompanyCode.
+                Changed type of attribute CreditCard/@companyCode from EnumCreditCardType to CCCompanyCode.
+        4.9     Added PREMIER_INN to EnumInventorySystem
+                Added AT to EnumCreditCardType
+        4.8     Added SWABIZ to EnumInventorySystem
+        4.7     Removed NEGOTIATED and PRIVATE from EnumFareSource
+        4.6     Added CMSF to EnumInventorySystem
+        4.5     Added HDESSO to EnumInventorySystem
+        4.4     Added SNCF, TRAINLINE, RAIL1 to EnumInventorySystem
+        4.3     Added HILTON to EnumInventorySystem
+        4.2     Added EINVOICING to EnumPaymentType
+        4.1     Added CARO to EnumInventorySystem
+        4.0     Changed the semantics of the Prices element, which is now
+                delivered for the booking as a whole.
+                The AirPrices element is introduced, and delivered per pricing
+                group (TST).
+                Added ticketingDate to TripDetailsAir.
+                Introduced HighestFare, LowestFare as children of TripDetailsAir.
+                Added airlineCode to AirSubsegment.
+                Added stars to TripDetailsHotel.
+                Introduced CarCategory, CarType, CarTransmission, CarMiscellaneous
+                as children of TripDetailsCar.
+                Added area code of origin and destination, as well as country code.
+                Introduced ProfileReference as a child of TripDetail.
+        3.3     Added new optional attribute Profile/@loginName
+        3.2     Added RAIL1WEB to EnumInventorySystem
+                Added EVOLVIWEB to EnumInventorySystem
+        3.1     Added HOURLY to EnumPricesType
+                Added BASERATE to EnumPricesType
+        3.0     Prices element is now delivered per pricing group.
+                Added fare basis and fare source, reductions and corporate discount numbers, tour code, and a flag for dynamic discounted fares.
+                Added id to AirSubsegment, added airSubsegmentIds to Prices.
+                Made TripDetail/@inventorySystem optional.
+                Added inventoryRecordLocator, passiveSystem, passiveType and passiveRecordLocator to TripDetail.
+        2.6     Added TRAVELRES to EnumInventorySystem
+        2.5     Added TERSTAPPEN to EnumInventorySystem
+        2.4     Added ALAMO to EnumInventorySystem
+        2.3     Added TRAVELFUSION to EnumInventorySystem
+                Added WEBBILLING to EnumPaymentType
+        2.2     Added TQ3_EBOOK to EnumInventorySystem
+        2.1     Added HRS to EnumInventorySystem
+        2.0     Renamed TravelPolicyAlert/@reason to TravelPolicyAlert/@reasonCode
+                Added TravelPolicyAlert/@explanation
+        1.2     Removed SHUTTLE from EnumAirServiceClass
+                Added NVS to EnumInventorySystem
+                Made Trip/@completionDateAndTime optional (because of shuttle flights)
+                Made TripDetail/@completionDateAndTime optional (because of shuttle flights)
+                Made TripDetail/@duration optional (because of shuttle flights)
+        1.1     Changed type of Profile/@id from Long to String
+                Changed type of Payment/@profileId from Long to String
+                Changed type of RailCard/@profileId from Long to String
+        1.0     Initial release
+-->
+<!---->
+<!-- DTD2Java settings -->
+<!---->
+<!--
+    RE - Regular Expression
+    ML - Max Length
+-->
+<!---->
+<!-- Base types -->
+<!---->
+<!--
+    Boolean
+    The values of Boolean are yes/no instead of true/false
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="Boolean">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        Tristate
+        The values of Tristate are [YES, NO, UNKNOWN].
+    -->
+    <xs:simpleType name="Tristate">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        Integer
+        32-bit signed integer
+    -->
+    <xs:simpleType name="Integer">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        Long
+        64-bit signed integer
+    -->
+    <xs:simpleType name="Long">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="Float">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="Double">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="String">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!-- Credit card company code. -->
+    <xs:simpleType name="CCCompanyCode">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        DateTime
+        MM/dd/yyyy [HH:mm] - RE: ^\d{2}\/\d{2}\/\d{4}( \d{2}:\d{2})?$ - ML: 16
+    -->
+    <xs:simpleType name="DateTime">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        DateAndTime
+        MM/dd/yyyy HH:mm:ss - RE: ^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$ - ML: 19
+    -->
+    <xs:simpleType name="DateAndTime">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!--
+        EncryptedNumber
+        Signals that the attribute value could be obfuscated in the request
+    -->
+    <xs:simpleType name="EncryptedNumber">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <!---->
+    <!-- Enumerated types -->
+    <!---->
+    <!--
+        If values are changed/added/deleted in any of the following enumerations then
+        please make sure to modify file xsl/sapodt/ccbd2odt.xslt accordingly.
+    -->
+    <xs:simpleType name="EnumAction">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="CREATE"/>
+            <xs:enumeration value="CHANGE"/>
+            <xs:enumeration value="DELETE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumProfileRole">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="BOOKER"/>
+            <xs:enumeration value="TRAVELER"/>
+            <xs:enumeration value="APPROVER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumGreeting">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="MR"/>
+            <xs:enumeration value="MRS"/>
+            <xs:enumeration value="MISS"/>
+            <xs:enumeration value="MS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumCorporateOrganization">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="COMPANY"/>
+            <xs:enumeration value="LOCATION"/>
+            <xs:enumeration value="DIVISION"/>
+            <xs:enumeration value="POLICY_GROUP"/>
+            <xs:enumeration value="BUSINESS_UNIT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumTripDetailType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="AIR"/>
+            <xs:enumeration value="HOTEL"/>
+            <xs:enumeration value="CAR"/>
+            <xs:enumeration value="RAIL"/>
+            <xs:enumeration value="CLOUDAPP"/>
+            <xs:enumeration value="EVENT"/>
+            <xs:enumeration value="CTW"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumGender">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+            <xs:enumeration value="UNDISCLOSED"/>
+            <xs:enumeration value="UNSPECIFIED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        If new values are added here then inform cytric Management (Marcel Roehl)
+        that they should inform SAP's team responsible for Travel OnDemand about these
+        new values.
+    -->
+    <xs:simpleType name="EnumInventorySystem">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="AMADEUS"/>
+            <xs:enumeration value="AIDL"/>
+            <xs:enumeration value="GALILEO"/>
+            <xs:enumeration value="SABRE"/>
+            <xs:enumeration value="TRAVELFUSION"/>
+            <xs:enumeration value="AVIS"/>
+            <xs:enumeration value="EUROPCAR"/>
+            <xs:enumeration value="HERTZ"/>
+            <xs:enumeration value="NATIONAL"/>
+            <xs:enumeration value="SIXT"/>
+            <xs:enumeration value="ENTERPRISE"/>
+            <xs:enumeration value="BUDGET"/>
+            <xs:enumeration value="CPK"/>
+            <xs:enumeration value="DERHOTEL.COM"/>
+            <xs:enumeration value="HRS"/>
+            <xs:enumeration value="OFFLINE"/>
+            <xs:enumeration value="BIBE"/>
+            <xs:enumeration value="NVS"/>
+            <xs:enumeration value="SNCF"/>
+            <xs:enumeration value="TRAINLINE"/>
+            <xs:enumeration value="SNCB"/>
+            <xs:enumeration value="NS"/>
+            <xs:enumeration value="SWABIZ"/>
+            <xs:enumeration value="PREMIER_INN"/>
+            <xs:enumeration value="EVOLVI_XML"/>
+            <xs:enumeration value="GERMANWINGS"/>
+            <xs:enumeration value="CRC"/>
+            <xs:enumeration value="AMTRAK"/>
+            <xs:enumeration value="RENFE"/>
+            <xs:enumeration value="VIARAIL"/>
+            <xs:enumeration value="SJ"/>
+            <xs:enumeration value="SE_1A"/>
+            <xs:enumeration value="IT_1A"/>
+            <xs:enumeration value="FR_1A"/>
+            <xs:enumeration value="EHOTEL"/>
+            <xs:enumeration value="BOOKCOM"/>
+            <xs:enumeration value="CLOUDAPP_PROVIDER"/>
+            <xs:enumeration value="MYDRIVER"/>
+            <xs:enumeration value="MEETAGO"/>
+            <xs:enumeration value="SWAB"/>
+            <xs:enumeration value="CDS"/>
+            <xs:enumeration value="CWT_CHP"/>
+            <xs:enumeration value="MYC"/>
+            <xs:enumeration value="AVIANCA_BR"/>
+            <xs:enumeration value="AZUL"/>
+            <xs:enumeration value="GOL"/>
+            <xs:enumeration value="VOLARIS"/>
+            <xs:enumeration value="RENFE_1A"/>
+            <xs:enumeration value="FGT"/>
+            <xs:enumeration value="BCD_TSH"/>
+            <xs:enumeration value="AOT"/>
+            <xs:enumeration value="AHM_HRS"/>
+            <xs:enumeration value="GSE"/>
+            <xs:enumeration value="BLL"/>
+            <xs:enumeration value="TXO"/>
+            <xs:enumeration value="GSN"/>
+            <xs:enumeration value="OBB"/>
+            <xs:enumeration value="AHM_HCORPO"/>
+            <xs:enumeration value="AHM_AVH"/>
+            <xs:enumeration value="SPS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPassiveSystem">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="AMADEUS"/>
+            <xs:enumeration value="GALILEO"/>
+            <xs:enumeration value="SABRE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPassiveType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PASSIVE_PNR"/>
+            <xs:enumeration value="ASSISTED_BOOKING"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumBookingClass">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="J"/>
+            <xs:enumeration value="K"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="Q"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="T"/>
+            <xs:enumeration value="U"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="X"/>
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="Z"/>
+            <xs:enumeration value="AN"/>
+            <xs:enumeration value="BN"/>
+            <xs:enumeration value="CN"/>
+            <xs:enumeration value="DN"/>
+            <xs:enumeration value="EN"/>
+            <xs:enumeration value="FN"/>
+            <xs:enumeration value="GN"/>
+            <xs:enumeration value="HN"/>
+            <xs:enumeration value="IN"/>
+            <xs:enumeration value="JN"/>
+            <xs:enumeration value="KN"/>
+            <xs:enumeration value="LN"/>
+            <xs:enumeration value="MN"/>
+            <xs:enumeration value="NN"/>
+            <xs:enumeration value="ON"/>
+            <xs:enumeration value="PN"/>
+            <xs:enumeration value="QN"/>
+            <xs:enumeration value="RN"/>
+            <xs:enumeration value="SN"/>
+            <xs:enumeration value="TN"/>
+            <xs:enumeration value="UN"/>
+            <xs:enumeration value="VN"/>
+            <xs:enumeration value="WN"/>
+            <xs:enumeration value="XN"/>
+            <xs:enumeration value="YN"/>
+            <xs:enumeration value="ZN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPricesType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="TOTAL"/>
+            <xs:enumeration value="DAILY"/>
+            <xs:enumeration value="WEEKEND"/>
+            <xs:enumeration value="WEEKLY"/>
+            <xs:enumeration value="MONTHLY"/>
+            <xs:enumeration value="PACKAGE"/>
+            <xs:enumeration value="NIGHTLY"/>
+            <xs:enumeration value="HOURLY"/>
+            <xs:enumeration value="BASERATE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPriceType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="NET"/>
+            <xs:enumeration value="TAX"/>
+            <xs:enumeration value="PROVIDERFEE"/>
+            <xs:enumeration value="CYTRICFEE"/>
+            <xs:enumeration value="TOTAL"/>
+            <xs:enumeration value="TRAVELER_FEE"/>
+            <xs:enumeration value="PENALTY"/>
+            <xs:enumeration value="NONREF_FARE"/>
+            <xs:enumeration value="NONREF_TAX"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPriceSource">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PROVIDER"/>
+            <xs:enumeration value="COMPANY"/>
+            <xs:enumeration value="DESTINATION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumPaymentType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="NONREF"/>
+            <xs:enumeration value="CASH"/>
+            <xs:enumeration value="CHECK"/>
+            <xs:enumeration value="CREDITCARD"/>
+            <xs:enumeration value="INVOICE"/>
+            <xs:enumeration value="EVOUCHER"/>
+            <xs:enumeration value="WEBBILLING"/>
+            <xs:enumeration value="EINVOICING"/>
+            <xs:enumeration value="COLLECTIVEINVOICE"/>
+            <xs:enumeration value="AGENCY"/>
+            <xs:enumeration value="BILLBACK"/>
+            <xs:enumeration value="AMABILLBACK"/>
+            <xs:enumeration value="CENTRALBILLING"/>
+            <xs:enumeration value="ECREDIT"/>
+            <xs:enumeration value="PAY_LATER"/>
+            <xs:enumeration value="ACCOUNT_WITH_AIRLINE"/>
+            <xs:enumeration value="BSP_PAYMENT"/>
+            <xs:enumeration value="HRS_PAYMENT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumAirServiceClass">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="FIRST"/>
+            <xs:enumeration value="BUSINESS"/>
+            <xs:enumeration value="PREMIUM_ECONOMY"/>
+            <xs:enumeration value="ECONOMY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumRailServiceClass">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="FIRST"/>
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="BUSINESS"/>
+            <xs:enumeration value="PREMIER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumRailTicketType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="TICKETLESS"/>
+            <xs:enumeration value="HOMEPRINT"/>
+            <xs:enumeration value="KIOSK"/>
+            <xs:enumeration value="AGENCY"/>
+            <xs:enumeration value="CORPORATE_KIOSK"/>
+            <xs:enumeration value="STATION"/>
+            <xs:enumeration value="SAME_DAY_OFFICE_DROP"/>
+            <xs:enumeration value="SAME_DAY_DELIVERY"/>
+            <xs:enumeration value="NEXT_DAY_DELIVERY"/>
+            <xs:enumeration value="MAIL"/>
+            <xs:enumeration value="HOMEPRINT_DEMAT"/>
+            <xs:enumeration value="TICKETLESS_DEMAT"/>
+            <xs:enumeration value="DEMAT"/>
+            <xs:enumeration value="ETICKET"/>
+            <xs:enumeration value="EMAIL"/>
+            <xs:enumeration value="METRO_LINK"/>
+            <xs:enumeration value="CONDUCTOR"/>
+            <xs:enumeration value="SMS"/>
+            <xs:enumeration value="TICKETLESS_BY_RESERVATION_NUMBER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumAirTicketType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="MAIL"/>
+            <xs:enumeration value="AIRPORT"/>
+            <xs:enumeration value="ETICKET"/>
+            <xs:enumeration value="PAF"/>
+            <xs:enumeration value="TICKETLESS"/>
+            <xs:enumeration value="AGENCY"/>
+            <xs:enumeration value="MANUAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Fare sources
+        PUBLISHED   - published fare
+        CORPORATE   - negotiated and private corporate fare
+                      For Amadeus this includes corporate negotiated, corporate dynamic discounted, corporate
+                      private (by ATPCO CAT15), and corporate ATPCO negotiated fares (by ATPCO CAT35).
+                      For Galileo this includes all corporate private fares.
+    -->
+    <xs:simpleType name="EnumFareSource">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PUBLISHED"/>
+            <xs:enumeration value="CORPORATE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumReductionType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="DISCOUNT"/>
+            <xs:enumeration value="REDUCTION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Area
+        AF  Africa
+        AS  Asia
+        AU  Australia
+        EU  Europe
+        ME  Middle East
+        NA  North America
+        SA  South America
+    -->
+    <xs:simpleType name="EnumArea">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="AF"/>
+            <xs:enumeration value="AS"/>
+            <xs:enumeration value="AU"/>
+            <xs:enumeration value="EU"/>
+            <xs:enumeration value="ME"/>
+            <xs:enumeration value="NA"/>
+            <xs:enumeration value="SA"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Car Category (car class)
+        C  Compact Car
+        E  Economy Car
+        F  Full Size Car (4 doors)
+        I  Midsize Car
+        L  Luxury Car
+        M  Mini Car
+        P  Premium
+        S  Standard
+        X  Special
+        N  Mini Elite
+        H  Economy Elite
+        D  Compact Elite
+        J  Midsize Elite
+        R  Standard Elite
+        G  Full Size Elite
+        U  Premium Elite
+        W  Luxury Elite
+        O  Oversize
+    -->
+    <xs:simpleType name="EnumCarCategory">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="X"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="J"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="U"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="O"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Car Type
+        B  2-3 door car
+        C  Car (2- or 4- door)
+        D  4-5 door car
+        F  SUV (sport utility vehicles)
+        J  All Terrain Vehicle
+        K  Commercial Van / Truck
+        L  Limousine
+        P  Pick-up
+        R  Recreational
+        S  Sports car
+        T  Convertible
+        V  Passenger Van
+        W  Wagon / Estate
+        X  Special
+        E  Coupe
+        G  Crossover
+        H  Motor Home
+        M  Monospace
+        N  Roadster
+        Q  Pickup Extended Cab
+        Y  2 Wheel Vehicle
+        Z  Special Offer Car
+    -->
+    <xs:simpleType name="EnumCarType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="J"/>
+            <xs:enumeration value="K"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="T"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="X"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="Q"/>
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="Z"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Car Transmission
+        A  Automatic Unspecified Drive
+        M  Manual Unspecified Drive
+        N  Manual 4WD
+        C  Manuel AWD
+        B  Auto 4WD
+        D  Auto AWD
+    -->
+    <xs:simpleType name="EnumCarTransmission">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="D"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!--
+        Car Miscellaneous characteristics (Air Conditioning)
+        N  Unspecified Fuel without A/C
+        R  Unspecified Fuel with A/C
+        W  Winter Tires
+        V  Petrol with A/C
+        Z  Petrol without A/C
+        D  Diesel with A/C
+        Q  Diesel without A/C
+        H  Hybrid with A/C
+        I  Hibrid without A/C
+        E  Electric with A/C
+        C  Electric without A/C
+        L  LPG/Compressed Gas with A/C
+        S  LPG/Compressed Gas without A/C
+        A  Hydrogen with A/C
+        B  Hydrogen without A/C
+        M  Multi Fuel with A/C
+        F  Multi Fuel without A/C
+        U  Ethanol with A/C
+        X  Ethanol without A/C
+    -->
+    <xs:simpleType name="EnumCarMiscellaneous">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="Z"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="Q"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="U"/>
+            <xs:enumeration value="X"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumCarFeeType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="CANCEL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumApprovalStatus">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="TOBEAPPROVED"/>
+            <xs:enumeration value="PREAPPROVED"/>
+            <xs:enumeration value="APPROVED"/>
+            <xs:enumeration value="REJECTED"/>
+            <xs:enumeration value="REJECTEDNOTCANCELED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumApprovalSource">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="INTERNAL"/>
+            <xs:enumeration value="EXTERNAL"/>
+            <xs:enumeration value="INTANDEXT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumBookingSource">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ONLINE"/>
+            <xs:enumeration value="OFFLINE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumFareType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="GENERALAVAILABILITY"/>
+            <xs:enumeration value="HOTELCHAIN"/>
+            <xs:enumeration value="HOTELPROGRAM"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumLogoSize">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="SMALL"/>
+            <xs:enumeration value="MEDIUM"/>
+            <xs:enumeration value="LARGE"/>
+            <xs:enumeration value="EXTRA_LARGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumLogoType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="SQUARE"/>
+            <xs:enumeration value="RECTANGLE"/>
+            <xs:enumeration value="MOBILE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnumImageType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PICTURE"/>
+            <xs:enumeration value="THUMBNAIL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!---->
+    <!-- Elements -->
+    <!---->
+    <!--
+        ObjectExchange
+        version - the version of the interface
+    -->
+    <xs:element name="ObjectExchange">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="Request"/>
+                <xs:element ref="Response"/>
+            </xs:choice>
+            <xs:attribute name="version" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Request -->
+    <xs:element name="Request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Recipient"/>
+                <xs:element ref="BookingDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!-- Recipient -->
+    <xs:element name="Recipient">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="Identifications"/>
+                <xs:element ref="Action"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!-- Identifications -->
+    <xs:element name="Identifications">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Identification"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        Identification
+        name  - name of the identification information  - RE: ^([^<>&%\*\#\s]([^<>&%\*\#]*[^<>&%\*\#\s])?)?$ - ML: 40
+        value - value of the identification information - RE: ^([^<>&%\*\#\s]([^<>&%\*\#]*[^<>&%\*\#\s])?)?$ - ML: 256
+    -->
+    <xs:element name="Identification">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="String"/>
+            <xs:attribute name="value" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Action
+        code - the action to be performed
+    -->
+    <xs:element name="Action">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="EnumAction"/>
+            <xs:attribute name="creationDate" type="DateAndTime"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- BookingDetails -->
+    <xs:element name="BookingDetails">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Profiles"/>
+                <xs:element ref="Trip"/>
+                <xs:element minOccurs="0" ref="Alternatives"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!-- Profiles -->
+    <xs:element name="Profiles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Profile"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        Profile
+        id             - the id for this profile                           - RE: ^.{1,256}$ - ML: 256
+        role           - specifies whether the profile contains booker or traveler information
+        greeting       - the booker's or traveler's greeting
+        title          - the booker's or traveler's titles                 - ML: 89
+        firstName      - the first name of the booker or traveler          - RE: ^[[:alpha:]][[:alpha:]\-\. \']*[[:alpha:]\.\']$ - ML: 40
+        middleName     - the middle name of the booker or traveler         - RE: ^[[:alpha:]][[:alpha:]\-\. \']*[[:alpha:]\.\']$ - ML: 40
+        lastName       - the last name of the booker or traveler           - RE: ^[[:alpha:]][[:alpha:]\-\. \']*[[:alpha:]\.\']$ - ML: 40
+        telephone      - the telephone number of the booker or traveler    - RE: ^[\+0-9 \(\)\/\-]+$ - ML: 40
+        fax            - the fax number of the booker or traveler          - RE: ^[\+0-9 \(\)\/\-]+$ - ML: 40
+        mobilePhone    - the mobile phone number of the booker or traveler - RE: ^[\+0-9 \(\)\/\-]+$ - ML: 40
+        eMail          - the e-mail address of the booker or traveler      - RE: ^[A-Za-z0-9\_\-\.]+\@([A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,5}$ - ML: 128
+        employeeNumber - the employeee number of the booker or traveler    - RE: ^.{1,256}$ - ML: 256
+        loginName      - the login of the booker or traveler in cytric v7  - RE: ^.{1,256}$ - ML: 256
+        GUID           - the global user identified for this profile       - RE: ^.:\d{1,256}$ - ML: 258
+    -->
+    <xs:element name="Profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="CorporateOrganizations"/>
+                <xs:element minOccurs="0" ref="FreeDataFields"/>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" type="String"/>
+            <xs:attribute name="role" use="required" type="EnumProfileRole"/>
+            <xs:attribute name="greeting" type="EnumGreeting"/>
+            <xs:attribute name="title" type="String"/>
+            <xs:attribute name="firstName" use="required" type="String"/>
+            <xs:attribute name="middleName" type="String"/>
+            <xs:attribute name="lastName" use="required" type="String"/>
+            <xs:attribute name="gender" type="EnumGender"/>
+            <xs:attribute name="telephone" type="String"/>
+            <xs:attribute name="fax" type="String"/>
+            <xs:attribute name="mobilePhone" type="String"/>
+            <xs:attribute name="eMail" use="required" type="String"/>
+            <xs:attribute name="employeeNumber" type="String"/>
+            <xs:attribute name="loginName" type="String"/>
+            <xs:attribute name="nationality" type="String"/>
+            <xs:attribute name="GUID" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- CorporateOrganizations -->
+    <xs:element name="CorporateOrganizations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="CorporateOrganization"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        CorporateOrganization
+        name  - the name of the organization the booker or traveler belongs to
+        value - the value of the organization the booker or traveler belongs to - RE: ^.{1,128}$ - ML: 128
+    -->
+    <xs:element name="CorporateOrganization">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="EnumCorporateOrganization"/>
+            <xs:attribute name="value" use="required" type="String"/>
+            <xs:attribute name="id" type="String"/>
+            <xs:attribute name="extRef" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- FreeDataFields -->
+    <xs:element name="FreeDataFields">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="FreeDataField"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        FreeDataField
+        name       - the name of a free data field from the booker's or traveler's profile     - RE: ^.{1,128}$ - ML: 128
+        value      - the value of this free data field from the booker's or traveler's profile - RE: ^.{1,256}$ - ML: 256
+        costCenter - indicator whether the free data field is a cost center
+    -->
+    <xs:element name="FreeDataField">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="String"/>
+            <xs:attribute name="value" use="required" type="String"/>
+            <xs:attribute name="costCenter" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        ProfileReference
+        id - the identifier of the referenced profile, see //Profile/@id
+    -->
+    <xs:element name="ProfileReference">
+        <xs:complexType>
+            <xs:attribute name="id" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Alternatives
+        Alternatives to the selected trip, for instance, the unselected Air Options
+        will be listed here.
+    -->
+    <xs:element name="Alternatives">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Trip"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        Trip
+        cytricTripNumber      - the trip id within cytric v7
+        externalTripNumber    - the trip id within the customer's system                 - RE: ^.{1,40}$ - ML: 40
+        cytricRequestCode     - cTW Requiest ID
+        creationDateAndTime   - the date and time of the trip creation withing cytric v7
+        identification        - the name or identification of the trip                   - RE: ^.{1,256}$ - ML: 256
+        globalTripId          - the trip id within cytric v7 of coherent bookings
+        purpose               - the reason why the trip is made                          - RE: ^[^<>&%\*\#\?]*$ - ML: 40
+        startDateAndTime      - the date and optionally the time when the trip begins
+        completionDateAndTime - the date and optionally the time when the trip ends
+        approvalStatus        - the actual approval status at the XML creation time
+        approvalDueDate       - date and time till when the trip has to be approved
+                                respectively rejected
+        approvalDateAndTime   - the date and time when the trip was approved.
+        approverComment       - a comment by the approver, regarding the resolution
+                                 Max length: 256.
+        reasonForThisTrip     - a reason, entered by the user for approval purposes
+                                 Max length: 256.
+        approvalSource        - where the approval was or is to be processed.
+        
+        lastUpdatedDateAndTime - the date and time of the last change of the trip,
+                                 that cytric is aware of.
+    -->
+    <xs:element name="Trip">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="TripDetails"/>
+                <xs:element minOccurs="0" ref="ExpenseData"/>
+            </xs:sequence>
+            <xs:attribute name="cytricTripNumber" use="required" type="Long"/>
+            <xs:attribute name="externalTripNumber" type="String"/>
+            <xs:attribute name="cytricRequestCode" type="Long"/>
+            <xs:attribute name="creationDateAndTime" use="required" type="DateAndTime"/>
+            <xs:attribute name="identification" type="String"/>
+            <xs:attribute name="globalTripId" type="Long"/>
+            <xs:attribute name="purpose" type="String"/>
+            <xs:attribute name="startDateAndTime" use="required" type="DateTime"/>
+            <xs:attribute name="completionDateAndTime" type="DateTime"/>
+            <xs:attribute name="approvalStatus" type="EnumApprovalStatus"/>
+            <xs:attribute name="approvalDueDate" type="DateAndTime"/>
+            <xs:attribute name="approvalDateAndTime" type="DateAndTime"/>
+            <xs:attribute name="approverComment" type="String"/>
+            <xs:attribute name="reasonForThisTrip" type="String"/>
+            <xs:attribute name="approvalSource" type="EnumApprovalSource"/>
+            <xs:attribute name="lastUpdatedDateAndTime" type="DateAndTime"/>
+            <xs:attribute name="approvalRejectReasonCode" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- TripDetails -->
+    <xs:element name="TripDetails">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TripDetail"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        ExpenseData
+        destination - the destination from cTW expense data page
+        destinationCountryCode - the country code from cTW expense data page
+        privUntilDate - the "Personal Time/until" date from cTW expense data page
+        privFromDate - the "Personal Time/from" date from cTW expense data page
+        untilDate - the "Business Travel/until" date from cTW expense data page
+        fromDate - the "Business Travel/from" date from cTW expense data page
+    -->
+    <xs:element name="ExpenseData">
+        <xs:complexType>
+            <xs:attribute name="destination" type="String"/>
+            <xs:attribute name="destinationCountryCode" type="String"/>
+            <xs:attribute name="privUntilDate" type="DateTime"/>
+            <xs:attribute name="privFromDate" type="DateTime"/>
+            <xs:attribute name="untilDate" type="DateTime"/>
+            <xs:attribute name="fromDate" type="DateTime"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetail
+        cytricTripDetailNumber     - the trip details id within cytric v7
+        cytricRequestDetailNumber  - cTW Request Segment Id
+        type                       - specifies the type of booking
+        canceled                   - the trip is canceled
+        bookingDateAndTime         - the date and time the booking has been made
+        startDateAndTime           - the date and optionally the time when the service booked begins
+        completionDateAndTime      - the date and optionally the time when the service booked ends
+        duration                   - the time difference between completionDateAndTime and startDateAndTime        - RE: ^(\d{1,3}D\d{1,2}H\d{1,2}M)|(\d{1,3}N)$ - ML: 10
+        origin                     - the origin of the booking (city, airport, railway or car pick-up station)     - RE: ^.{1,1024}$ - ML: 1024
+        destination                - the destination of the booking (city, airport, railway or car return station) - RE: ^.{1,1024}$ - ML: 1024
+        originIATACode             - the IATA code of the origin
+        originIATAName             - the IATA name of the origin                 - RE: ^.{1,1024}$ - ML: 1024
+        destinationIATACode        - the IATA code of the destination
+        destinationIATAName        - the IATA name of the destination            - RE: ^.{1,1024}$ - ML: 1024
+        originCountryCode          - the origin country code of the booking      - RE: ^[A-Z]{2}$ - ML: 2
+        originCountry              - the origin country name of the booking      - RE: ^.{1,1024}$ - ML: 1024
+        destinationCountryCode     - the destination country code of the booking - RE: ^[A-Z]{2}$ - ML: 2
+        destinationCountry         - the destination country name of the booking - RE: ^.{1,1024}$ - ML: 1024
+        originArea                 - the origin area of the booking
+        destinationArea            - the destination area of the booking
+        inventorySystem            - the booking or inventory system accessed for the booking
+        inventoryRecordLocator     - the record locator in the inventory system  - RE: ^.{1,64}$  - ML: 64
+        passiveSystem              - the booking system where the passive PNR was created
+        passiveType                - the type of the passive booking
+        passiveRecordLocator       - the record locator of the passive booking in the booking system - RE: ^.{1,64}$  - ML: 64
+        onHold                     - an on-hold booking status indicator
+        bookingSource              - indicates whether the booking was initially created online or offline
+        fareLogixLocator           - DynaWeb Farelogix PNR
+    -->
+    <xs:element name="TripDetail">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="Payments"/>
+                <xs:element minOccurs="0" ref="Prices"/>
+                <xs:choice>
+                    <xs:element ref="TripDetailsAir"/>
+                    <xs:element ref="TripDetailsHotel"/>
+                    <xs:element ref="TripDetailsEvent"/>
+                    <xs:element ref="TripDetailsRail"/>
+                    <xs:element ref="TripDetailsCar"/>
+                    <xs:element ref="TripDetailsCloud"/>
+                    <xs:element ref="TripDetailsWizzard"/>
+                </xs:choice>
+                <xs:element minOccurs="0" ref="TravelPolicyAlert"/>
+                <xs:element minOccurs="0" ref="FreeDataFields"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="ProfileReference"/>
+            </xs:sequence>
+            <xs:attribute name="cytricTripDetailNumber" use="required" type="Long"/>
+            <xs:attribute name="cytricRequestDetailNumber" type="Long"/>
+            <xs:attribute name="type" use="required" type="EnumTripDetailType"/>
+            <xs:attribute name="canceled" type="Boolean"/>
+            <xs:attribute name="bookingDateAndTime" use="required" type="DateAndTime"/>
+            <xs:attribute name="startDateAndTime" use="required" type="DateTime"/>
+            <xs:attribute name="completionDateAndTime" type="DateTime"/>
+            <xs:attribute name="duration" type="String"/>
+            <xs:attribute name="origin" use="required" type="String"/>
+            <xs:attribute name="destination" use="required" type="String"/>
+            <xs:attribute name="originIATACode" type="String"/>
+            <xs:attribute name="originIATAName" type="String"/>
+            <xs:attribute name="destinationIATACode" type="String"/>
+            <xs:attribute name="destinationIATAName" type="String"/>
+            <xs:attribute name="originCountryCode" type="String"/>
+            <xs:attribute name="originCountry" type="String"/>
+            <xs:attribute name="destinationCountryCode" type="String"/>
+            <xs:attribute name="destinationCountry" type="String"/>
+            <xs:attribute name="originArea" type="EnumArea"/>
+            <xs:attribute name="destinationArea" type="EnumArea"/>
+            <xs:attribute name="inventorySystem" type="EnumInventorySystem"/>
+            <xs:attribute name="inventoryRecordLocator" type="String"/>
+            <xs:attribute name="passiveSystem" type="EnumPassiveSystem"/>
+            <xs:attribute name="passiveType" type="EnumPassiveType"/>
+            <xs:attribute name="passiveRecordLocator" type="String"/>
+            <xs:attribute name="onHold" type="Boolean"/>
+            <xs:attribute name="delayedTicketing" type="Boolean"/>
+            <xs:attribute name="bookingSource" type="EnumBookingSource"/>
+            <xs:attribute name="fareLogixLocator" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Payments -->
+    <xs:element name="Payments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Payment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        Payment
+        type          - the type of payment used
+        profileId     - the profile to which this payment refers    - RE: ^.{1,256}$ - ML: 256
+    -->
+    <xs:element name="Payment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="CreditCard"/>
+                <xs:element minOccurs="0" ref="OriginalCreditCard"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="EnumPaymentType"/>
+            <xs:attribute name="profileId" use="required" type="String"/>
+            <xs:attribute name="paidByCompany" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CreditCard
+        companyCode   - the credit card company code
+        number        - the credit card number       - RE: ^\d{1,20}$ - ML: 20
+        paidByCompany - specifies whether the booking is paid by the company
+    -->
+    <xs:element name="CreditCard">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="CreditCardField"/>
+            </xs:sequence>
+            <xs:attribute name="companyCode" use="required" type="CCCompanyCode"/>
+            <xs:attribute name="number" use="required" type="EncryptedNumber"/>
+            <xs:attribute name="cvn" type="EncryptedNumber"/>
+            <xs:attribute name="paidByCompany" type="Boolean"/>
+            <xs:attribute name="expireDate" type="DateTime"/>
+            <xs:attribute name="corporateCard" type="Boolean"/>
+            <xs:attribute name="cardHolder" type="String"/>
+            <xs:attribute name="cardIsPresentWithTraveller" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        OriginalCreditCard
+        companyCode   - the credit card company code
+        number        - the credit card number       - RE: ^\d{1,20}$ - ML: 20
+        paidByCompany - specifies whether the booking is paid by the company
+    -->
+    <xs:element name="OriginalCreditCard">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="CreditCardField"/>
+            </xs:sequence>
+            <xs:attribute name="companyCode" use="required" type="CCCompanyCode"/>
+            <xs:attribute name="number" use="required" type="EncryptedNumber"/>
+            <xs:attribute name="accountNumber" type="String"/>
+            <xs:attribute name="cvn" type="EncryptedNumber"/>
+            <xs:attribute name="paidByCompany" type="Boolean"/>
+            <xs:attribute name="expireDate" type="DateTime"/>
+            <xs:attribute name="corporateCard" type="Boolean"/>
+            <xs:attribute name="cardHolder" type="String"/>
+            <xs:attribute name="cardIsPresentWithTraveller" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreditCardField">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="String"/>
+            <xs:attribute name="value" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Prices
+        type                  - the prices type, i.e. total, daily, weekend, etc.
+        source                - the fare source type, i.e. published, negotiated, private or corporate
+    -->
+    <xs:element name="Prices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Price"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="AirPrices"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="EnumPricesType"/>
+            <xs:attribute name="source" type="EnumFareSource"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        A Pricing Group (TST)
+          airSubSegmentIds      - a list of segment ID-s (in NMTOKENS format), see AirSubsegment/@id. No limit is imposed on the maximal length.
+          source                - the fare source type, i.e. published, negotiated, private or corporate
+          dynamicDiscountedFare - dynamic discounted fare (yes/no)?
+          spanishResidentFare   - dynamic discounted fare (yes/no)?
+          tourCode              - tour code              - RE: ^.{1,50}$ - ML: 50
+    -->
+    <xs:element name="AirPrices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Price"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Reduction"/>
+            </xs:sequence>
+            <xs:attribute name="airSubSegmentIds" type="String"/>
+            <xs:attribute name="source" type="EnumFareSource"/>
+            <xs:attribute name="dynamicDiscountedFare" default="no" type="Boolean"/>
+            <xs:attribute name="spanishResidentFare" default="no" type="Boolean"/>
+            <xs:attribute name="tourCode" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Price
+        profile id - the profile to which this price refers
+        type     - the type of the amount
+        source   - the price source type, i.e. provider, first destination or company
+        currency - the currency relating to the amount - RE: ^[A-Z]{3}$ - ML: 3
+        value    - the amount                          - RE: ^[\-+]\d{8}\.\d{2}?$ - ML: 12
+        providerFeeCode - fee code in case
+        feeDescription  - fee description
+    -->
+    <xs:element name="Price">
+        <xs:complexType>
+            <xs:attribute name="profileId" type="String"/>
+            <xs:attribute name="type" type="EnumPriceType"/>
+            <xs:attribute name="source" type="EnumPriceSource"/>
+            <xs:attribute name="currency" type="String"/>
+            <xs:attribute name="value" type="Float"/>
+            <xs:attribute name="providerFeeCode" type="String"/>
+            <xs:attribute name="feeDescription" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Reduction
+        type  - the type of the reduction
+        value - the value or code of the reduction     - RE: ^.{1,50}$ - ML: 50
+    -->
+    <xs:element name="Reduction">
+        <xs:complexType>
+            <xs:attribute name="type" use="required" type="EnumReductionType"/>
+            <xs:attribute name="value" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetailsAir
+        ticketingDate   - the ticket issue date.
+        ticketIssued    - indicates if the ticket has been issued.
+        isOption        - identifies this as an Air Option.
+    -->
+    <xs:element name="TripDetailsAir">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="AirSubsegments"/>
+                <xs:element minOccurs="0" ref="HighestFare"/>
+                <xs:element minOccurs="0" ref="LowestFare"/>
+            </xs:sequence>
+            <xs:attribute name="ticketingDate" type="DateTime"/>
+            <xs:attribute name="ticketIssued" type="Tristate"/>
+            <xs:attribute name="ticketType" type="EnumAirTicketType"/>
+            <xs:attribute name="isOption" type="Boolean"/>
+            <xs:attribute name="preferred" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- AirSubsegments -->
+    <xs:element name="AirSubsegments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="AirSubsegment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        AirSubsegment
+        id                         - the segment identifier is valid only for the current document.
+        direction                  - the direction of the segment
+        airlineCode                - the airline code of the air segment
+        airline                    - the airline name of the air segment            - RE: ^.{1,1024}$ - ML: 1024
+        operatedByAirlineCode      - the operating airline code of the air segment
+        operatedByAirlineCode      - the operating airline name of the air segment
+        inventoryCode              - the flight number of the air segment           - RE: ^\d{1,256}$ - ML: 256
+        origin                     - the origin of the air segment                  - RE: ^.{1,1024}$ - ML: 1024
+        destination                - the destination of the air segment             - RE: ^.{1,1024}$ - ML: 1024
+        originTerminal             - the terminal of the origin airport             - RE: ^.{1,128}$ - ML: 128
+        destinationTerminal        - the terminal of the destination airport        - RE: ^.{1,128}$ - ML: 128
+        originDateAndTime          - the date and optionally the time when the flight departs
+        destinationDateAndTime     - the date and optionally the time when the flight arrives
+        originCityCode             - the origin city code
+        originCity                 - the origin city name                           - RE: ^.{1,1024}$ - ML: 1024
+        destinationCityCode        - the destination city code
+        destinationCity            - the destination city name                      - RE: ^.{1,1024}$ - ML: 1024
+        originCountryCode          - the origin country code of the air segment
+        originCountry              - the origin country name of the air segment     - RE: ^.{1,1024}$ - ML: 1024
+        destinationCountryCode     - the destination country code of the air segment
+        destinationCountry         - the destination country name of the air segment    - RE: ^.{1,1024}$ - ML: 1024
+        originIATACode             - the IATA code of the origin
+        destinationIATACode        - the IATA code of the destination
+        originArea                 - the origin area of the air segment
+        destinationArea            - the destination area of the air segment
+        bookingClass               - the booking class booked for the flight
+        serviceClass               - the service class booked for the flight
+        providerConfirmationNumber - the confirmation number under which the booking is made at the provider - RE: ^.{1,16}$ - ML: 16
+        fareBasis                  - the fare basis                                 - RE: ^.{1,64}$   - ML: 64
+        equipment                  - the aircraft type                              - RE: ^.{1,1024}$ - ML: 1024
+        codeShared                 - the code-shared flight indicator
+    -->
+    <xs:element name="AirSubsegment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Tickets"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightBaggage"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightSeat"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightMeal"/>
+                <xs:element minOccurs="0" ref="CarbonEmission"/>
+                <xs:element minOccurs="0" ref="AirlineLogos"/>
+                <xs:element minOccurs="0" ref="OperatedByAirlineLogos"/>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" type="Integer"/>
+            <xs:attribute name="direction" type="Integer"/>
+            <xs:attribute name="airlineCode" type="String"/>
+            <xs:attribute name="airline" type="String"/>
+            <xs:attribute name="operatedByAirlineCode" type="String"/>
+            <xs:attribute name="operatedByAirline" type="String"/>
+            <xs:attribute name="inventoryCode" type="String"/>
+            <xs:attribute name="origin" type="String"/>
+            <xs:attribute name="destination" type="String"/>
+            <xs:attribute name="originTerminal" type="String"/>
+            <xs:attribute name="destinationTerminal" type="String"/>
+            <xs:attribute name="originDateAndTime" type="DateTime"/>
+            <xs:attribute name="destinationDateAndTime" type="DateTime"/>
+            <xs:attribute name="originCityCode" type="String"/>
+            <xs:attribute name="originCity" type="String"/>
+            <xs:attribute name="destinationCityCode" type="String"/>
+            <xs:attribute name="destinationCity" type="String"/>
+            <xs:attribute name="originCountryCode" type="String"/>
+            <xs:attribute name="originCountry" type="String"/>
+            <xs:attribute name="destinationCountryCode" type="String"/>
+            <xs:attribute name="destinationCountry" type="String"/>
+            <xs:attribute name="originIATACode" type="String"/>
+            <xs:attribute name="destinationIATACode" type="String"/>
+            <xs:attribute name="originArea" type="EnumArea"/>
+            <xs:attribute name="destinationArea" type="EnumArea"/>
+            <xs:attribute name="bookingClass" type="EnumBookingClass"/>
+            <xs:attribute name="serviceClass" type="EnumAirServiceClass"/>
+            <xs:attribute name="providerConfirmationNumber" type="String"/>
+            <xs:attribute name="fareBasis" type="String"/>
+            <xs:attribute name="equipment" type="String"/>
+            <xs:attribute name="codeShared" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AirlineLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <xs:element name="OperatedByAirlineLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <xs:element name="FlightSeat">
+        <xs:complexType>
+            <xs:attribute name="profileId" type="String"/>
+            <xs:attribute name="number" type="String"/>
+            <xs:attribute name="confirmed" type="Boolean"/>
+            <xs:attribute name="chargeable" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FlightBaggage">
+        <xs:complexType>
+            <xs:attribute name="profileId" type="String"/>
+            <xs:attribute name="description" type="String"/>
+            <xs:attribute name="weight" type="String"/>
+            <xs:attribute name="unit" type="String"/>
+            <xs:attribute name="pieces" type="String"/>
+            <xs:attribute name="chargeable" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FlightMeal">
+        <xs:complexType>
+            <xs:attribute name="profileId" type="String"/>
+            <xs:attribute name="description" type="String"/>
+            <xs:attribute name="confirmed" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Tickets">
+        <xs:complexType>
+            <xs:attribute name="number" type="String"/>
+            <xs:attribute name="profileId" use="required" type="String"/>
+            <xs:attribute name="freeText" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- HighestFare -->
+    <xs:element name="HighestFare">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Price"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- No attribute -->
+    <!-- LowestFare -->
+    <xs:element name="LowestFare">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Price"/>
+            </xs:sequence>
+            <xs:attribute name="fareType" type="EnumFareType"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        LowestFare
+        fareType  - the type of the lowest fare
+    -->
+    <xs:element name="LowestFares">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="LowestFare"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- No attribute -->
+    <!--
+        TripDetailsHotel
+        inventoryCode              - the cytric hotel ID of the booked hotel - RE: ^.{1,20}$ - ML: 20
+        name                       - the name of the hotel                   - RE: ^.{1,64}$ - ML: 64
+        street                     - the steet of the hotel address          - RE: ^.{1,128}$ - ML: 128
+        city                       - the city of the hotel address           - RE: ^.{1,96}$ - ML: 96
+        country                    - the country of the hotel address        - RE: ^.{1,64}$ - ML: 64
+        telephone                  - the telephone number of the hotel       - RE: ^.{1,32}$ - ML: 32
+        hotelChain                 - the hotel chain                         - RE: ^[A-Z0-9]{2}$ - ML: 2
+        providerConfirmationNumber - the confirmation number under which the booking is made at the provider - RE: ^.{1,64}$ - ML: 64
+        stars                      - the number of stars of the booked hotel
+        cancellationPolicy         - the cancellation policy of the booked room
+        statusCode                 - the status code of the hotel confirmation
+        planCode                   - the rate plan for this rate
+        roomCode                   - the room type for this rate
+    -->
+    <xs:element name="TripDetailsHotel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="HotelRate"/>
+                <xs:element minOccurs="0" ref="GeoLocation"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Image"/>
+                <xs:element minOccurs="0" ref="ChainLogos"/>
+                <xs:element minOccurs="0" ref="ProviderLogos"/>
+                <xs:element minOccurs="0" ref="LowestFares"/>
+            </xs:sequence>
+            <xs:attribute name="inventoryCode" type="String"/>
+            <xs:attribute name="name" type="String"/>
+            <xs:attribute name="street" type="String"/>
+            <xs:attribute name="city" type="String"/>
+            <xs:attribute name="country" type="String"/>
+            <xs:attribute name="telephone" type="String"/>
+            <xs:attribute name="hotelChain" type="String"/>
+            <xs:attribute name="breakfastIncluded" use="required" type="Tristate"/>
+            <xs:attribute name="roomOccupancy" use="required" type="Integer"/>
+            <xs:attribute name="providerConfirmationNumber" type="String"/>
+            <xs:attribute name="stars" type="Integer"/>
+            <xs:attribute name="cancellationPolicy" type="String"/>
+            <xs:attribute name="preferred" type="Boolean"/>
+            <xs:attribute name="isPartOfProgram" type="Boolean"/>
+            <xs:attribute name="statusCode" type="String"/>
+            <xs:attribute name="planCode" type="String"/>
+            <xs:attribute name="roomCode" type="String"/>
+            <xs:attribute name="fax" type="String"/>
+            <xs:attribute name="postalcode" type="String"/>
+            <xs:attribute name="email" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ChainLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <xs:element name="ProviderLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!-- HotelRate -->
+    <xs:element name="HotelRate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="HotelRateInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        HotelRateInfo
+        category -
+        content  -
+    -->
+    <xs:element name="HotelRateInfo">
+        <xs:complexType>
+            <xs:attribute name="category" type="String"/>
+            <xs:attribute name="content" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetailsEvent
+        inventoryCode              - the cytric hotel ID of the booked hotel - RE: ^.{1,20}$ - ML: 20
+        name                       - event name                              - RE: ^.{1,64}$ - ML: 255
+        hotelname                  - the name of the hotel                   - RE: ^.{1,64}$ - ML: 64
+        street                     - the steet of the hotel address          - RE: ^.{1,128}$ - ML: 128
+        city                       - the city of the hotel address           - RE: ^.{1,96}$ - ML: 96
+        country                    - the country of the hotel address        - RE: ^.{1,64}$ - ML: 64
+        telephone                  - the telephone number of the hotel       - RE: ^.{1,32}$ - ML: 32
+        hotelChain                 - the hotel chain                         - RE: ^[A-Z0-9]{2}$ - ML: 2
+        stars                      - the number of stars of the booked hotel
+        cancellationAllowedUntil   - the date until cancellation is possible
+        cancellationPolicy         - the cancellation policy of the booked room
+    -->
+    <xs:element name="TripDetailsEvent">
+        <xs:complexType>
+            <xs:attribute name="inventoryCode" type="String"/>
+            <xs:attribute name="name" use="required" type="String"/>
+            <xs:attribute name="hotelName" type="String"/>
+            <xs:attribute name="street" type="String"/>
+            <xs:attribute name="city" type="String"/>
+            <xs:attribute name="country" type="String"/>
+            <xs:attribute name="telephone" type="String"/>
+            <xs:attribute name="hotelChain" type="String"/>
+            <xs:attribute name="stars" type="Integer"/>
+            <xs:attribute name="contact" type="String"/>
+            <xs:attribute name="cancellationAllowedUntil" type="DateTime"/>
+            <xs:attribute name="cancellationPolicy" type="String"/>
+            <xs:attribute name="fax" type="String"/>
+            <xs:attribute name="postalcode" type="String"/>
+            <xs:attribute name="email" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetailsRail
+        railCard - the rail card used
+    -->
+    <xs:element name="TripDetailsRail">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="RailCards"/>
+                <xs:element ref="RailSubsegments"/>
+            </xs:sequence>
+            <xs:attribute name="providerConfirmationNumber" type="String"/>
+            <xs:attribute name="preferred" type="Boolean"/>
+            <xs:attribute name="ticketType" type="EnumRailTicketType"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- RailCards -->
+    <xs:element name="RailCards">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="RailCard"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attribute -->
+    <!--
+        RailCard
+        type      - the type of rail card used
+        profileId - the profile to which this rail card refers  - RE: ^.{1,256}$ - ML: 256
+    -->
+    <xs:element name="RailCard">
+        <xs:complexType>
+            <xs:attribute name="type" use="required" type="String"/>
+            <xs:attribute name="profileId" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- RailSubsegments -->
+    <xs:element name="RailSubsegments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="RailSubsegment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        RailSubsegment
+        id                         - the segment identifier is valid only for the current document.
+        direction                  - the direction of the segment
+        origin                     - the origin station of the rail segment                  - RE: ^.{1,1024}$ - ML: 1024
+        destination                - the destination station of the rail segment             - RE: ^.{1,1024}$ - ML: 1024
+        originTrack                - the departure (origin) track
+        destinationTrack           - the arrival (destination) track
+        originCountryCode          - the origin country code of the rail segment
+        destinationCountryCode     - the destination country code of the rail segment
+        originArea                 - the origin area of the rail segment
+        destinationArea            - the destination area of the rail segment
+        originDateAndTime          - the date and optionally the time when the train departs
+        destinationDateAndTime     - the date and optionally the time when the train arrives
+        originIATACode             - the IATA code of the origin
+        destinationIATACode        - the IATA code of the destination
+        serviceClass               - the service class booked on the train
+        providerConfirmationNumber - the confirmation number under which the booking is made at the provider
+        trainNumber                - the number of the train
+        totalPrice                 - the total price of the segment
+        railCompanyName            - the rail company name
+        railCompanyCode            - the rail company code
+        vehicle                    - the train type, e.g. ICE, MET
+        vehicleDescription         - long name of the train type, e.g. Intercity Express or Thalys
+    -->
+    <xs:element name="RailSubsegment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="RailSeat"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="GeoLocation"/>
+                <xs:element minOccurs="0" ref="CarbonEmission"/>
+                <xs:element minOccurs="0" ref="RailCompanyLogos"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="Integer"/>
+            <xs:attribute name="direction" type="Integer"/>
+            <xs:attribute name="origin" type="String"/>
+            <xs:attribute name="destination" type="String"/>
+            <xs:attribute name="originTrack" type="String"/>
+            <xs:attribute name="destinationTrack" type="String"/>
+            <xs:attribute name="originCountryCode" type="String"/>
+            <xs:attribute name="destinationCountryCode" type="String"/>
+            <xs:attribute name="originArea" type="EnumArea"/>
+            <xs:attribute name="destinationArea" type="EnumArea"/>
+            <xs:attribute name="originDateAndTime" type="DateTime"/>
+            <xs:attribute name="destinationDateAndTime" type="DateTime"/>
+            <xs:attribute name="originIATACode" type="String"/>
+            <xs:attribute name="destinationIATACode" type="String"/>
+            <xs:attribute name="originCityIATACode" type="String"/>
+            <xs:attribute name="destinationCityIATACode" type="String"/>
+            <xs:attribute name="originCityName" type="String"/>
+            <xs:attribute name="destinationCityName" type="String"/>
+            <xs:attribute name="serviceClass" type="EnumRailServiceClass"/>
+            <xs:attribute name="providerConfirmationNumber" type="String"/>
+            <xs:attribute name="trainNumber" type="String"/>
+            <xs:attribute name="totalPrice" type="Float"/>
+            <xs:attribute name="railCompanyName" type="String"/>
+            <xs:attribute name="railCompanyCode" type="String"/>
+            <xs:attribute name="vehicle" type="String"/>
+            <xs:attribute name="vehicleDescription" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RailCompanyLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        RailSeat
+        profileId    -
+        seatNumber   -
+        waggonNumber -
+    -->
+    <xs:element name="RailSeat">
+        <xs:complexType>
+            <xs:attribute name="profileId" use="required" type="String"/>
+            <xs:attribute name="seatNumber" type="String"/>
+            <xs:attribute name="waggonNumber" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetailsCar
+        rentalCarCompany           - the name of the rental car company                           - RE: ^.{1,1024}$ - ML: 1024
+        inventoryCode              - the acriss code of the booked rental car segment (e.g. ECMN) - RE: ^[A-Z\*]{4}$ - ML: 4
+        rentAtAirport              - whether the car pick-up station is at an airport
+        telephonePickUpStation     - the telephone number of the pick-up station                  - RE: ^.{1,64}$ - ML: 64
+        telephoneReturnStation     - the telephone number of the return station                   - RE: ^.{1,64}$ - ML: 64
+        telefaxPickUpStation       - the telefax number of the pick-up station                    - RE: ^.{1,64}$ - ML: 64
+        telefaxReturnStation       - the telefax number of the return station                     - RE: ^.{1,64}$ - ML: 64
+        emailPickUpStation         - the email of the pick-up station                                - RE: ^[A-Za-z0-9\_\-\.]+\@([A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,5}$ - ML: 128
+        emailReturnStation            - the email of the return station                                 - RE: ^[A-Za-z0-9\_\-\.]+\@([A-Za-z0-9]([A-Za-z0-9\-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,5}$ - ML: 128
+        providerConfirmationNumber - the confirmation number under which the booking is made at the provider - RE: ^.{1,16}$ - ML: 16
+        statusCode                 - the status code of the car confirmation
+        rateCode                   - the rate code of the car rental
+    -->
+    <xs:element name="TripDetailsCar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="CarCategory"/>
+                <xs:element minOccurs="0" ref="CarType"/>
+                <xs:element minOccurs="0" ref="CarTransmission"/>
+                <xs:element minOccurs="0" ref="CarMiscellaneous"/>
+                <xs:element minOccurs="0" ref="CarModel"/>
+                <xs:element minOccurs="0" ref="CarFees"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="GeoLocation"/>
+                <xs:element minOccurs="0" ref="CarCompanyLogos"/>
+            </xs:sequence>
+            <xs:attribute name="rentalCarCompany" type="String"/>
+            <xs:attribute name="inventoryCode" type="String"/>
+            <xs:attribute name="rentAtAirport" type="Boolean"/>
+            <xs:attribute name="telephonePickUpStation" type="String"/>
+            <xs:attribute name="telephoneReturnStation" type="String"/>
+            <xs:attribute name="telefaxPickUpStation" type="String"/>
+            <xs:attribute name="telefaxReturnStation" type="String"/>
+            <xs:attribute name="emailPickUpStation" type="String"/>
+            <xs:attribute name="emailReturnStation" type="String"/>
+            <xs:attribute name="providerConfirmationNumber" type="String"/>
+            <xs:attribute name="preferred" type="Boolean"/>
+            <xs:attribute name="statusCode" type="String"/>
+            <xs:attribute name="rateCode" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarCategory - the first particle of the ACRISS car classification code, a.k.a. car class
+        code         - the car category code
+        description  - textual description
+    -->
+    <xs:element name="CarCategory">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="EnumCarCategory"/>
+            <xs:attribute name="description" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarType    - the second particle of the ACRISS car classification code
+        code        - the car type code
+        description - textual description
+    -->
+    <xs:element name="CarType">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="EnumCarType"/>
+            <xs:attribute name="description" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarTransmission - the third particle of the ACRISS car classification code
+        code             - the car transmission code
+        description      - textual description
+    -->
+    <xs:element name="CarTransmission">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="EnumCarTransmission"/>
+            <xs:attribute name="description" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarMiscellaneous - traditionally Air Conditioning, the fourth particle of the ACRISS car classification code
+        code              - the car air conditioning characteristics code
+        description       - textual description
+    -->
+    <xs:element name="CarMiscellaneous">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="EnumCarMiscellaneous"/>
+            <xs:attribute name="description" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarModel    - name and description of the car model
+        name         - name of the car model
+        description  - textual description
+    -->
+    <xs:element name="CarModel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="Image"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="String"/>
+            <xs:attribute name="description" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CarCompanyLogos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Logo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <xs:element name="Logo">
+        <xs:complexType>
+            <xs:attribute name="url" use="required" type="String"/>
+            <xs:attribute name="size" use="required" type="EnumLogoSize"/>
+            <xs:attribute name="type" use="required" type="EnumLogoType"/>
+            <xs:attribute name="width" type="Integer"/>
+            <xs:attribute name="height" type="Integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Image">
+        <xs:complexType>
+            <xs:attribute name="url" use="required" type="String"/>
+            <xs:attribute name="type" type="EnumImageType"/>
+            <xs:attribute name="title" type="String"/>
+            <xs:attribute name="width" type="Integer"/>
+            <xs:attribute name="height" type="Integer"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Payments -->
+    <xs:element name="CarFees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="CarFee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        CarFee - fees for car
+        type         - the car fee type
+    -->
+    <xs:element name="CarFee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Price"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="EnumCarFeeType"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripDetailsCloud
+        providerName     - the name of the booked appCloud provider
+        providerCode     - the cbs code of this provider
+        applicationName  - the name of the booked appCloud application.
+        applicationCode  - the cbs code of this application
+        serviceName      - the name of the booked appCloud service
+        rateName         - the name of the booked appCloud rate
+        confirmationDate - the date/time when the booked service was confirmed by the provider
+    -->
+    <xs:element name="TripDetailsCloud">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="Requisite"/>
+            </xs:sequence>
+            <xs:attribute name="providerName" use="required" type="String"/>
+            <xs:attribute name="providerCode" type="String"/>
+            <xs:attribute name="applicationName" use="required" type="String"/>
+            <xs:attribute name="applicationCode" type="String"/>
+            <xs:attribute name="serviceName" type="String"/>
+            <xs:attribute name="rateName" type="String"/>
+            <xs:attribute name="confirmationDate" type="DateTime"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Requisite
+        name     - the requisite name
+        code     - the requisite code
+        value    - the value presented as string
+    -->
+    <xs:element name="Requisite">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="String"/>
+            <xs:attribute name="code" use="required" type="String"/>
+            <xs:attribute name="value" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        For CTW Requests , TripDetailsWizzard will be sent in cCBD XML
+        and for each OtherTravel Segment , TripDetailsWizzardOther to be sent to cCBD
+        Only CTW other Travel Requests are sent to cCBD as of now
+    -->
+    <xs:element name="TripDetailsWizzard">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TripDetailsWizzardOther"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <xs:element name="TripDetailsWizzardOther">
+        <xs:complexType>
+            <xs:attribute name="ctwRequestSegment" use="required" type="Long"/>
+            <xs:attribute name="origin" type="String"/>
+            <xs:attribute name="destination" type="String"/>
+            <xs:attribute name="prefStartDateTime" type="DateTime"/>
+            <xs:attribute name="prefEndDateTime" type="DateTime"/>
+            <xs:attribute name="remark" type="String"/>
+            <xs:attribute name="otherTravelCategory" type="String"/>
+            <xs:attribute name="supplierName" type="String"/>
+            <xs:attribute name="currencyCode" type="String"/>
+            <xs:attribute name="estimatedPrice" type="Float"/>
+            <xs:attribute name="canceled" type="Boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TravelPolicyAlert
+        reasonCode        - the user's explanation why travel policy has been violated, in terms of assigned reason code - ML: 64
+        explanation       - the user's free-form explanation why travel policy has been violated - ML: 1024
+        reasonCodeComment - Reason code free-text explanation - ML:1024
+    -->
+    <xs:element name="TravelPolicyAlert">
+        <xs:complexType>
+            <xs:attribute name="reasonCode" type="String"/>
+            <xs:attribute name="explanation" type="String"/>
+            <xs:attribute name="reasonCodeComment" type="String"/>
+            <xs:attribute name="advanceReasonCode" type="String"/>
+            <xs:attribute name="noHotelReasonCode" type="String"/>
+            <xs:attribute name="noHotelExplanation" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Response -->
+    <xs:element name="Response">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="Error"/>
+                <xs:element ref="Confirmation"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        Error
+        code        - the error code
+        description - the description of the error
+    -->
+    <xs:element name="Error">
+        <xs:complexType>
+            <xs:attribute name="code" type="Integer"/>
+            <xs:attribute name="description" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        Confirmation
+        externalTripNumber - the trip id within the customer's system - RE: ^.{1,40}$ - ML: 40
+    -->
+    <xs:element name="Confirmation">
+        <xs:complexType>
+            <xs:attribute name="externalTripNumber" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        GeoLocation
+        longitude - geographical latitude
+        latitude  - geographical longitude
+    -->
+    <xs:element name="GeoLocation">
+        <xs:complexType>
+            <xs:attribute name="name" type="String"/>
+            <xs:attribute name="longitude" use="required" type="Double"/>
+            <xs:attribute name="latitude" use="required" type="Double"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        CarbonEmission
+        amount - ammount of emissions
+        unit   - unit of measurement
+    -->
+    <xs:element name="CarbonEmission">
+        <xs:complexType>
+            <xs:attribute name="amount" use="required" type="Float"/>
+            <xs:attribute name="unit" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
