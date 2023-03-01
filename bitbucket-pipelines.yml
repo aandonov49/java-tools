@@ -1,0 +1,19 @@
+#  Template Ruby build
+
+#  This template allows you to validate your Ruby code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: ruby:2.7
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+         name: Sync GitHub Mirror
+         image: alpine/git:latest
+         clone:
+          enabled: false
+         script:
+          - git clone --bare git@bitbucket.org:wiazard34/java-tools.git
+          - cd RepoName.git
+          - git push --mirror git@github.com:aandonov49/java-tools.git
