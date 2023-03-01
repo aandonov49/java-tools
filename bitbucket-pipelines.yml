@@ -9,7 +9,7 @@ pipelines:
   default:
     - parallel:
       - step:
-         name: Sync GitHub Mirror
+         name: Sync java_tools with GitHub Mirror
          image: alpine/git:latest
          clone:
           enabled: false
