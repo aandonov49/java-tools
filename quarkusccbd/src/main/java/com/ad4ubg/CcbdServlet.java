@@ -1,5 +1,6 @@
 package com.ad4ubg;
 
+import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import net.ifao.application.communication.obex.v4.Confirmation;
@@ -8,6 +9,7 @@ import net.ifao.application.communication.obex.v4.ObjectFactory;
 import net.ifao.application.communication.obex.v4.Response;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,18 +25,19 @@ import java.io.ByteArrayInputStream;
 import static java.util.Objects.requireNonNull;
 
 @Path("/ccbd")
+@RequestScoped
 public class CcbdServlet {
-
-    private final Template page;
+    @Location("page.qute")
+    private Template page;
     @Inject
     protected Logger LOG;
 
     @Inject
     protected JAXBContext context;
 
-    public CcbdServlet(Template page) {
-        this.page = requireNonNull(page, "page is required");
-    }
+//    public CcbdServlet(Template page) {
+//        this.page = requireNonNull(page, "page is required");
+//    }
 
     @GET
     @Produces(MediaType.TEXT_HTML)

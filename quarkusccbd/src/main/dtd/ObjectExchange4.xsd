@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Version:    4.81
+    Version:    4.87
     
     History:
     Version     Changes
     =======     =======
+        4.87        CYT-17225: removed SWAB, AVIANCA_BR, AZUL, GOL and VOLARIS from EnumInventorySystem
+        4.86        Added RailTickets and RailTicket in cCBD TRA-2566
+        4.85        Added TripErrors, TripErrorReason and TripErrorMessage TRA-1646
+        4.84        TCT Hotel integration for FCM TRA-820
+                    - Added AHM_SMY to EnumInventorySystem
+        4.83        IATA airport geocodes in cCBD TRA-2122
+        4.82        Removed BLL and MYC from EnumInventorySystem CYT-16604
         4.81        Added:
                     -ctwOtherRequest into ccbd
                     - new Element TripDetail/TripDetailsWizard
@@ -460,26 +467,21 @@
             <xs:enumeration value="CLOUDAPP_PROVIDER"/>
             <xs:enumeration value="MYDRIVER"/>
             <xs:enumeration value="MEETAGO"/>
-            <xs:enumeration value="SWAB"/>
             <xs:enumeration value="CDS"/>
             <xs:enumeration value="CWT_CHP"/>
-            <xs:enumeration value="MYC"/>
-            <xs:enumeration value="AVIANCA_BR"/>
-            <xs:enumeration value="AZUL"/>
-            <xs:enumeration value="GOL"/>
-            <xs:enumeration value="VOLARIS"/>
+            <xs:enumeration value="FCM_CHP"/>
             <xs:enumeration value="RENFE_1A"/>
             <xs:enumeration value="FGT"/>
             <xs:enumeration value="BCD_TSH"/>
             <xs:enumeration value="AOT"/>
             <xs:enumeration value="AHM_HRS"/>
             <xs:enumeration value="GSE"/>
-            <xs:enumeration value="BLL"/>
             <xs:enumeration value="TXO"/>
             <xs:enumeration value="GSN"/>
             <xs:enumeration value="OBB"/>
             <xs:enumeration value="AHM_HCORPO"/>
             <xs:enumeration value="AHM_AVH"/>
+            <xs:enumeration value="AHM_SMY"/>
             <xs:enumeration value="SPS"/>
         </xs:restriction>
     </xs:simpleType>
@@ -911,6 +913,13 @@
             <xs:enumeration value="THUMBNAIL"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="EnumTripError">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="INCOMPLETE_FOR_ALL_TRAVELERS"/>
+            <xs:enumeration value="INCOMPLETE_FOR_SOME_TRAVELERS"/>
+            <xs:enumeration value="INCOMPLETE_CANCELLATION"/>
+        </xs:restriction>
+    </xs:simpleType>
     <!---->
     <!-- Elements -->
     <!---->
@@ -1133,6 +1142,7 @@
             <xs:sequence>
                 <xs:element ref="TripDetails"/>
                 <xs:element minOccurs="0" ref="ExpenseData"/>
+                <xs:element minOccurs="0" ref="TripErrors"/>
             </xs:sequence>
             <xs:attribute name="cytricTripNumber" use="required" type="Long"/>
             <xs:attribute name="externalTripNumber" type="String"/>
@@ -1259,6 +1269,47 @@
             <xs:attribute name="delayedTicketing" type="Boolean"/>
             <xs:attribute name="bookingSource" type="EnumBookingSource"/>
             <xs:attribute name="fareLogixLocator" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- TripErrors -->
+    <xs:element name="TripErrors">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TripError"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        TripError
+        code        - enum value of the incomplete reason
+    -->
+    <xs:element name="TripError">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="TripErrorReason"/>
+            </xs:sequence>
+            <xs:attribute name="code" use="required" type="EnumTripError"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- TripErrorReason -->
+    <xs:element name="TripErrorReason">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TripErrorMessage"/>
+            </xs:sequence>
+            <xs:attribute name="code" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!--
+        TripErrorMessage
+        code        - code is the language code
+        text        - translated incomplete reason in the above language code
+    -->
+    <xs:element name="TripErrorMessage">
+        <xs:complexType>
+            <xs:attribute name="code" use="required" type="String"/>
+            <xs:attribute name="text" use="required" type="String"/>
         </xs:complexType>
     </xs:element>
     <!-- Payments -->
@@ -1473,6 +1524,7 @@
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightBaggage"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightSeat"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="FlightMeal"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="GeoLocation"/>
                 <xs:element minOccurs="0" ref="CarbonEmission"/>
                 <xs:element minOccurs="0" ref="AirlineLogos"/>
                 <xs:element minOccurs="0" ref="OperatedByAirlineLogos"/>
@@ -1713,6 +1765,7 @@
             <xs:sequence>
                 <xs:element minOccurs="0" ref="RailCards"/>
                 <xs:element ref="RailSubsegments"/>
+                <xs:element minOccurs="0" ref="RailTickets"/>
             </xs:sequence>
             <xs:attribute name="providerConfirmationNumber" type="String"/>
             <xs:attribute name="preferred" type="Boolean"/>
@@ -1737,6 +1790,30 @@
         <xs:complexType>
             <xs:attribute name="type" use="required" type="String"/>
             <xs:attribute name="profileId" use="required" type="String"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- RailTickets -->
+    <xs:element name="RailTickets">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="RailTicket"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- no attributes -->
+    <!--
+        RailTicket
+        profileId    - the profile to which this rail ticket refers
+        pdfUrl       - pdf url holds ticket link to download in pdf format
+        passBookUrl  - pass book url holds qr code links in pkpass format
+        segmentIds   - a list of segment ID-s defines the rail segment
+    -->
+    <xs:element name="RailTicket">
+        <xs:complexType>
+            <xs:attribute name="profileId" type="String"/>
+            <xs:attribute name="pdfUrl" type="String"/>
+            <xs:attribute name="passBookUrl" type="String"/>
+            <xs:attribute name="segmentIds" type="String"/>
         </xs:complexType>
     </xs:element>
     <!-- RailSubsegments -->

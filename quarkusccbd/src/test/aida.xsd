@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.airplus.com/aida/virtualcreditcards" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AidaCardCreationRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AuthenticationBE">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Password"/>
+                <xs:attribute type="xs:string" name="User"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MerchantDetails">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="MerchantName"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SubmitDBIBE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransType">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="FD"/>
+                      <xs:attribute type="xs:string" name="PN"/>
+                      <xs:attribute type="xs:string" name="RT.AIRLINE"/>
+                      <xs:attribute type="xs:string" name="RT.CLASS"/>
+                      <xs:attribute type="xs:string" name="RT.DEPT"/>
+                      <xs:attribute type="xs:string" name="RT.DEST"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="AU"/>
+            <xs:attribute type="xs:string" name="IK"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VelocityControl">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="CardProduct"/>
+                <xs:attribute type="xs:string" name="Limit"/>
+                <xs:attribute type="xs:string" name="LimitCurrency"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ValidityPeriodControl">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ValidFrom"/>
+                <xs:attribute type="xs:string" name="ValidTo"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="AccountNumber"/>
+      <xs:attribute type="xs:string" name="RequestType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
