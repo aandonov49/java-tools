@@ -3,8 +3,10 @@ package com.ad4ubg;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.vertx.core.http.HttpServerRequest;
+import net.ifao.application.communication.aida.v4.AVSData;
 import net.ifao.application.communication.aida.v4.AidaCardCreationRequest;
 import net.ifao.application.communication.aida.v4.AidaCardCreationResponse;
+import net.ifao.application.communication.aida.v4.CPN;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,6 +22,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.ByteArrayInputStream;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Path("/aida")
 @RequestScoped
@@ -57,13 +64,26 @@ public class AidaResource {
 
     @POST
     @Path("generate")
-    @Produces(MediaType.TEXT_XML)
+    @Produces(MediaType.APPLICATION_XML)
     public Response doPostGenerate(String request) throws JAXBException {
         Unmarshaller jaxbUnmarshaller = jaxContext.createUnmarshaller();
         AidaCardCreationRequest object = (AidaCardCreationRequest) jaxbUnmarshaller.unmarshal(new ByteArrayInputStream(request.getBytes()));
         LOG.debug(object);
         AidaCardCreationResponse cardResponse = new AidaCardCreationResponse();
-        cardResponse.setCardholderName("Atanas Andonov");
+        cardResponse.setCardholderName(object.getSubmitDBIBE().getTransType().getPN());
+        AVSData avsData= new AVSData();
+        avsData.setCardholderName(object.getSubmitDBIBE().getTransType().getPN());
+        cardResponse.setAVSData(avsData);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date(System.currentTimeMillis()));
+        calendar.add(Calendar.YEAR, 2);
+        SimpleDateFormat format=new SimpleDateFormat("yyMM");
+        CPN cpn= new CPN();
+        cpn.setExpiry(format.format(calendar.getTime()));
+        cardResponse.setCPN(cpn);
+        cpn.setPAN("5425232820001308");
+        cpn.setAVV("123");
+        cardResponse.setReturnCode("Success");
         return Response.status(200).entity(cardResponse).build();
     }
 }
