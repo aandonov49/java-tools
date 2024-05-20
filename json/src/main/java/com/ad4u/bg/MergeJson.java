@@ -75,6 +75,16 @@ public class MergeJson {
         mapper.readerFor(Machine.class);
         Machine machine = mapper.readValue(filePath.toFile(), Machine.class);
         ipTables.getMachineList().add(machine);
+        ipTables.getAliaseList().add(machine.getAllias());
+        if (ipTables.getAliasesipList().containsKey(machine.getAllias())){
+            String ip=ipTables.getAliasesipList().get(machine.getAllias());
+            ip=ip+"10.10.0."+machine.getIp()+" ";
+            ipTables.getAliasesipList().put(machine.getAllias(),ip);
+        } else {
+            String ip="10.10.0."+machine.getIp()+" ";
+            ipTables.getAliasesipList().put(machine.getAllias(),ip);
+        }
+
     }
 
     private static void readDsnsNamesFromFileIntoJsonList(Path filePath) throws IOException {
