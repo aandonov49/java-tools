@@ -3,37 +3,42 @@ package com.ad4u.bg;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.*;
 
-/**
- * The type Ip tables.
- */
+/** The type Ip tables. */
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class IpTables {
-    @JsonProperty("iptables")
-    private List<Machine> machineList = new ArrayList<Machine>();
+  @JsonProperty("iptables")
+  private List<Machine> machineList = new ArrayList<Machine>();
 
-    @JsonProperty("aliases")
-    private Set<String> aliaseList = new HashSet<>();
-    @JsonProperty("aliasesips")
-    private Map<String,String> aliasesipList = new HashMap<>();
+  @JsonProperty("aliases")
+  private Set<String> aliaseList = new HashSet<>();
 
-    /**
-     * Gets machine list.
-     *
-     * @return the machine list
-     */
-    public List<Machine> getMachineList() {
-        return machineList;
-    }
+  @JsonProperty("aliasesips")
+  private Map<String, String> aliasesipList = new HashMap<>();
 
-    public Set<String> getAliaseList() {
-        return aliaseList;
-    }
+  @JsonProperty("switchVlans")
+  private Map<Integer, List<String>> switchVlans = new HashMap<>();
 
-    public Map<String, String> getAliasesipList() {
-        return aliasesipList;
-    }
+  /**
+   * Gets machine list.
+   *
+   * @return the machine list
+   */
+  public List<Machine> getMachineList() {
+    return machineList;
+  }
+
+  public Set<String> getAliaseList() {
+    return aliaseList;
+  }
+
+  public Map<String, String> getAliasesipList() {
+    return aliasesipList;
+  }
+
+  public Map<Integer, List<String>> getSwitchVlans() {
+    return switchVlans;
+  }
 }
