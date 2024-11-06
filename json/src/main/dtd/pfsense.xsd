@@ -1,0 +1,2972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="scope">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="system"/>
+                <xs:enumeration value="user"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="gid">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="1998"/>
+                <xs:enumeration value="1999"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="member">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="0"/>
+                <xs:enumeration value="2000"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="priv">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="page-all"/>
+                <xs:enumeration value="user-shell-access"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="bcrypt-hash">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="$2y$10$trkLLym4WBf/MgzooZptRuAsFKUSzj9M5bJZx3Tgydo5kRBxcpkVO"/>
+                <xs:enumeration value="$2y$10$QbTZubwCFeSgQ9ExkbhnYO1Q1oOnuWDkAS598ht3UWLeFxm.qXFBG"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="descr" type="xs:string"/>
+    <xs:element name="expires" type="xs:string"/>
+    <xs:element name="dashboardcolumns" type="xs:string"/>
+    <xs:element name="authorizedkeys" type="xs:string"/>
+    <xs:element name="ipsecpsk" type="xs:string"/>
+    <xs:element name="webguicss">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="pfSense.css"/>
+                <xs:enumeration value="pfSense-dark.css"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="uid">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="2000"/>
+                <xs:enumeration value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="groupname" type="xs:string"/>
+    <xs:element name="protocol">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="https"/>
+                <xs:enumeration value="tcp"/>
+                <xs:enumeration value="udp"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="loginautocomplete" type="xs:string"/>
+    <xs:element name="ssl-certref" type="xs:string"/>
+    <xs:element name="logincss" type="xs:string"/>
+    <xs:element name="max_procs" type="xs:string"/>
+    <xs:element name="roaming" type="xs:string"/>
+    <xs:element name="interval" type="xs:string"/>
+    <xs:element name="enable">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="enabled"/>
+                <xs:enumeration value=""/>
+                <xs:enumeration value="on"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="optimization" type="xs:string"/>
+    <xs:element name="hostname" type="xs:string"/>
+    <xs:element name="domain">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="ad4u-bg.com"/>
+                <xs:enumeration value=""/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="description"/>
+                <xs:element ref="scope"/>
+                <xs:element ref="gid"/>
+                <xs:element ref="member" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="priv" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="user">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="scope"/>
+                <xs:element ref="bcrypt-hash"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="name"/>
+                <xs:element ref="expires"/>
+                <xs:element ref="dashboardcolumns"/>
+                <xs:element ref="authorizedkeys"/>
+                <xs:element ref="ipsecpsk"/>
+                <xs:element ref="webguicss"/>
+                <xs:element ref="uid"/>
+                <xs:element ref="groupname"/>
+                <xs:element ref="priv"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="nextuid" type="xs:string"/>
+    <xs:element name="nextgid" type="xs:string"/>
+    <xs:element name="timeservers" type="xs:string"/>
+    <xs:element name="webgui">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="protocol"/>
+                <xs:element ref="loginautocomplete"/>
+                <xs:element ref="ssl-certref"/>
+                <xs:element ref="dashboardcolumns"/>
+                <xs:element ref="webguicss"/>
+                <xs:element ref="logincss"/>
+                <xs:element ref="max_procs"/>
+                <xs:element ref="roaming"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="disablesegmentationoffloading" type="xs:string"/>
+    <xs:element name="disablelargereceiveoffloading" type="xs:string"/>
+    <xs:element name="ipv6allow" type="xs:string"/>
+    <xs:element name="maximumtableentries" type="xs:string"/>
+    <xs:element name="powerd_ac_mode" type="xs:string"/>
+    <xs:element name="powerd_battery_mode" type="xs:string"/>
+    <xs:element name="powerd_normal_mode" type="xs:string"/>
+    <xs:element name="bogons">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="interval"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hn_altq_enable" type="xs:string"/>
+    <xs:element name="already_run_config_upgrade" type="xs:string"/>
+    <xs:element name="ssh">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enable"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="timezone" type="xs:string"/>
+    <xs:element name="language" type="xs:string"/>
+    <xs:element name="dns1host" type="xs:string"/>
+    <xs:element name="serialspeed" type="xs:string"/>
+    <xs:element name="primaryconsole" type="xs:string"/>
+    <xs:element name="ipv6dontcreatelocaldns" type="xs:string"/>
+    <xs:element name="prefer_ipv4" type="xs:string"/>
+    <xs:element name="pkg_repo_conf_path" type="xs:string"/>
+    <xs:element name="maximumstates" type="xs:string"/>
+    <xs:element name="aliasesresolveinterval" type="xs:string"/>
+    <xs:element name="maximumfrags" type="xs:string"/>
+    <xs:element name="enablenatreflectionpurenat" type="xs:string"/>
+    <xs:element name="reflectiontimeout" type="xs:string"/>
+    <xs:element name="consolebell" type="xs:string"/>
+    <xs:element name="dnsallowoverride" type="xs:string"/>
+    <xs:element name="earlyshellcmd" type="xs:string"/>
+    <xs:element name="if" type="xs:string"/>
+    <xs:element name="alias-address" type="xs:string"/>
+    <xs:element name="alias-subnet" type="xs:string"/>
+    <xs:element name="spoofmac" type="xs:string"/>
+    <xs:element name="ipaddr" type="xs:string"/>
+    <xs:element name="dhcphostname" type="xs:string"/>
+    <xs:element name="dhcprejectfrom" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_timeout" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_retry" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_select_timeout" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_reboot" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_backoff_cutoff" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_initial_interval" type="xs:string"/>
+    <xs:element name="adv_dhcp_pt_values" type="xs:string"/>
+    <xs:element name="adv_dhcp_send_options" type="xs:string"/>
+    <xs:element name="adv_dhcp_request_options" type="xs:string"/>
+    <xs:element name="adv_dhcp_required_options" type="xs:string"/>
+    <xs:element name="adv_dhcp_option_modifiers" type="xs:string"/>
+    <xs:element name="adv_dhcp_config_advanced" type="xs:string"/>
+    <xs:element name="adv_dhcp_config_file_override" type="xs:string"/>
+    <xs:element name="adv_dhcp_config_file_override_path" type="xs:string"/>
+    <xs:element name="blockpriv" type="xs:string"/>
+    <xs:element name="blockbogons" type="xs:string"/>
+    <xs:element name="subnet">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="22"/>
+                <xs:enumeration value="24"/>
+                <xs:enumeration value="23"/>
+                <xs:enumeration value="32"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="gateway">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="WIREGUARD_INTERNAL"/>
+                <xs:enumeration value="WIREGUARD_GRGW"/>
+                <xs:enumeration value=""/>
+                <xs:enumeration value="10.11.0.1"/>
+                <xs:enumeration value="dynamic"/>
+                <xs:enumeration value="10.5.5.3"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="wan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enable" minOccurs="0"/>
+                <xs:element ref="if" minOccurs="0"/>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="alias-address" minOccurs="0"/>
+                <xs:element ref="alias-subnet" minOccurs="0"/>
+                <xs:element ref="spoofmac" minOccurs="0"/>
+                <xs:element ref="ipaddr" minOccurs="0"/>
+                <xs:element ref="dhcphostname" minOccurs="0"/>
+                <xs:element ref="dhcprejectfrom" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_timeout" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_retry" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_select_timeout" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_reboot" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_backoff_cutoff" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_initial_interval" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_values" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_send_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_request_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_required_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_option_modifiers" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_advanced" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_file_override" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_file_override_path" minOccurs="0"/>
+                <xs:element ref="sep0" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="if" minOccurs="0"/>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="ipaddr" minOccurs="0"/>
+                <xs:element ref="dhcphostname" minOccurs="0"/>
+                <xs:element ref="alias-address" minOccurs="0"/>
+                <xs:element ref="alias-subnet" minOccurs="0"/>
+                <xs:element ref="dhcprejectfrom" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_timeout" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_retry" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_select_timeout" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_reboot" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_backoff_cutoff" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_initial_interval" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_pt_values" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_send_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_request_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_required_options" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_option_modifiers" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_advanced" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_file_override" minOccurs="0"/>
+                <xs:element ref="adv_dhcp_config_file_override_path" minOccurs="0"/>
+                <xs:element ref="spoofmac" minOccurs="0"/>
+                <xs:element ref="range" minOccurs="0"/>
+                <xs:element ref="ramode" minOccurs="0"/>
+                <xs:element ref="rapriority" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt1">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descr"/>
+                <xs:element ref="if"/>
+                <xs:element ref="spoofmac"/>
+                <xs:element ref="alias-address"/>
+                <xs:element ref="alias-subnet"/>
+                <xs:element ref="enable"/>
+                <xs:element ref="ipaddr"/>
+                <xs:element ref="dhcphostname"/>
+                <xs:element ref="dhcprejectfrom"/>
+                <xs:element ref="adv_dhcp_pt_timeout"/>
+                <xs:element ref="adv_dhcp_pt_retry"/>
+                <xs:element ref="adv_dhcp_pt_select_timeout"/>
+                <xs:element ref="adv_dhcp_pt_reboot"/>
+                <xs:element ref="adv_dhcp_pt_backoff_cutoff"/>
+                <xs:element ref="adv_dhcp_pt_initial_interval"/>
+                <xs:element ref="adv_dhcp_pt_values"/>
+                <xs:element ref="adv_dhcp_send_options"/>
+                <xs:element ref="adv_dhcp_request_options"/>
+                <xs:element ref="adv_dhcp_required_options"/>
+                <xs:element ref="adv_dhcp_option_modifiers"/>
+                <xs:element ref="adv_dhcp_config_advanced"/>
+                <xs:element ref="adv_dhcp_config_file_override"/>
+                <xs:element ref="adv_dhcp_config_file_override_path"/>
+                <xs:element ref="blockpriv"/>
+                <xs:element ref="blockbogons"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="if" minOccurs="0"/>
+                <xs:element ref="spoofmac" minOccurs="0"/>
+                <xs:element ref="range" minOccurs="0"/>
+                <xs:element ref="failover_peerip" minOccurs="0"/>
+                <xs:element ref="defaultleasetime" minOccurs="0"/>
+                <xs:element ref="maxleasetime" minOccurs="0"/>
+                <xs:element ref="netmask" minOccurs="0"/>
+                <xs:element ref="gateway" minOccurs="0"/>
+                <xs:element ref="domain" minOccurs="0"/>
+                <xs:element ref="domainsearchlist" minOccurs="0"/>
+                <xs:element ref="ddnsdomain" minOccurs="0"/>
+                <xs:element ref="ddnsdomainprimary" minOccurs="0"/>
+                <xs:element ref="ddnsdomainprimaryport" minOccurs="0"/>
+                <xs:element ref="ddnsdomainsecondary" minOccurs="0"/>
+                <xs:element ref="ddnsdomainsecondaryport" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkeyname" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkeyalgorithm" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkey" minOccurs="0"/>
+                <xs:element ref="mac_allow" minOccurs="0"/>
+                <xs:element ref="mac_deny" minOccurs="0"/>
+                <xs:element ref="ddnsclientupdates" minOccurs="0"/>
+                <xs:element ref="tftp" minOccurs="0"/>
+                <xs:element ref="ldap" minOccurs="0"/>
+                <xs:element ref="nextserver" minOccurs="0"/>
+                <xs:element ref="filename" minOccurs="0"/>
+                <xs:element ref="filename32" minOccurs="0"/>
+                <xs:element ref="filename64" minOccurs="0"/>
+                <xs:element ref="filename32arm" minOccurs="0"/>
+                <xs:element ref="filename64arm" minOccurs="0"/>
+                <xs:element ref="uefihttpboot" minOccurs="0"/>
+                <xs:element ref="rootpath" minOccurs="0"/>
+                <xs:element ref="numberoptions" minOccurs="0"/>
+                <xs:element ref="staticmap" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="denyunknown" minOccurs="0"/>
+                <xs:element ref="pool" minOccurs="0"/>
+                <xs:element ref="enable" minOccurs="0"/>
+                <xs:element ref="ipaddr" minOccurs="0"/>
+                <xs:element ref="subnet" minOccurs="0"/>
+                <xs:element ref="dnsserver" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="ntpserver" minOccurs="0"/>
+                <xs:element ref="sep0" minOccurs="0"/>
+                <xs:element ref="sep1" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt3">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descr"/>
+                <xs:element ref="if"/>
+                <xs:element ref="spoofmac"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt4">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="if" minOccurs="0"/>
+                <xs:element ref="spoofmac" minOccurs="0"/>
+                <xs:element ref="enable" minOccurs="0"/>
+                <xs:element ref="ipaddr" minOccurs="0"/>
+                <xs:element ref="subnet" minOccurs="0"/>
+                <xs:element ref="gateway" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt5">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="if" minOccurs="0"/>
+                <xs:element ref="spoofmac" minOccurs="0"/>
+                <xs:element ref="range" minOccurs="0"/>
+                <xs:element ref="enable" minOccurs="0"/>
+                <xs:element ref="ipaddr" minOccurs="0"/>
+                <xs:element ref="subnet" minOccurs="0"/>
+                <xs:element ref="failover_peerip" minOccurs="0"/>
+                <xs:element ref="defaultleasetime" minOccurs="0"/>
+                <xs:element ref="maxleasetime" minOccurs="0"/>
+                <xs:element ref="netmask" minOccurs="0"/>
+                <xs:element ref="gateway" minOccurs="0"/>
+                <xs:element ref="domain" minOccurs="0"/>
+                <xs:element ref="domainsearchlist" minOccurs="0"/>
+                <xs:element ref="ddnsdomain" minOccurs="0"/>
+                <xs:element ref="ddnsdomainprimary" minOccurs="0"/>
+                <xs:element ref="ddnsdomainprimaryport" minOccurs="0"/>
+                <xs:element ref="ddnsdomainsecondary" minOccurs="0"/>
+                <xs:element ref="ddnsdomainsecondaryport" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkeyname" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkeyalgorithm" minOccurs="0"/>
+                <xs:element ref="ddnsdomainkey" minOccurs="0"/>
+                <xs:element ref="mac_allow" minOccurs="0"/>
+                <xs:element ref="mac_deny" minOccurs="0"/>
+                <xs:element ref="ddnsclientupdates" minOccurs="0"/>
+                <xs:element ref="tftp" minOccurs="0"/>
+                <xs:element ref="ldap" minOccurs="0"/>
+                <xs:element ref="nextserver" minOccurs="0"/>
+                <xs:element ref="filename" minOccurs="0"/>
+                <xs:element ref="filename32" minOccurs="0"/>
+                <xs:element ref="filename64" minOccurs="0"/>
+                <xs:element ref="filename32arm" minOccurs="0"/>
+                <xs:element ref="filename64arm" minOccurs="0"/>
+                <xs:element ref="uefihttpboot" minOccurs="0"/>
+                <xs:element ref="rootpath" minOccurs="0"/>
+                <xs:element ref="numberoptions" minOccurs="0"/>
+                <xs:element ref="staticmap" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="dnsserver" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="ntpserver" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt6">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descr"/>
+                <xs:element ref="if"/>
+                <xs:element ref="spoofmac"/>
+                <xs:element ref="enable"/>
+                <xs:element ref="ipaddr"/>
+                <xs:element ref="subnet"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt7">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descr"/>
+                <xs:element ref="if"/>
+                <xs:element ref="spoofmac"/>
+                <xs:element ref="enable"/>
+                <xs:element ref="ipaddr"/>
+                <xs:element ref="subnet"/>
+                <xs:element ref="gateway"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="network">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10.5.5.0/24"/>
+                <xs:enumeration value="10.0.9.0/24"/>
+                <xs:enumeration value="wanip"/>
+                <xs:enumeration value="lan"/>
+                <xs:enumeration value="opt2ip"/>
+                <xs:enumeration value="opt2"/>
+                <xs:enumeration value="opt5"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="route">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="network"/>
+                <xs:element ref="gateway"/>
+                <xs:element ref="descr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="from">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="0.0.0.1"/>
+                <xs:enumeration value="10.10.2.5"/>
+                <xs:enumeration value="10.10.3.1"/>
+                <xs:enumeration value="10.10.21.1"/>
+                <xs:enumeration value="::1000"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="to">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="255.255.255.255"/>
+                <xs:enumeration value="10.10.2.253"/>
+                <xs:enumeration value="10.10.3.253"/>
+                <xs:enumeration value="10.10.21.253"/>
+                <xs:enumeration value="::2000"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="range">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="from"/>
+                <xs:element ref="to"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="mac" type="xs:string"/>
+    <xs:element name="cid" type="xs:string"/>
+    <xs:element name="arp_table_static_entry" type="xs:string"/>
+    <xs:element name="filename">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="ssh_host_rsa_key"/>
+                <xs:enumeration value="ssh_host_rsa_key.pub"/>
+                <xs:enumeration value="ssh_host_ed25519_key"/>
+                <xs:enumeration value="ssh_host_ed25519_key.pub"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="rootpath" type="xs:string"/>
+    <xs:element name="defaultleasetime" type="xs:string"/>
+    <xs:element name="maxleasetime" type="xs:string"/>
+    <xs:element name="domainsearchlist" type="xs:string"/>
+    <xs:element name="ddnsdomain" type="xs:string"/>
+    <xs:element name="ddnsdomainprimary" type="xs:string"/>
+    <xs:element name="ddnsdomainsecondary" type="xs:string"/>
+    <xs:element name="ddnsdomainkeyname" type="xs:string"/>
+    <xs:element name="ddnsdomainkeyalgorithm" type="xs:string"/>
+    <xs:element name="ddnsdomainkey" type="xs:string"/>
+    <xs:element name="tftp" type="xs:string"/>
+    <xs:element name="ldap" type="xs:string"/>
+    <xs:element name="nextserver" type="xs:string"/>
+    <xs:element name="filename32" type="xs:string"/>
+    <xs:element name="filename64" type="xs:string"/>
+    <xs:element name="filename32arm" type="xs:string"/>
+    <xs:element name="filename64arm" type="xs:string"/>
+    <xs:element name="uefihttpboot" type="xs:string"/>
+    <xs:element name="numberoptions" type="xs:string"/>
+    <xs:element name="netmask" type="xs:string"/>
+    <xs:element name="ddnsdomainprimaryport" type="xs:string"/>
+    <xs:element name="ddnsdomainsecondaryport" type="xs:string"/>
+    <xs:element name="mac_allow" type="xs:string"/>
+    <xs:element name="mac_deny" type="xs:string"/>
+    <xs:element name="ddnsclientupdates" type="xs:string"/>
+    <xs:element name="failover_peerip" type="xs:string"/>
+    <xs:element name="staticmap">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="mac"/>
+                <xs:element ref="cid"/>
+                <xs:element ref="ipaddr"/>
+                <xs:element ref="hostname"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="arp_table_static_entry" minOccurs="0"/>
+                <xs:element ref="filename"/>
+                <xs:element ref="rootpath"/>
+                <xs:element ref="defaultleasetime"/>
+                <xs:element ref="maxleasetime"/>
+                <xs:element ref="gateway"/>
+                <xs:element ref="domain"/>
+                <xs:element ref="domainsearchlist"/>
+                <xs:element ref="ddnsdomain"/>
+                <xs:element ref="ddnsdomainprimary"/>
+                <xs:element ref="ddnsdomainsecondary"/>
+                <xs:element ref="ddnsdomainkeyname"/>
+                <xs:element ref="ddnsdomainkeyalgorithm"/>
+                <xs:element ref="ddnsdomainkey"/>
+                <xs:element ref="tftp"/>
+                <xs:element ref="ldap"/>
+                <xs:element ref="nextserver"/>
+                <xs:element ref="filename32"/>
+                <xs:element ref="filename64"/>
+                <xs:element ref="filename32arm"/>
+                <xs:element ref="filename64arm"/>
+                <xs:element ref="uefihttpboot"/>
+                <xs:element ref="numberoptions"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="denyunknown" type="xs:string"/>
+    <xs:element name="pool">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="range"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="defaultleasetime"/>
+                <xs:element ref="maxleasetime"/>
+                <xs:element ref="netmask"/>
+                <xs:element ref="gateway"/>
+                <xs:element ref="domain"/>
+                <xs:element ref="domainsearchlist"/>
+                <xs:element ref="ddnsdomain"/>
+                <xs:element ref="ddnsdomainprimary"/>
+                <xs:element ref="ddnsdomainprimaryport"/>
+                <xs:element ref="ddnsdomainsecondary"/>
+                <xs:element ref="ddnsdomainsecondaryport"/>
+                <xs:element ref="ddnsdomainkeyname"/>
+                <xs:element ref="ddnsdomainkeyalgorithm"/>
+                <xs:element ref="ddnsdomainkey"/>
+                <xs:element ref="mac_allow"/>
+                <xs:element ref="mac_deny"/>
+                <xs:element ref="ddnsclientupdates"/>
+                <xs:element ref="tftp"/>
+                <xs:element ref="ldap"/>
+                <xs:element ref="nextserver"/>
+                <xs:element ref="filename"/>
+                <xs:element ref="filename32"/>
+                <xs:element ref="filename64"/>
+                <xs:element ref="filename32arm"/>
+                <xs:element ref="filename64arm"/>
+                <xs:element ref="uefihttpboot"/>
+                <xs:element ref="rootpath"/>
+                <xs:element ref="numberoptions"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dnsserver">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10.10.0.254"/>
+                <xs:enumeration value="10.1.0.1"/>
+                <xs:enumeration value="94.236.219.14"/>
+                <xs:enumeration value="94.236.219.1"/>
+                <xs:enumeration value="10.10.10.254"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ntpserver" type="xs:string"/>
+    <xs:element name="ramode" type="xs:string"/>
+    <xs:element name="rapriority" type="xs:string"/>
+    <xs:element name="syslocation" type="xs:string"/>
+    <xs:element name="syscontact" type="xs:string"/>
+    <xs:element name="rocommunity" type="xs:string"/>
+    <xs:element name="ipv6nat" type="xs:string"/>
+    <xs:element name="filterdescriptions" type="xs:string"/>
+    <xs:element name="nentries" type="xs:string"/>
+    <xs:element name="logcompressiontype" type="xs:string"/>
+    <xs:element name="format">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="rfc3164"/>
+                <xs:enumeration value="auto"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="rotatecount" type="xs:string"/>
+    <xs:element name="remoteserver" type="xs:string"/>
+    <xs:element name="remoteserver2" type="xs:string"/>
+    <xs:element name="remoteserver3" type="xs:string"/>
+    <xs:element name="sourceip" type="xs:string"/>
+    <xs:element name="ipproto" type="xs:string"/>
+    <xs:element name="logconfigchanges" type="xs:string"/>
+    <xs:element name="nologbogons" type="xs:string"/>
+    <xs:element name="nologprivatenets" type="xs:string"/>
+    <xs:element name="reverse" type="xs:string"/>
+    <xs:element name="mode">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="automatic"/>
+                <xs:enumeration value="rate"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="outbound">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="mode"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="separator">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="wan" minOccurs="0"/>
+                <xs:element ref="opt2" minOccurs="0"/>
+                <xs:element ref="floatingrules" minOccurs="0"/>
+                <xs:element ref="wireguard" minOccurs="0"/>
+                <xs:element ref="opt4" minOccurs="0"/>
+                <xs:element ref="opt5" minOccurs="0"/>
+                <xs:element ref="opt8" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="address" type="xs:string"/>
+    <xs:element name="any" type="xs:string"/>
+    <xs:element name="time" type="xs:string"/>
+    <xs:element name="username">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Auto"/>
+                <xs:enumeration value="aandonov@10.10.0.5 (Local Database)"/>
+                <xs:enumeration value="Traffic Shaper Wizard"/>
+                <xs:enumeration value="Traffic Shaper Ansible"/>
+                <xs:enumeration value="aandonov@10.1.0.6 (Local Database)"/>
+                <xs:enumeration value="admin@10.1.0.5 (Local Database)"/>
+                <xs:enumeration value="(system)"/>
+                <xs:enumeration value="aandonov"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ipprotocol">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="inet"/>
+                <xs:enumeration value="inet46"/>
+                <xs:enumeration value="inet6"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="block"/>
+                <xs:enumeration value="reject"/>
+                <xs:enumeration value="match"/>
+                <xs:enumeration value="pass"/>
+                <xs:enumeration value="urltable"/>
+                <xs:enumeration value="host"/>
+                <xs:enumeration value="server"/>
+                <xs:enumeration value="plugin_certificates"/>
+                <xs:enumeration value="slave"/>
+                <xs:enumeration value="master"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="source">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="address" minOccurs="0"/>
+                <xs:element ref="any" minOccurs="0"/>
+                <xs:element ref="network" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="destination">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="any" minOccurs="0"/>
+                <xs:element ref="address" minOccurs="0"/>
+                <xs:element ref="network" minOccurs="0"/>
+                <xs:element ref="port" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="log" type="xs:string"/>
+    <xs:element name="created">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="time"/>
+                <xs:element ref="username"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="interface" type="xs:string"/>
+    <xs:element name="tracker" type="xs:string"/>
+    <xs:element name="id" type="xs:string"/>
+    <xs:element name="tag">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="parents"/>
+                <xs:enumeration value="4"/>
+                <xs:enumeration value="10"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="tagged">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="parents"/>
+                <xs:enumeration value=""/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="direction" type="xs:string"/>
+    <xs:element name="floating" type="xs:string"/>
+    <xs:element name="max" type="xs:string"/>
+    <xs:element name="max-src-nodes" type="xs:string"/>
+    <xs:element name="max-src-conn" type="xs:string"/>
+    <xs:element name="max-src-states" type="xs:string"/>
+    <xs:element name="statetimeout" type="xs:string"/>
+    <xs:element name="statetype" type="xs:string"/>
+    <xs:element name="os" type="xs:string"/>
+    <xs:element name="defaultqueue">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="parents"/>
+                <xs:enumeration value="qOthersHigh"/>
+                <xs:enumeration value="qP2P"/>
+                <xs:enumeration value="children"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="updated">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="time"/>
+                <xs:element ref="username"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="disabled" type="xs:string"/>
+    <xs:element name="port" type="xs:string"/>
+    <xs:element name="wizard" type="xs:string"/>
+    <xs:element name="enabled">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="on"/>
+                <xs:enumeration value="yes"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="sched" type="xs:string"/>
+    <xs:element name="row">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="acl_network" minOccurs="0"/>
+                <xs:element ref="address" minOccurs="0"/>
+                <xs:element ref="mask" minOccurs="0"/>
+                <xs:element ref="value" minOccurs="0"/>
+                <xs:element ref="description" minOccurs="0"/>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="hostname" minOccurs="0"/>
+                <xs:element ref="hosttype" minOccurs="0"/>
+                <xs:element ref="hostvalue" minOccurs="0"/>
+                <xs:element ref="hostdst" minOccurs="0"/>
+                <xs:element ref="permuser" minOccurs="0"/>
+                <xs:element ref="format" minOccurs="0"/>
+                <xs:element ref="state" minOccurs="0"/>
+                <xs:element ref="url" minOccurs="0"/>
+                <xs:element ref="header" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="text" type="xs:string"/>
+    <xs:element name="color" type="xs:string"/>
+    <xs:element name="sep0">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="row"/>
+                <xs:element ref="text"/>
+                <xs:element ref="color"/>
+                <xs:element ref="if"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sep1">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="row"/>
+                <xs:element ref="text"/>
+                <xs:element ref="color"/>
+                <xs:element ref="if"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="floatingrules" type="xs:string"/>
+    <xs:element name="wireguard">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="tunnels" minOccurs="0"/>
+                <xs:element ref="peers" minOccurs="0"/>
+                <xs:element ref="config" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="opt8" type="xs:string"/>
+    <xs:element name="rule">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="ipprotocol"/>
+                <xs:element ref="type"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="source"/>
+                <xs:element ref="destination"/>
+                <xs:element ref="log"/>
+                <xs:element ref="created"/>
+                <xs:element ref="interface"/>
+                <xs:element ref="tracker"/>
+                <xs:element ref="id"/>
+                <xs:element ref="tag"/>
+                <xs:element ref="tagged"/>
+                <xs:element ref="direction"/>
+                <xs:element ref="floating"/>
+                <xs:element ref="max"/>
+                <xs:element ref="max-src-nodes"/>
+                <xs:element ref="max-src-conn"/>
+                <xs:element ref="max-src-states"/>
+                <xs:element ref="statetimeout"/>
+                <xs:element ref="statetype"/>
+                <xs:element ref="os"/>
+                <xs:element ref="protocol"/>
+                <xs:element ref="defaultqueue"/>
+                <xs:element ref="updated"/>
+                <xs:element ref="disabled"/>
+                <xs:element ref="wizard"/>
+                <xs:element ref="enabled"/>
+                <xs:element ref="sched"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="priority">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="bandwidth">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10"/>
+                <xs:enumeration value="5"/>
+                <xs:enumeration value="20"/>
+                <xs:enumeration value="1000"/>
+                <xs:enumeration value="40"/>
+                <xs:enumeration value="90"/>
+                <xs:enumeration value="150"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="bandwidthtype">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="%"/>
+                <xs:enumeration value="Mb"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ecn" type="xs:string"/>
+    <xs:element name="qlimit">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="50"/>
+                <xs:enumeration value="500"/>
+                <xs:enumeration value="47"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="upperlimit3">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10%"/>
+                <xs:enumeration value="5%"/>
+                <xs:enumeration value="20%"/>
+                <xs:enumeration value="1000Mb"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="upperlimit" type="xs:string"/>
+    <xs:element name="default" type="xs:string"/>
+    <xs:element name="upperlimit1" type="xs:string"/>
+    <xs:element name="upperlimit2" type="xs:string"/>
+    <xs:element name="queue">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="interface"/>
+                <xs:element ref="priority"/>
+                <xs:element ref="name"/>
+                <xs:element ref="bandwidth"/>
+                <xs:element ref="bandwidthtype"/>
+                <xs:element ref="enabled"/>
+                <xs:element ref="default"/>
+                <xs:element ref="ecn"/>
+                <xs:element ref="qlimit"/>
+                <xs:element ref="upperlimit3"/>
+                <xs:element ref="upperlimit"/>
+                <xs:element ref="upperlimit1"/>
+                <xs:element ref="upperlimit2"/>
+                <xs:element ref="description"/>
+                <xs:element ref="queue"/>
+                <xs:element ref="scheduler"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="scheduler" type="xs:string"/>
+    <xs:element name="client" type="xs:string"/>
+    <xs:element name="url" type="xs:string"/>
+    <xs:element name="updatefreq" type="xs:string"/>
+    <xs:element name="detail">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="DO NOT EDIT THIS ALIAS"/>
+                <xs:enumeration value="Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200||Entry added Sat, 27 Jan 2024 11:48:11 +0200"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="alias">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="name"/>
+                <xs:element ref="url"/>
+                <xs:element ref="updatefreq"/>
+                <xs:element ref="address"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="type"/>
+                <xs:element ref="detail"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="minute">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="*/1"/>
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="15"/>
+                <xs:enumeration value="30"/>
+                <xs:enumeration value="1,31"/>
+                <xs:enumeration value="*/60"/>
+                <xs:enumeration value="0"/>
+                <xs:enumeration value="*"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="hour">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="*"/>
+                <xs:enumeration value="3"/>
+                <xs:enumeration value="4"/>
+                <xs:enumeration value="5"/>
+                <xs:enumeration value="0-5"/>
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="12"/>
+                <xs:enumeration value="0"/>
+                <xs:enumeration value="9"/>
+                <xs:enumeration value="14:00-23:59"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="mday">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="*"/>
+                <xs:enumeration value="1"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="month">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="*"/>
+                <xs:enumeration value="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="wday">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="*"/>
+                <xs:enumeration value="6"/>
+                <xs:enumeration value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="who" type="xs:string"/>
+    <xs:element name="command" type="xs:string"/>
+    <xs:element name="item">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="minute" minOccurs="0"/>
+                <xs:element ref="hour" minOccurs="0"/>
+                <xs:element ref="mday" minOccurs="0"/>
+                <xs:element ref="month" minOccurs="0"/>
+                <xs:element ref="wday" minOccurs="0"/>
+                <xs:element ref="who" minOccurs="0"/>
+                <xs:element ref="command" minOccurs="0"/>
+                <xs:element ref="type" minOccurs="0"/>
+                <xs:element ref="addresses" minOccurs="0"/>
+                <xs:element ref="name" minOccurs="0"/>
+                <xs:element ref="allowedips" minOccurs="0"/>
+                <xs:element ref="enabled" minOccurs="0"/>
+                <xs:element ref="tun" minOccurs="0"/>
+                <xs:element ref="descr" minOccurs="0"/>
+                <xs:element ref="listenport" minOccurs="0"/>
+                <xs:element ref="privatekey" minOccurs="0"/>
+                <xs:element ref="endpoint" minOccurs="0"/>
+                <xs:element ref="port" minOccurs="0"/>
+                <xs:element ref="persistentkeepalive" minOccurs="0"/>
+                <xs:element ref="publickey" minOccurs="0"/>
+                <xs:element ref="mtu" minOccurs="0"/>
+                <xs:element ref="presharedkey" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="category">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="left=system-processor&amp;right=&amp;resolution=300&amp;timePeriod=-1d&amp;startDate=&amp;endDate=&amp;startTime=0&amp;endTime=0&amp;graphtype=line&amp;invert=true&amp;refresh-interval=0"/>
+                <xs:enumeration value="Services"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="refreshinterval" type="xs:string"/>
+    <xs:element name="invert">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="false"/>
+                <xs:enumeration value="true"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="backgroundupdate">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="true"/>
+                <xs:enumeration value="false"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="smoothfactor" type="xs:string"/>
+    <xs:element name="size" type="xs:string"/>
+    <xs:element name="filter">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="rule" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="separator" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sequence" type="xs:string"/>
+    <xs:element name="period" type="xs:string"/>
+    <xs:element name="traffic_graphs">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="refreshinterval"/>
+                <xs:element ref="invert"/>
+                <xs:element ref="backgroundupdate"/>
+                <xs:element ref="smoothfactor"/>
+                <xs:element ref="size"/>
+                <xs:element ref="filter"/>
+                <xs:element ref="if"/>
+                <xs:element ref="sort"/>
+                <xs:element ref="hostipformat"/>
+                <xs:element ref="mode"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acl_network">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10.11.0.0"/>
+                <xs:enumeration value="10.12.0.0"/>
+                <xs:enumeration value="10.5.5.3"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="mask">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="24"/>
+                <xs:enumeration value="32"/>
+                <xs:enumeration value="22"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="aclname" type="xs:string"/>
+    <xs:element name="aclaction" type="xs:string"/>
+    <xs:element name="aclid" type="xs:string"/>
+    <xs:element name="dnssec" type="xs:string"/>
+    <xs:element name="active_interface">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="all"/>
+                <xs:enumeration value="opt2"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="outgoing_interface" type="xs:string"/>
+    <xs:element name="custom_options" type="xs:string"/>
+    <xs:element name="hideidentity" type="xs:string"/>
+    <xs:element name="hideversion" type="xs:string"/>
+    <xs:element name="dnssecstripped" type="xs:string"/>
+    <xs:element name="tlsport" type="xs:string"/>
+    <xs:element name="sslcertref" type="xs:string"/>
+    <xs:element name="system_domain_local_zone_type" type="xs:string"/>
+    <xs:element name="acls">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="aclname"/>
+                <xs:element ref="aclaction"/>
+                <xs:element ref="description"/>
+                <xs:element ref="aclid"/>
+                <xs:element ref="row" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pcp">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="vlanif">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="igb2.4"/>
+                <xs:enumeration value="igb2.10"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="vlan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="if"/>
+                <xs:element ref="tag"/>
+                <xs:element ref="pcp"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="vlanif"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="weight" type="xs:string"/>
+    <xs:element name="monitor_disable" type="xs:string"/>
+    <xs:element name="gw_down_kill_states" type="xs:string"/>
+    <xs:element name="monitor">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="104.103.96.138"/>
+                <xs:enumeration value="208.69.38.205"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="action_disable" type="xs:string"/>
+    <xs:element name="trigger" type="xs:string"/>
+    <xs:element name="gateway_item">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="interface"/>
+                <xs:element ref="gateway"/>
+                <xs:element ref="name"/>
+                <xs:element ref="weight"/>
+                <xs:element ref="ipprotocol"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="monitor_disable" minOccurs="0"/>
+                <xs:element ref="action_disable" minOccurs="0"/>
+                <xs:element ref="gw_down_kill_states"/>
+                <xs:element ref="monitor" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gateway_group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="item" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="trigger"/>
+                <xs:element ref="descr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defaultgw4" type="xs:string"/>
+    <xs:element name="defaultgw6" type="xs:string"/>
+    <xs:element name="gps" type="xs:string"/>
+    <xs:element name="refid">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="65844ca70bba0"/>
+                <xs:enumeration value="659d7078e1d5c"/>
+                <xs:enumeration value="659d7078828b2"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="crt">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUViekNDQTFlZ0F3SUJBZ0lJZGlyQ1U0MXpZV3N3RFFZSktvWklodmNOQVFFTEJRQXdWakUwTURJR0ExVUUKQ2hNcmNHWlRaVzV6WlNCSFZVa2daR1ZtWVhWc2RDQlRaV3htTFZOcFoyNWxaQ0JEWlhKMGFXWnBZMkYwWlRFZQpNQndHQTFVRUF4TVZjR1pUWlc1elpTMDJOVGcwTkdOaE56QmlZbUV3TUI0WERUSXpNVEl5TVRFME16TXhNVm9YCkRUSTFNREV5TWpFME16TXhNVm93VmpFME1ESUdBMVVFQ2hNcmNHWlRaVzV6WlNCSFZVa2daR1ZtWVhWc2RDQlQKWld4bUxWTnBaMjVsWkNCRFpYSjBhV1pwWTJGMFpURWVNQndHQTFVRUF4TVZjR1pUWlc1elpTMDJOVGcwTkdOaApOekJpWW1Fd01JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBMTFPSUFoeStreTVyCkNPNDVsSEE0RHkxNzR4dGZBUTBUSHkrRHRYR1RyT2gyRGJtOGFIaG9PL2RRN0VLdXhNbExEamR0SmJOdkJlQ2cKVWlHREFsNGJoY0hJL0ZRRkU2ZDh5S2U3dGcxelduSFNOdGdYekx6SEsycDdaa3R0aWFJck1GNjBaMVdOOUl2bgpwM1RBWW9yNXhnSjNOSlRUMFNkS1lwQ1NyUEthY3l6bUQzQ3c2UnpPU3pHQXBiQXdhWDkrYS8vU3M0NHRpaTZGClFHVzNUNTJKSzdBT3Jub201cmlhWDRTRE1TN1E4cFUwWnNZM0RKckhpTWFkUkRuTHpKWHlPTW4xQWZLeTdDSXEKK21ZMHpJSHJKYjcxQ3ZETldzMHRubU5zRm9yWEFEQjJWdytVMkt3blMybGVITStIOFNlWFF5akxhMUo5Sm1zWgpqVFZabFgvZ0N3SURBUUFCbzRJQlB6Q0NBVHN3Q1FZRFZSMFRCQUl3QURBUkJnbGdoa2dCaHZoQ0FRRUVCQU1DCkJrQXdDd1lEVlIwUEJBUURBZ1dnTURNR0NXQ0dTQUdHK0VJQkRRUW1GaVJQY0dWdVUxTk1JRWRsYm1WeVlYUmwKWkNCVFpYSjJaWElnUTJWeWRHbG1hV05oZEdVd0hRWURWUjBPQkJZRUZCZVBFQUFKTGVHcUVVOVNoaVp3Z25JYwpLbVQyTUc4R0ExVWRJd1JvTUdhaFdxUllNRll4TkRBeUJnTlZCQW9USzNCbVUyVnVjMlVnUjFWSklHUmxabUYxCmJIUWdVMlZzWmkxVGFXZHVaV1FnUTJWeWRHbG1hV05oZEdVeEhqQWNCZ05WQkFNVEZYQm1VMlZ1YzJVdE5qVTQKTkRSallUY3dZbUpoTUlJSWRpckNVNDF6WVdzd0p3WURWUjBsQkNBd0hnWUlLd1lCQlFVSEF3RUdDQ3NHQVFVRgpCd01DQmdnckJnRUZCUWdDQWpBZ0JnTlZIUkVFR1RBWGdoVndabE5sYm5ObExUWTFPRFEwWTJFM01HSmlZVEF3CkRRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFES2ZrNldqRmxzUjFNL3l1RTdnL1dJQjhKQ1cyVVozbHdkT212ZVMKVFE3RjFwRXJlOE1iY0hPaDJxeVhIOGdOaGx4MkcwL3M1eVZwWVpaOWxGTGpvaHBQZTF1U1dMc0xuQUdXOVJBcQpIM3BkYTg4ZDFGbTNsL2pmQXVFZ1JuaG1XNmYwVlhGc1ZFWWR1ak1CRjdlbzhXQXhUYm84UDllSU5jc0g1UmRwCkU1VStRd0JYd3pJRWdJak5iK1ZkeHROT283MUpGZDhFcXFvMStGMEdHd2VNL0pFK2xvcTVWdmNwSTFEbzZ3bFMKN2xyQllGL0prem10SVFLSmpJaFhrdFdVekphZ1gvaFQyMHRQQjlmeDR0cFFWM3lxTThocEZ0OGZ1U0RRRlFyZwphdFQrbnB4VFI1cTR6OUx0MVlUNGZJMlFqZzBJQk9JUlZGQ2orcllNVSt5VGlTOD0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="/>
+                <xs:enumeration value="LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURzekNDQXB1Z0F3SUJBZ0lCQWpBTkJna3Foa2lHOXcwQkFRc0ZBREFkTVJzd0dRWURWUVFERXhKbWNtVmwKY21Ga2FYVnpMWFJsYlhBdFkyRXdIaGNOTWpRd01UQTVNVFl4TWpReFdoY05NelF3TVRBMk1UWXhNalF4V2pBaApNUjh3SFFZRFZRUURFeFptY21WbGNtRmthWFZ6TFhSbGJYQXRjMlZ5ZG1WeU1JSUJJakFOQmdrcWhraUc5dzBCCkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXRHN1JmNXJENkE4Smt2aENyTVp3dFNYK3ZKUTV1THN4ZDVHd3NlOHYKN3ROVjF6bWUzL1BNZFZHTFlYS3pCUEppM1Q2MEpSNjhhdGp0eSs3VkUxTWZVYTM3MUlLeU5MZ1JYWC85UDEzago1ckV3ZWUvcjYxdUhlNlp5dXBEYXRiWFUyempSa0JuRWJTbEJ6OEhGM1F4V3BYc240Nk9pbkFvUkhhenF6MSt2Cm1IM1lRMkxxOE5zLzZheENsY09XQWJyVXNWT3RVRnlzdXp5SzBpN1V0T3hlUElMMlpxSXVtTWNiT0t4cWw5Vy8KMHp0cmNHV3BickY2WEN3MFd3QkRuZjBjM2VGYWRsb2RqbGl0SEx4d0N3WmRWSXBlQmIwMGZoVXhQSWdHV2tnNwpHYTZoejZwUHQ5eXJ4dmxTZUhTV09EMmcyTEhtbVpKMlFYSERidFY4dmg5b0NRSURBUUFCbzRINU1JSDJNQWtHCkExVWRFd1FDTUFBd0VRWUpZSVpJQVliNFFnRUJCQVFEQWdaQU1Bc0dBMVVkRHdRRUF3SUZvREF6QmdsZ2hrZ0IKaHZoQ0FRMEVKaFlrVDNCbGJsTlRUQ0JIWlc1bGNtRjBaV1FnVTJWeWRtVnlJRU5sY25ScFptbGpZWFJsTUIwRwpBMVVkRGdRV0JCVFR3L3pwUXRHaGNMMTI1NS9CUG83QTRleUVPREJNQmdOVkhTTUVSVEJEZ0JRc2NWc2lITkdMClNKeEl3R2hUQ0JsZmczVy9HS0VocEI4d0hURWJNQmtHQTFVRUF4TVNabkpsWlhKaFpHbDFjeTEwWlcxd0xXTmgKZ2doMys4VVpIQ0JSVERBbkJnTlZIU1VFSURBZUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SUdDQ3NHQVFVRgpDQUlDTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFBK1c3eUdsTmg4NlFqb0ZIb01PaG9MVk9sVmowK1ZLMDVzCllVZEMzRGJCV3ZXR3p0a1l6ZGN4aWpTaXBKSW5meFNEVWZLaFhmaVpWSG0wTHJDc1k4dzluMjFmcWRwam9jcTgKZVRFcVhQakl6Y0oweW1nUXhlS2lDN202QytwNjZNOGV2cmdOa3Y5MGdDZ1lSTkZhV1VObzgvNkN2SnNzVnZHUApJQkpzV0ptUjl2OW5TUTM0Mit6OTJ1dXpCS2VBUnFBZkVVN3dlNDR6ZTJCbEhjTUQ3QXZheFF5QjJ6dUlaeGU3CklWYkNqT2g5enNYK3E0MmsxRVVwV2RMVW1uNkVLL202WDJ1UnBJREozNnR6bkg4R2c5ckl4Q1lCcDN2N2E2RlYKYkhCMDFUeWpBZXpLRzI3MXdITDFCVnY3OWcwWEhhZjN1Vm1IT0ZVQkZWMFRpb2swUlJ6LwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="/>
+                <xs:enumeration value="LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURTRENDQWpDZ0F3SUJBZ0lJZC92RkdSd2dVVXd3RFFZSktvWklodmNOQVFFTEJRQXdIVEViTUJrR0ExVUUKQXhNU1puSmxaWEpoWkdsMWN5MTBaVzF3TFdOaE1CNFhEVEkwTURFd09URTJNVEkwTUZvWERUTTBNREV3TmpFMgpNVEkwTUZvd0hURWJNQmtHQTFVRUF4TVNabkpsWlhKaFpHbDFjeTEwWlcxd0xXTmhNSUlCSWpBTkJna3Foa2lHCjl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF1OFpaTVUwNmJwUGdKZXA3UmpWaUtheHRmOG9qSzRuVHZGbjIKdnVrWUNCdnM4SXlFMVBTaFpUeER6VWNmaVR6aGtmaEJJTGVRUFRNallxbldpOHZhemxvNDhYWG5HQVpTY1Q3TQo4Q3NIOHFpUkh5bVdkNDU2VWRucVpwWnd2Z3FpZGYzcEs1dFVTQUhSME5HTExtaVRDdFFuamV1WXJRZlh1c3RmCm9KUGZPQ1ZTM2tGMGg0WHFueWlKOXgrdkEyaituOGxscGdVS1JuZUdQL2Q2QmhaVzdVVW54d1U4ckNxaFIyV2kKWHh1ZHc4dWxqeUdscWtOR21RZ2dxbER5RExHVGlzRjh0VnV2MDRyY2YyM0VGMGQ5VFdiVjhRWHJMdkFFMW4rKwpjaFdHS09RYllPVzZuak9LeU00dURqNmZwa3Z2bEhiK0VsRUdUWWUwa1VuTUNPVTNwUUlEQVFBQm80R0xNSUdJCk1CMEdBMVVkRGdRV0JCUXNjVnNpSE5HTFNKeEl3R2hUQ0JsZmczVy9HREJNQmdOVkhTTUVSVEJEZ0JRc2NWc2kKSE5HTFNKeEl3R2hUQ0JsZmczVy9HS0VocEI4d0hURWJNQmtHQTFVRUF4TVNabkpsWlhKaFpHbDFjeTEwWlcxdwpMV05oZ2doMys4VVpIQ0JSVERBTUJnTlZIUk1FQlRBREFRSC9NQXNHQTFVZER3UUVBd0lCQmpBTkJna3Foa2lHCjl3MEJBUXNGQUFPQ0FRRUFjM1NibkJ6N1J5S3R1Y0dkajlhR004NGdnZGpsTWQ5aUJ5MW4xZTF5dHlwSEFSVHAKTkhkZVZhTGdJMGRjZndjMTR6VVg0N1hNQk16OVN1anZlei9VUzByaWl6RHJ2YlFkaWwyUkJiYW4ybmpjUkhNOApMZWxNNlFHL1JTbWNpNldORC9UQkdVYytlYmJMNENXRStqckdCZkJ3K2d6azlkRktQTFZFaDlaeHhRVE1PUFdYCjQzSkpqdGNVbStsclM3QllQcFA4ZXVuOXorOExqQWlCUVdzVlkrVUkrT3ZzbVB2MTB5WlMzY0x1Y2ljOXk4YTAKSlZWRGc5RVZjeHhZMGhTNHRwdkhaN1J2OVpGN1J2Tm14Y3VWR3VjeHpRanZjVzkvUFFQZGtVUnUyU2IvRmFmWQpmTzRkYng0MnkyUlE3aUg0UjNldHZXemxSRDNuS2orSThBZXRDQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="prv">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRRFhVNGdDSEw2VExtc0kKN2ptVWNEZ1BMWHZqRzE4QkRSTWZMNE8xY1pPczZIWU51YnhvZUdnNzkxRHNRcTdFeVVzT04yMGxzMjhGNEtCUwpJWU1DWGh1RndjajhWQVVUcDN6SXA3dTJEWE5hY2RJMjJCZk12TWNyYW50bVMyMkpvaXN3WHJSblZZMzBpK2VuCmRNQmlpdm5HQW5jMGxOUFJKMHBpa0pLczhwcHpMT1lQY0xEcEhNNUxNWUNsc0RCcGYzNXIvOUt6amkyS0xvVkEKWmJkUG5Za3JzQTZ1ZWlibXVKcGZoSU14THREeWxUUm14amNNbXNlSXhwMUVPY3ZNbGZJNHlmVUI4ckxzSWlyNgpaalRNZ2VzbHZ2VUs4TTFhelMyZVkyd1dpdGNBTUhaWEQ1VFlyQ2RMYVY0Y3o0ZnhKNWRES010clVuMG1heG1OCk5WbVZmK0FMQWdNQkFBRUNnZ0VBVmNGR0x2VXNydWd6SjR6Y3NMSGFtYXpYSkpVUGlwY2U4UElXNWNtMGN3M24KaWtMWTl0QlJUdVNKdlhZM0xWY3ZoWnRzWkRIb2V2SkJWMFJTYlR4MmdKZ3pSODdjY0wzbzgrN2RVcjFibmY4cgpwYno5Q1lSN1c5NmVBNWp4cUhsRjh3OGNrUFRoUXEzL1ZkRXBGM1hhME5IRmtOTGU0dkxmYkk3QVk1R0JFbkhwClRZK2V6L3ppYlUzaHJJdjRObW9kNmM2WVlEcU81NXp0bldaWGxqc0l0citQd0NSanBEc29iZHYyS0x6Y0lEMVoKVGJpeDI0TnV3aG8wWTFXdFZ2a3B6Sm03d3AyeFYzcXhuWnNqa28vTldBdzR1MzBleXpTZW9HMzM2cUhCczhRSQpFd1FKei9LcTVkSGZxMEkycnR6NnNmbnZ1ZG9wanBrRkJpcG9PdWF6UVFLQmdRRDZhcnp6Y3hNc0JUajUveWo5ClNka2NZdnk1aUYxM0RPaEExdWVmaDd5aVp4bkhTZ0hQNU52eE9ERUJpKzVCMDNNN2xiaVY2NWV1KzlsMmJZdi8KK2MxQkJnTVd6Ykt1RHJJUmVva1lYQmx2NmEvUVdKdVlMbFlrTEpXeUJMUWVxZDZPaFpHQTNYRWZjUkF4OWg4Swo4aTlnbjRrckoyUFRaTGE5TFJaUXI4cUlRUUtCZ1FEY0lJTWxlZmJDUGM2c3B6cGVoRFNvZUF2VXJMR3MyZUF2CmkvYkxFZDdtcm9rUDhja3ROcExMRndmbmdjNFZZWGlTeVNOVVVZNGRnTmtQUTV2TDNiU1ZKaXNDOFQyYUNDMU0KdGROL1RKNThpbU1hb3QzZmV4VnprYmsrYTgyYTNQcmFvL2RvWGVDT1dueEZlRVZHWTBsa0NYc1gzOENDNWhVaAo5ZTdYemRTMVN3S0JnSDdNeDRxNmpVMndBMDdMZmxUckxPMnJ6ZTZnZHp0T0pOaVlPVWJWYzVZRWdOQWgwRk1WCnZxMGhWK2RCbE01dUpKNWFUTkpWTGtSanNKVEFHYkR2SzVpdVU2Z2JWa3Ura3pvNGd1ejd6Y0dXWWZrc3RQVFYKR2JkTmdDdFpLRitTZ21oR2lBdnBsVnRuWTl6NGxIVjFkcm9GYm02VWpuNi9NNjBOQkl5c3h2QkJBb0dCQUlYRQp0QzNJQ2k1TUJSWmlvVlBpbjJWcFhqY2xvdXRaazZVUk55NThjNnBYa2k5QVRYTE9ZVEpOa3A0YkFiTjRnaDhoClgvalRmcnRyRzN6dEp2WWlpcVRBaHc3SXJ4aTFzMkdVZFN3ODBXcjVaZlEvMlBrQUFTOHo5UkI3em53M29iSFEKUm44RDNYeGtmSFJ5L0JZa0srdEEzNjdJYUdLamsyQUo1ZFQ2M2pJMUFvR0JBTmNCVHpaL3d6RkZDKytMQXl4egpTNk9ZS1cyQkJZeDJ0R0VWb0NZM3hxNUVxWFJjRTBVVUtTcnZRajE2aVBJdXlJcHRkNC9TYmovV3VvdzFMdHc0Cmhma25PdkQwUTlPaGV1TTMxQXVGc1dXY01UWUNlMGNFS1orUWtVZUMwN25UdXBySTBZVHN5V3Z5MVErWmx2MUQKVWg4cjZta1ZUczZnSXU3ek1TaVlEM2I3Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K"/>
+                <xs:enumeration value="LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRQzBidEYvbXNQb0R3bVMKK0VLc3huQzFKZjY4bERtNHV6RjNrYkN4N3kvdTAxWFhPWjdmODh4MVVZdGhjck1FOG1MZFByUWxIcnhxMk8zTAo3dFVUVXg5UnJmdlVnckkwdUJGZGYvMC9YZVBtc1RCNTcrdnJXNGQ3cG5LNmtOcTF0ZFRiT05HUUdjUnRLVUhQCndjWGRERmFsZXlmam82S2NDaEVkck9yUFg2K1lmZGhEWXVydzJ6L3ByRUtWdzVZQnV0U3hVNjFRWEt5N1BJclMKTHRTMDdGNDhndlptb2k2WXh4czRyR3FYMWIvVE8ydHdaYWx1c1hwY0xEUmJBRU9kL1J6ZDRWcDJXaDJPV0swYwp2SEFMQmwxVWlsNEZ2VFIrRlRFOGlBWmFTRHNacnFIUHFrKzMzS3ZHK1ZKNGRKWTRQYURZc2VhWmtuWkJjY051CjFYeStIMmdKQWdNQkFBRUNnZ0VBRm1obzFpc1hSMXVPdWRUaEd1bnVGMkVubUszajJVQk9MV1pIaG1HSkYyVGgKbFVBUHJncHVDdWZjb25hSEt3Y2JKaFRpZEhXenVxVkVLdjUzTWRZeDNvZjM3WFZwd2toVng4SGNacUUzYTIvMwo4RHpPbE1VaU4wWDltNVBmeFk5V1p2OVFiMC96NkFhbXFMR003QjNiS09QNW1UaTZPaHk1OFhDSEhNZnFXOHFYCmtLbVpJV1hFaFVJWVM2cjVwZmNKQVYyUlUvRzQ1RGZFenZRQm1kVTNwekQ1TjJHM093TTgwa0E4eXl3NTlvT0QKYXRwaEpnWDFVOU56WTFIbUw0bE5iaWhHeUgwV1pOQURERUhJK0RvRDcrVVpTT2ExR1JuQVVkNUNxUlR6RUhXYwpIbStrMU14NHZaMStjdGJKUWR4bU41c09hQ3FKdVQrTHBEczVRcmdXTFFLQmdRRHNTN0VRNkd3VFVVWGt1R0xNCmp0MGk5SzU4RmZQTnEzdTVtQVBkdzhYWTlVMkpNODY3dE9vT2E5dHNHYS9nemdjMUtiZ3N6MTF0cjZna0JCMEcKc1RJUEo5NU9xWkF6WndVakVjKzFGS3Y2aHhxVTAvejBnQWpMaENicUpWQ0tvMTdkODhLczJPcUg3NXBMMDM3UAp0OEpMSTJHR2xlNmpjUzhHWGVrN2ZKRE1rd0tCZ1FERGVwbGJIa1FsL1VCNnJ3SFJvT1IxTFNMcjY0WFFUODJlCk4raTB4TmFVL2ZjYXQxK0YvYXdNK1RJRzJMT3cwc1RlYWpuOVVVSGp5b2VNWmpKTDBmcTg5SlVHRFNXSzJraXgKTVo0bkFUUjZ0Y0JGRHVhWGdJV3pROXQ2cHFjWjBZbDJ5K2NIdW5ORlprSE52QW9mYnBoMVVhRVZscGVuaWt5MgpkOGV3d3JHMmN3S0JnR0I1SXNpNWErNlRId3Nic05LOWZWR1pQbWZRK3FJODRoM0xEOEVKL2d2dlV3R3lValJXCno3eWxrb2RYRVhTaUNWVk9QRENuVlFqRVQ4eXNsVUUzTlMzMDVCR1ByeDBkY1g1NDlpbURVQmZQOHkxU1E1TjcKZHB2SXo2NkhINVFLMFYraTl4ZGsxSlE5WWV5Vlk4L2d3WVcxNDBwMGltTFdnaEdDWkFmeWVwZmJBb0dBSFUxagpiNlU1MGZnRWtsOXBobUwzM0JqSUExVnEyYThjdzNyZUJ6cjZiNXNpVDM3dGNzaHo0ZjM0NGMzYUljZDJlMkN4CkVLZjltSWZqaWNoSUFkV1lJSHNKVzc3Y3dkTzIwZGorUEJxU0kxTGJYMzY4VWptUjBTMTYyUWZpUkp5RVhxcHkKRjFaN3NRdURFYlArVUhmam9ySjUweUtmMlIyQ0lsZ1NOd3o0VnNFQ2dZRUEyL0RYb1c3NWVrMDFvaE1UZlFsWQphWVc1NUdZaWhzWVpzQmpqc2syaHpmeUlRM0JSVlZzWWg2anpFRTQ0VHpMNU1jWkE2OFREUTc3MTJSU3hkQUtICnlwWlluOTBUZ08xM2x0UjB4SzY2bm40MVlLQVQyMTh1RzhuaFo3YmphdkUzTFozZktiemtYaE9PZ0tiMjVGSDMKSFRQQUdOanlPOTZOUXE1YkJEZDZSaFk9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K"/>
+                <xs:enumeration value="LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRQzd4bGt4VFRwdWsrQWwKNm50R05XSXByRzEveWlNcmlkTzhXZmErNlJnSUcrendqSVRVOUtGbFBFUE5SeCtKUE9HUitFRWd0NUE5TXlOaQpxZGFMeTlyT1dqanhkZWNZQmxKeFBzendLd2Z5cUpFZktaWjNqbnBSMmVwbWxuQytDcUoxL2Vrcm0xUklBZEhRCjBZc3VhSk1LMUNlTjY1aXRCOWU2eTErZ2s5ODRKVkxlUVhTSGhlcWZLSW4zSDY4RGFQNmZ5V1dtQlFwR2Q0WS8KOTNvR0ZsYnRSU2ZIQlR5c0txRkhaYUpmRzUzRHk2V1BJYVdxUTBhWkNDQ3FVUElNc1pPS3dYeTFXNi9UaXR4LwpiY1FYUjMxTlp0WHhCZXN1OEFUV2Y3NXlGWVlvNUJ0ZzVicWVNNHJJemk0T1BwK21TKytVZHY0U1VRWk5oN1NSClNjd0k1VGVsQWdNQkFBRUNnZ0VBQUtKVjg5aVFQZjBrV3VSc3QrK29iaG1yYnlPbTNhNjlKeENCYlVlTkJrTFgKNGEybk8rWW80UEd0dzZjWlROZ0dpa1llME1HbDhOK0tPd1FzdmxnTFNmRjNzME1OSWpPK2FBZmJBei9vUE8ybwpCS24xWmJ1YlJCSnRFdmpVdTJ5MWFZZlBjdlBibGRQMEIrZUpRUGhDeTdnK244OEpEVFZsbTRDUDBseUtEUHBPCkY0azBJNW9tVkxBQUdWbm5oWjZ3cGdabWQ5bDhCbGttVGRTeHdQanVYTW5RR2ZURm1rd05iRCtxbnNUQU9uWU8KTGc5TVRJeEFyc0p1b1FUeFVKYndvMWRkMm9hSUhwMGUzR2gyWkc1QUpIcWpvSjR2QnNEZnVMUm5hMFhyNXJ5KwpxM2gwWE9GN1haUGdXWWZOSXZaNmFNdFdjQTkyK2dkTlNVTk9oQUd2ZVFLQmdRRHBYditjYXhWWmd3RDdYYnJ4ClBNME5OdFlpYzJmdGFTK1RFOFV5QnY3blE0dWI3Nml6YjJseEd6ajlGOTBmbTVYM1FwVjJnK2h2R2RydkpkSVEKT0w2S1lOVWtRZkkyS2R6NDNJRFE4eXJwS244RzdndGZaWlc0WmxGZjQ2bEh2VHJNWEZKdXlUVk9lRWNVdVNtcwp4Q2N2cHdnUWpSclh1Ullxa2MrcTJlV3hPUUtCZ1FETis0SFdoSjdwZEZjNmFrdTY1YmZ1R3JHQkgwQ3VndkN4CkRyUGwwTVorWjZITDVEdEx1cWQ4bEN4Tk1uMStuVFBvRlRlZXZmSDZPWVM4SzNqQTZGbmlERXhmaEFjSHVkZk8KbmlHYWZTS21ObWlkYmxzclVTd2toaTJsM0JCcWNGM3hNM0ZUU3dmeW9YYklZNmVucnFtQThkRFFEMkl0QkpGbApwd3hWeC9HMXpRS0JnR1lZUUYwdTM3MDBPYmErVDYxLyt2ai85M2hFNHIrVFY5UFJQMkRlZkoreUJoNm5IemU0CjB2ay9mcFFDMzZNWFR1bElRTmtEWmlsTXQySU9Pck1NRUJlN3V5Tk1rbWt0c1ZWU0tpeS9aUk55bXZYdUtCMkkKOUpJaWVSRXBLUUtRZjJ1dUxBWDVrbytNd1JRSTJYbVNxczRIRmRrZjBoRjBFSVY1R3MvVTJjN0pBb0dBVTZULwpTNUpkU2FYeHlnbmlLTW9pRDdHTlJVYmdxRDBKNm94eTV5OEplOGt2ZmJGM2xyLzhSVzJTTStMOTdRMS9SNDVlCklMczNhUW8wYVlrcHB3UnpnNFRFK3NDTmJraThadTMxN1Z0RlY4T2VaZGVyZEFLcGIwZUJmK25HVE1MR2t5ejEKcHdJLy92b3NWeUdJc21JTitRdTVaTlBxWlNlR3Q0WEhUNG83RUQwQ2dZRUF5SmMzd1ZZeHBiaStObU80cS9RMgpwcnZka0c5WVRoSmVvdmt6dHFLZG5hSjFxQW9FVThRQ2hjb3FCWG9FeHBnc212eFJKaS9ubjRtSjZsaFNMRWFMCmJlQ3B5aDB2SW1Rdi93cktyNU9HZXNsSDVkdUZ5c0xjV2RXU2xwQ2pJMWlhZExKZ3c5Z290cEdzM2R2WTFQM1UKQVgyY2FlcEhYWDBoZXRyNXBkSno2bzg9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="caref" type="xs:string"/>
+    <xs:element name="active" type="xs:string"/>
+    <xs:element name="tab">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="text"/>
+                <xs:element ref="url"/>
+                <xs:element ref="active" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="website">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="http://bandwidthd.sourceforge.net/"/>
+                <xs:enumeration value="http://www.isc.org/downloads/BIND/"/>
+                <xs:enumeration value="http://github.com/prometheus/node_exporter"/>
+                <xs:enumeration value="http://www.bitwizard.nl/mtr/"/>
+                <xs:enumeration value="http://www.freeradius.org/"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="version" type="xs:string"/>
+    <xs:element name="configurationfile">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="bandwidthd.xml"/>
+                <xs:enumeration value="wireguard.xml"/>
+                <xs:enumeration value="bind.xml"/>
+                <xs:enumeration value="node_exporter.xml"/>
+                <xs:enumeration value="mailreport.xml"/>
+                <xs:enumeration value="mtr-nox11.xml"/>
+                <xs:enumeration value="nmap.xml"/>
+                <xs:enumeration value="pfblockerng.xml"/>
+                <xs:enumeration value="cron.xml"/>
+                <xs:enumeration value="freeradius.xml"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="tabs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tab" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="include_file">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="/usr/local/pkg/bandwidthd.inc"/>
+                <xs:enumeration value="/usr/local/pkg/wireguard/includes/wg.inc"/>
+                <xs:enumeration value="/usr/local/pkg/bind.inc"/>
+                <xs:enumeration value="/usr/local/pkg/node_exporter.inc"/>
+                <xs:enumeration value="/usr/local/pkg/pfblockerng/pfblockerng.inc"/>
+                <xs:enumeration value="/usr/local/pkg/cron.inc"/>
+                <xs:enumeration value="/usr/local/pkg/freeradius.inc"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="pkginfolink">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="https://github.com/pfsense/FreeBSD-ports/commits/devel/net/pfSense-pkg-WireGuard"/>
+                <xs:enumeration value="https://docs.netgate.com/pfsense/en/latest/packages/nmap.html"/>
+                <xs:enumeration value="https://docs.netgate.com/pfsense/en/latest/packages/pfblocker.html"/>
+                <xs:enumeration value="https://docs.netgate.com/pfsense/en/latest/packages/freeradius.html"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="internal_name">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="named"/>
+                <xs:enumeration value="radiusd"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="port_category" type="xs:string"/>
+    <xs:element name="plugins">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="item"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="section">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Services"/>
+                <xs:enumeration value="Status"/>
+                <xs:enumeration value="VPN"/>
+                <xs:enumeration value="Diagnostics"/>
+                <xs:enumeration value="Firewall"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="tooltiptext">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Modify BIND settings"/>
+                <xs:enumeration value="Setup node_exporter specific settings"/>
+                <xs:enumeration value="Setup periodic email reports."/>
+                <xs:enumeration value=""/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="configfile" type="xs:string"/>
+    <xs:element name="rcfile">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="bandwidthd.sh"/>
+                <xs:enumeration value="wireguardd"/>
+                <xs:enumeration value="named.sh"/>
+                <xs:enumeration value="node_exporter.sh"/>
+                <xs:enumeration value="pfb_dnsbl.sh"/>
+                <xs:enumeration value="pfb_filter.sh"/>
+                <xs:enumeration value="radiusd.sh"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="executable">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="bandwidthd"/>
+                <xs:enumeration value="php_wg"/>
+                <xs:enumeration value="named"/>
+                <xs:enumeration value="node_exporter"/>
+                <xs:enumeration value="lighttpd_pfb"/>
+                <xs:enumeration value="php_pfb"/>
+                <xs:enumeration value="radiusd"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="starts_on_sync" type="xs:string"/>
+    <xs:element name="addresses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="row"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listenport">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="51821"/>
+                <xs:enumeration value="51825"/>
+                <xs:enumeration value="51830"/>
+                <xs:enumeration value="53"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="privatekey">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="KFICanIgxCDeGChO6MOfoZR2IKmTSf3HJTSULWRxVU0="/>
+                <xs:enumeration value="eKEcWLK16JVT4f/0fiaKre/EEHpKI+tknW565nKlJmE="/>
+                <xs:enumeration value="sNc1o06pF/tkVIiC7MfKL+FzBhKrmzDlzPcU+83xhEI="/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="publickey">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="kOrQ+iV/4WKURy/aqmTqoM8SwY40qdD8pUaVYF1W4To="/>
+                <xs:enumeration value="cq2Hx4zZZFaYY5cBb7DwgdmYY9pKO9FAiHmUTyowbDk="/>
+                <xs:enumeration value="lYGKt24WEOhix3UFhQklwYHRMLsC1rbBdQ2ukrcwYzk="/>
+                <xs:enumeration value="xALB6N2MQQggOS/LMxRV4AvLb2HefK36AFtTi85NkD4="/>
+                <xs:enumeration value="37mErsrh5j266WS3IKlPQW68vyq3uaaxTWqIrplhPVU="/>
+                <xs:enumeration value="ELex6tx5m0JWETpBIA4UXcEzS7qBzFZoz1EsqdBmAz0="/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="mtu" type="xs:string"/>
+    <xs:element name="allowedips">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="row" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tun">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="tun_wg0"/>
+                <xs:enumeration value="tun_wg1"/>
+                <xs:enumeration value="tun_wg2"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="persistentkeepalive">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="30"/>
+                <xs:enumeration value=""/>
+                <xs:enumeration value="25"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="presharedkey" type="xs:string"/>
+    <xs:element name="endpoint" type="xs:string"/>
+    <xs:element name="keep_conf" type="xs:string"/>
+    <xs:element name="resolve_interval" type="xs:string"/>
+    <xs:element name="resolve_interval_track" type="xs:string"/>
+    <xs:element name="interface_group" type="xs:string"/>
+    <xs:element name="hide_secrets" type="xs:string"/>
+    <xs:element name="hide_peers" type="xs:string"/>
+    <xs:element name="tunnels">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="item" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="peers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="item" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="enable"/>
+                <xs:element ref="keep_conf"/>
+                <xs:element ref="resolve_interval"/>
+                <xs:element ref="resolve_interval_track"/>
+                <xs:element ref="interface_group"/>
+                <xs:element ref="hide_secrets"/>
+                <xs:element ref="hide_peers"/>
+                <xs:element ref="cmd"/>
+                <xs:element ref="cmdtype"/>
+                <xs:element ref="temp01"/>
+                <xs:element ref="disabled"/>
+                <xs:element ref="name"/>
+                <xs:element ref="varinterfaceip"/>
+                <xs:element ref="varinterfaceport"/>
+                <xs:element ref="varinterfacetype"/>
+                <xs:element ref="varinterfaceipversion"/>
+                <xs:element ref="aliasname"/>
+                <xs:element ref="description"/>
+                <xs:element ref="type"/>
+                <xs:element ref="view"/>
+                <xs:element ref="reverso"/>
+                <xs:element ref="reversv6o"/>
+                <xs:element ref="rpz"/>
+                <xs:element ref="custom"/>
+                <xs:element ref="temp04"/>
+                <xs:element ref="dnssec"/>
+                <xs:element ref="backupkeys"/>
+                <xs:element ref="dsset"/>
+                <xs:element ref="slaveip"/>
+                <xs:element ref="forwarders"/>
+                <xs:element ref="temp03"/>
+                <xs:element ref="tll"/>
+                <xs:element ref="nameserver"/>
+                <xs:element ref="ipns"/>
+                <xs:element ref="mail"/>
+                <xs:element ref="serial"/>
+                <xs:element ref="refresh"/>
+                <xs:element ref="retry"/>
+                <xs:element ref="expire"/>
+                <xs:element ref="minimum"/>
+                <xs:element ref="allowupdate"/>
+                <xs:element ref="enable_updatepolicy"/>
+                <xs:element ref="updatepolicy"/>
+                <xs:element ref="allowquery"/>
+                <xs:element ref="allowtransfer"/>
+                <xs:element ref="temp02"/>
+                <xs:element ref="enable_upnp"/>
+                <xs:element ref="enable_natpmp"/>
+                <xs:element ref="ext_iface"/>
+                <xs:element ref="iface_array"/>
+                <xs:element ref="download"/>
+                <xs:element ref="upload"/>
+                <xs:element ref="overridewanip"/>
+                <xs:element ref="upnpqueue"/>
+                <xs:element ref="logpackets"/>
+                <xs:element ref="sysuptime"/>
+                <xs:element ref="presentationurl"/>
+                <xs:element ref="modelnumber"/>
+                <xs:element ref="enable_stun"/>
+                <xs:element ref="stun_host"/>
+                <xs:element ref="stun_port"/>
+                <xs:element ref="permdefault"/>
+                <xs:element ref="row"/>
+                <xs:element ref="active_interface"/>
+                <xs:element ref="interface_array"/>
+                <xs:element ref="subnets_extra"/>
+                <xs:element ref="promiscuous"/>
+                <xs:element ref="sensorid"/>
+                <xs:element ref="drawgraphs"/>
+                <xs:element ref="meta_refresh"/>
+                <xs:element ref="skipintervals"/>
+                <xs:element ref="graphcutoff"/>
+                <xs:element ref="outputcdf"/>
+                <xs:element ref="recovercdf"/>
+                <xs:element ref="graph_log_info"/>
+                <xs:element ref="advfilter"/>
+                <xs:element ref="enable_bind"/>
+                <xs:element ref="bind_ip_version"/>
+                <xs:element ref="listenon"/>
+                <xs:element ref="bind_notify"/>
+                <xs:element ref="bind_hide_version"/>
+                <xs:element ref="bind_ram_limit"/>
+                <xs:element ref="bind_logging"/>
+                <xs:element ref="log_severity"/>
+                <xs:element ref="log_options"/>
+                <xs:element ref="rate_enabled"/>
+                <xs:element ref="log_only"/>
+                <xs:element ref="rate_limit"/>
+                <xs:element ref="bind_forwarder"/>
+                <xs:element ref="bind_dnssec_validation"/>
+                <xs:element ref="bind_forwarder_ips"/>
+                <xs:element ref="listenport"/>
+                <xs:element ref="controlport"/>
+                <xs:element ref="recursion"/>
+                <xs:element ref="match-clients"/>
+                <xs:element ref="allow-recursion"/>
+                <xs:element ref="temp"/>
+                <xs:element ref="bind_custom_options"/>
+                <xs:element ref="bind_global_settings"/>
+                <xs:element ref="regdhcpstatic"/>
+                <xs:element ref="customzonerecords"/>
+                <xs:element ref="resultconfig"/>
+                <xs:element ref="collectors"/>
+                <xs:element ref="listen_port"/>
+                <xs:element ref="extra_flags"/>
+                <xs:element ref="vareapconfdisableweakeaptypes"/>
+                <xs:element ref="vareapconfdefaulteaptype"/>
+                <xs:element ref="vareapconftimerexpire"/>
+                <xs:element ref="vareapconfignoreunknowneaptypes"/>
+                <xs:element ref="vareapconfciscoaccountingusernamebug"/>
+                <xs:element ref="vareapconfmaxsessions"/>
+                <xs:element ref="vareapconftlsminversion"/>
+                <xs:element ref="ssl_ca_cert"/>
+                <xs:element ref="ssl_ca_crl"/>
+                <xs:element ref="ssl_server_cert"/>
+                <xs:element ref="vareapconfincludelength"/>
+                <xs:element ref="vareapconffragmentsize"/>
+                <xs:element ref="vareapconfenablecheckcertissuer"/>
+                <xs:element ref="vareapconfcasubject"/>
+                <xs:element ref="vareapconfenablecheckcertcn"/>
+                <xs:element ref="vareapconfcacheenablecache"/>
+                <xs:element ref="vareapconfcachelifetime"/>
+                <xs:element ref="vareapconfcachemaxentries"/>
+                <xs:element ref="vareapconfocspenable"/>
+                <xs:element ref="vareapconfocspoverridecerturl"/>
+                <xs:element ref="vareapconfocspurl"/>
+                <xs:element ref="vareapconfttlsdefaulteaptype"/>
+                <xs:element ref="vareapconfttlscopyrequesttotunnel"/>
+                <xs:element ref="vareapconfttlsusetunneledreply"/>
+                <xs:element ref="vareapconfttlsincludelength"/>
+                <xs:element ref="vareapconfpeapdefaulteaptype"/>
+                <xs:element ref="vareapconfpeapcopyrequesttotunnel"/>
+                <xs:element ref="vareapconfpeapusetunneledreply"/>
+                <xs:element ref="vareapconfpeapsohenable"/>
+                <xs:element ref="enable_cb"/>
+                <xs:element ref="pfb_keep"/>
+                <xs:element ref="pfb_reuse"/>
+                <xs:element ref="pfb_interval"/>
+                <xs:element ref="pfb_min"/>
+                <xs:element ref="pfb_hour"/>
+                <xs:element ref="pfb_dailystart"/>
+                <xs:element ref="skipfeed"/>
+                <xs:element ref="log_max_log"/>
+                <xs:element ref="log_max_errlog"/>
+                <xs:element ref="log_max_extraslog"/>
+                <xs:element ref="log_max_ip_blocklog"/>
+                <xs:element ref="log_max_ip_permitlog"/>
+                <xs:element ref="log_max_ip_matchlog"/>
+                <xs:element ref="log_max_dnslog"/>
+                <xs:element ref="log_max_dnsbl_parse_err"/>
+                <xs:element ref="log_max_dnsreplylog"/>
+                <xs:element ref="log_max_unilog"/>
+                <xs:element ref="enable_dup"/>
+                <xs:element ref="pfb_dnsvip"/>
+                <xs:element ref="pfb_dnsport"/>
+                <xs:element ref="pfb_dnsport_ssl"/>
+                <xs:element ref="pfb_dnsblv6"/>
+                <xs:element ref="pfb_dnsbl"/>
+                <xs:element ref="suppression"/>
+                <xs:element ref="inbound_interface"/>
+                <xs:element ref="inbound_deny_action"/>
+                <xs:element ref="outbound_interface"/>
+                <xs:element ref="outbound_deny_action"/>
+                <xs:element ref="pass_order"/>
+                <xs:element ref="enable_agg"/>
+                <xs:element ref="enable_log"/>
+                <xs:element ref="ip_placeholder"/>
+                <xs:element ref="maxmind_locale"/>
+                <xs:element ref="database_cc"/>
+                <xs:element ref="maxmind_account"/>
+                <xs:element ref="maxmind_key"/>
+                <xs:element ref="asn_reporting"/>
+                <xs:element ref="asn_token"/>
+                <xs:element ref="enable_float"/>
+                <xs:element ref="autorule_suffix"/>
+                <xs:element ref="killstates"/>
+                <xs:element ref="v4suppression"/>
+                <xs:element ref="dnsbl_webpage"/>
+                <xs:element ref="pfb_tld"/>
+                <xs:element ref="pfb_control"/>
+                <xs:element ref="pfb_dnsvip_type"/>
+                <xs:element ref="pfb_dnsbl_rule"/>
+                <xs:element ref="dnsbl_allow_int"/>
+                <xs:element ref="global_log"/>
+                <xs:element ref="pfb_cache"/>
+                <xs:element ref="pfb_dnsbl_sync"/>
+                <xs:element ref="pfb_py_reply"/>
+                <xs:element ref="pfb_hsts"/>
+                <xs:element ref="pfb_idn"/>
+                <xs:element ref="pfb_regex"/>
+                <xs:element ref="pfb_cname"/>
+                <xs:element ref="pfb_noaaaa"/>
+                <xs:element ref="pfb_gp"/>
+                <xs:element ref="pfb_pytld"/>
+                <xs:element ref="pfb_pytld_sort"/>
+                <xs:element ref="pfb_py_nolog"/>
+                <xs:element ref="pfb_pytlds_gtld"/>
+                <xs:element ref="pfb_pytlds_cctld"/>
+                <xs:element ref="pfb_pytlds_itld"/>
+                <xs:element ref="pfb_pytlds_bgtld"/>
+                <xs:element ref="action"/>
+                <xs:element ref="aliaslog"/>
+                <xs:element ref="autoaddrnot_in"/>
+                <xs:element ref="autoports_in"/>
+                <xs:element ref="aliasports_in"/>
+                <xs:element ref="autoaddr_in"/>
+                <xs:element ref="autonot_in"/>
+                <xs:element ref="aliasaddr_in"/>
+                <xs:element ref="autoproto_in"/>
+                <xs:element ref="agateway_in"/>
+                <xs:element ref="autoaddrnot_out"/>
+                <xs:element ref="autoports_out"/>
+                <xs:element ref="aliasports_out"/>
+                <xs:element ref="autoaddr_out"/>
+                <xs:element ref="autonot_out"/>
+                <xs:element ref="aliasaddr_out"/>
+                <xs:element ref="autoproto_out"/>
+                <xs:element ref="agateway_out"/>
+                <xs:element ref="alexa_enable"/>
+                <xs:element ref="pfb_regex_list"/>
+                <xs:element ref="pfb_noaaaa_list"/>
+                <xs:element ref="pfb_gp_bypass_list"/>
+                <xs:element ref="tldexclusion"/>
+                <xs:element ref="tldblacklist"/>
+                <xs:element ref="tldwhitelist"/>
+                <xs:element ref="alexa_type"/>
+                <xs:element ref="alexa_count"/>
+                <xs:element ref="pfb_py_block"/>
+                <xs:element ref="dnsbl_mode"/>
+                <xs:element ref="dnsbl_interface"/>
+                <xs:element ref="cron"/>
+                <xs:element ref="logging"/>
+                <xs:element ref="order"/>
+                <xs:element ref="dow"/>
+                <xs:element ref="sort"/>
+                <xs:element ref="srcint"/>
+                <xs:element ref="script_pre"/>
+                <xs:element ref="script_post"/>
+                <xs:element ref="stateremoval"/>
+                <xs:element ref="suppression_cidr"/>
+                <xs:element ref="whois_convert"/>
+                <xs:element ref="sortable"/>
+                <xs:element ref="varmacsaddress"/>
+                <xs:element ref="varmacsswisprredirectionurl"/>
+                <xs:element ref="varmacssimultaneousconnect"/>
+                <xs:element ref="varmacsframedipaddress"/>
+                <xs:element ref="varmacsframedipnetmask"/>
+                <xs:element ref="varmacsframedroute"/>
+                <xs:element ref="varmacsframedip6address"/>
+                <xs:element ref="varmacsframedip6route"/>
+                <xs:element ref="varmacsvlanid"/>
+                <xs:element ref="varmacsexpiration"/>
+                <xs:element ref="varmacssessiontimeout"/>
+                <xs:element ref="varmacslogintime"/>
+                <xs:element ref="varmacsamountoftime"/>
+                <xs:element ref="varmacspointoftime"/>
+                <xs:element ref="varmacsmaxtotaloctets"/>
+                <xs:element ref="varmacsmaxtotaloctetstimerange"/>
+                <xs:element ref="varmacsmaxbandwidthdown"/>
+                <xs:element ref="varmacsmaxbandwidthup"/>
+                <xs:element ref="varmacsacctinteriminterval"/>
+                <xs:element ref="varmacstopadditionaloptions"/>
+                <xs:element ref="varmacscheckitemsadditionaloptions"/>
+                <xs:element ref="varmacsreplyitemsadditionaloptions"/>
+                <xs:element ref="varsettingsmaxrequests"/>
+                <xs:element ref="varsettingsmaxrequesttime"/>
+                <xs:element ref="varsettingscleanupdelay"/>
+                <xs:element ref="varsettingsallowcoredumps"/>
+                <xs:element ref="varsettingsregularexpressions"/>
+                <xs:element ref="varsettingsextendedexpressions"/>
+                <xs:element ref="keep_settings"/>
+                <xs:element ref="varsettingslogdir"/>
+                <xs:element ref="varsettingsauth"/>
+                <xs:element ref="varsettingsauthbadpass"/>
+                <xs:element ref="varsettingsauthbadpassmessage"/>
+                <xs:element ref="varsettingsauthgoodpass"/>
+                <xs:element ref="varsettingsauthgoodpassmessage"/>
+                <xs:element ref="varsettingsstrippednames"/>
+                <xs:element ref="varsettingshostnamelookups"/>
+                <xs:element ref="varsettingsmaxattributes"/>
+                <xs:element ref="varsettingsrejectdelay"/>
+                <xs:element ref="varsettingsstartservers"/>
+                <xs:element ref="varsettingsmaxservers"/>
+                <xs:element ref="varsettingsminspareservers"/>
+                <xs:element ref="varsettingsmaxspareservers"/>
+                <xs:element ref="varsettingsmaxqueuesize"/>
+                <xs:element ref="varsettingsmaxrequestsperserver"/>
+                <xs:element ref="varsettingsmotpenable"/>
+                <xs:element ref="varsettingsmotptimespan"/>
+                <xs:element ref="varsettingsmotppasswordattempts"/>
+                <xs:element ref="varsettingsmotpchecksumtype"/>
+                <xs:element ref="varsettingsmotptokenlength"/>
+                <xs:element ref="varsettingsenablemacauth"/>
+                <xs:element ref="varsettingsenableacctunique"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cmd">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="service wireguardd start"/>
+                <xs:enumeration value=""/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="cmdtype" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+    <xs:element name="interface_array">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="opt2"/>
+                <xs:enumeration value="opt5"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="subnets_extra" type="xs:string"/>
+    <xs:element name="promiscuous" type="xs:string"/>
+    <xs:element name="sensorid" type="xs:string"/>
+    <xs:element name="drawgraphs" type="xs:string"/>
+    <xs:element name="meta_refresh" type="xs:string"/>
+    <xs:element name="skipintervals" type="xs:string"/>
+    <xs:element name="graphcutoff" type="xs:string"/>
+    <xs:element name="outputcdf" type="xs:string"/>
+    <xs:element name="recovercdf" type="xs:string"/>
+    <xs:element name="graph_log_info" type="xs:string"/>
+    <xs:element name="advfilter" type="xs:string"/>
+    <xs:element name="enable_bind" type="xs:string"/>
+    <xs:element name="bind_ip_version" type="xs:string"/>
+    <xs:element name="listenon" type="xs:string"/>
+    <xs:element name="bind_notify" type="xs:string"/>
+    <xs:element name="bind_hide_version" type="xs:string"/>
+    <xs:element name="bind_ram_limit" type="xs:string"/>
+    <xs:element name="bind_logging" type="xs:string"/>
+    <xs:element name="log_severity" type="xs:string"/>
+    <xs:element name="log_options" type="xs:string"/>
+    <xs:element name="rate_enabled" type="xs:string"/>
+    <xs:element name="log_only" type="xs:string"/>
+    <xs:element name="rate_limit" type="xs:string"/>
+    <xs:element name="bind_forwarder" type="xs:string"/>
+    <xs:element name="bind_dnssec_validation" type="xs:string"/>
+    <xs:element name="bind_forwarder_ips" type="xs:string"/>
+    <xs:element name="controlport" type="xs:string"/>
+    <xs:element name="bind_custom_options" type="xs:string"/>
+    <xs:element name="bind_global_settings" type="xs:string"/>
+    <xs:element name="recursion" type="xs:string"/>
+    <xs:element name="match-clients" type="xs:string"/>
+    <xs:element name="allow-recursion" type="xs:string"/>
+    <xs:element name="temp" type="xs:string"/>
+    <xs:element name="hosttype" type="xs:string"/>
+    <xs:element name="hostvalue" type="xs:string"/>
+    <xs:element name="hostdst">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="0.0.0.0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="temp01" type="xs:string"/>
+    <xs:element name="view" type="xs:string"/>
+    <xs:element name="reverso">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="on"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="reversv6o" type="xs:string"/>
+    <xs:element name="rpz" type="xs:string"/>
+    <xs:element name="custom" type="xs:string"/>
+    <xs:element name="temp04" type="xs:string"/>
+    <xs:element name="backupkeys" type="xs:string"/>
+    <xs:element name="dsset" type="xs:string"/>
+    <xs:element name="slaveip">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="10.1.0.1"/>
+                <xs:enumeration value=""/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="forwarders" type="xs:string"/>
+    <xs:element name="temp03" type="xs:string"/>
+    <xs:element name="tll" type="xs:string"/>
+    <xs:element name="nameserver">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="ad4u-bg.black"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ipns" type="xs:string"/>
+    <xs:element name="mail" type="xs:string"/>
+    <xs:element name="serial">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="2728127773"/>
+                <xs:enumeration value="2"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="refresh">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="1d"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="retry">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="2h"/>
+                <xs:enumeration value="60"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="expire">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="4w"/>
+                <xs:enumeration value="300"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="minimum">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="1h"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="allowupdate">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="none"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="enable_updatepolicy" type="xs:string"/>
+    <xs:element name="updatepolicy" type="xs:string"/>
+    <xs:element name="allowquery" type="xs:string"/>
+    <xs:element name="allowtransfer" type="xs:string"/>
+    <xs:element name="temp02" type="xs:string"/>
+    <xs:element name="regdhcpstatic" type="xs:string"/>
+    <xs:element name="customzonerecords" type="xs:string"/>
+    <xs:element name="resultconfig">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="AAAAAgAAAAFnH0K/AAAAAAAAAAAAAAAAAAAAWQABAAYAAAABUYAAAAABAA0HYWQ0dS1iZwNjb20AADYCbnMHYWQ0dS1iZwNjb20ABHJvb3QHYWQ0dS1iZwNjb20AeJYV4gAAOEAAABwgACTqAAABUYAAAAA5AAEBAQAAAAFRgAAAAAEADQdhZDR1LWJnA2NvbQAAFgAFaXNzdWVsZXRzZW5jcnlwdC5vcmcAAAB1AAEAEAAAAAFRgAAAAAIADQdhZDR1LWJnA2NvbQAADQxBJkQgU29mdHdhcmUAQ0J2PXNwZjEgaXA0Ojk0LjIzNi4yMTkuMTQgaXA0Ojk0LjIzNi4yMTkuMTUgaXA0OjEwLjEuMC4wLzE2IG14IH5hbGwAAAA3AAEADwAAAAFRgAAAAAEADQdhZDR1LWJnA2NvbQAAFAAKBG1haWwHYWQ0dS1iZwNjb20AAAAAJwABAAEAAAABUYAAAAABAA0HYWQ0dS1iZwNjb20AAAQKAQABAAAARgABAAIAAAABUYAAAAACAA0HYWQ0dS1iZwNjb20AABACbnMHYWQ0dS1iZwNjb20AABEDZG5zB2FkNHUtYmcDY29tAAAAAIwAAQAQAAAAAVGAAAAAAQAUBl9kbWFyYwdhZDR1LWJnA2NvbQAAYmF2PURNQVJDMTsgcD1ub25lOyBydWE9bWFpbHRvOmlwbTNzYjdAYXIuZ2xvY2thcHBzLmNvbTsgcnVmPW1haWx0bzppcG0zc2I3QGZyLmdsb2NrYXBwcy5jb207IGZvPTE7AAAB1QABABAAAAAAASwAAAABAB0EZGtpbQpfZG9tYWlua2V5B2FkNHUtYmcDY29tAAGiEnY9REtJTTE7IGs9cnNhOyBwPUBNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXR3eWVST0pKUW9nT3VnUThmL0hUQGtnRTdoNnNZWmhKbDAwM0tWbmxvZW5pOVlpby9QNnBGbFRjR1ExcHZBTWQ0ckVDcnd4amJCYnZPNjFDWHhhWUxAYm5XejZ2ZHB0aHhkelJoaXc4c2RzRENVL3BlOElWeFdabEJBY2ZtNHRHbjRFQmtNckRIcmFoRDE3SDZCWXAvMUBFTWxkUWhBQUpyaWR3b0JMc05DeEZUR2tiWUxWTVF2TkZRL1BhUDJMWlBtZDNsbGl2b2tReURjVTUrWTBkZ204QC9RbC9RSFBISWs0Vmt0QldQZnAzdEx1OFZmcVRYV3Y3NDNGZkR4M0w5MEh0c3VrVlAwM1RKVGpPd0tXbFN2UmNAWXR2WEd1SXBNckNobUNMZXh0aTJsbXJQbUVGZVpOSlF2N2RRWENYdzFrVzlmSVpmRUZ2OWUyRk1aM3FHeEhNNghXUUlEQVFBQgAAADsAAQAPAAAAAVGAAAAAAQARA2RucwdhZDR1LWJnA2NvbQAAFAAKBG1haWwHYWQ0dS1iZwNjb20AAAAAKwABAAEAAAABUYAAAAABABEDZG5zB2FkNHUtYmcDY29tAAAECgEAAQAAAD0AAQAPAAAAAVGAAAAAAQATBWVqYmNhB2FkNHUtYmcDY29tAAAUAAoEbWFpbAdhZDR1LWJnA2NvbQAAAAAtAAEAAQAAAAFRgAAAAAEAEwVlamJjYQdhZDR1LWJnA2NvbQAABAoBAHgAAAA/AAEADwAAAAFRgAAAAAEAFQdncmFmYW5hB2FkNHUtYmcDY29tAAAUAAoEbWFpbAdhZDR1LWJnA2NvbQAAAAAvAAEAAQAAAAFRgAAAAAEAFQdncmFmYW5hB2FkNHUtYmcDY29tAAAECgEALAAAADwAAQAPAAAAAVGAAAAAAQASBG1haWwHYWQ0dS1iZwNjb20AABQACgRtYWlsB2FkNHUtYmcDY29tAAAAACwAAQABAAAAAVGAAAAAAQASBG1haWwHYWQ0dS1iZwNjb20AAAQKAQABAAAAPQABAA8AAAABUYAAAAABABMFbmV4dXMHYWQ0dS1iZwNjb20AABQACgRtYWlsB2FkNHUtYmcDY29tAAAAAC0AAQABAAAAAVGAAAAAAQATBW5leHVzB2FkNHUtYmcDY29tAAAECgEAagAAADoAAQAPAAAAAVGAAAAAAQAQAm5zB2FkNHUtYmcDY29tAAAUAAoEbWFpbAdhZDR1LWJnA2NvbQAAAAAqAAEAAQAAAAFRgAAAAAEAEAJucwdhZDR1LWJnA2NvbQAABAoBAAEAAAA7AAEADwAAAAFRgAAAAAEAEQNvdHAHYWQ0dS1iZwNjb20AABQACgRtYWlsB2FkNHUtYmcDY29tAAAAACsAAQABAAAAAVGAAAAAAQARA290cAdhZDR1LWJnA2NvbQAABAoBAAgAAAA7AAEADwAAAAFRgAAAAAEAEQN2cG4HYWQ0dS1iZwNjb20AABQACgRtYWlsB2FkNHUtYmcDY29tAAAAACsAAQABAAAAAVGAAAAAAQARA3ZwbgdhZDR1LWJnA2NvbQAABAoBAHgAAAA7AAEADwAAAAFRgAAAAAEAEQN3d3cHYWQ0dS1iZwNjb20AABQACgRtYWlsB2FkNHUtYmcDY29tAAAAACsAAQABAAAAAVGAAAAAAQARA3d3dwdhZDR1LWJnA2NvbQAABAoBAAE="/>
+                <xs:enumeration value="JFRUTCA0MzIwMAo7CiRPUklHSU4gY2suZ2V0Y29va2llc3R4dC5jb20uCgo7CURhdGFiYXNlIGZpbGUgY2suZ2V0Y29va2llc3R4dC5jb20uREIgZm9yIGNrLmdldGNvb2tpZXN0eHQuY29tIHpvbmUuCjsJRG8gbm90IGVkaXQgdGhpcyBmaWxlISEhCjsJWm9uZSB2ZXJzaW9uIDI3MjgxMjc3NzMKOwpjay5nZXRjb29raWVzdHh0LmNvbS4JIElOICBTT0EgYWQ0dS1iZy5ibGFjay4gCSB6b25lbWFzdGVyLmNrLmdldGNvb2tpZXN0eHQuY29tLiAoCgkJMjcyODEyNzc3MyA7IHNlcmlhbAoJCTFkIDsgcmVmcmVzaAoJCTJoIDsgcmV0cnkKCQk0dyA7IGV4cGlyZQoJCTFoIDsgZGVmYXVsdF90dGwKCQkpCgo7CjsgWm9uZSBSZWNvcmRzCjsKQCAJIElOIE5TIAlhZDR1LWJnLmJsYWNrLgpAIAkgSU4gQSAgCTAuMC4wLjAKKiAJIElOIEEgIAkwLjAuMC4wCg=="/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="collectors" type="xs:string"/>
+    <xs:element name="listen_port" type="xs:string"/>
+    <xs:element name="extra_flags" type="xs:string"/>
+    <xs:element name="vareapconfdisableweakeaptypes" type="xs:string"/>
+    <xs:element name="vareapconfdefaulteaptype" type="xs:string"/>
+    <xs:element name="vareapconftimerexpire" type="xs:string"/>
+    <xs:element name="vareapconfignoreunknowneaptypes" type="xs:string"/>
+    <xs:element name="vareapconfciscoaccountingusernamebug" type="xs:string"/>
+    <xs:element name="vareapconfmaxsessions" type="xs:string"/>
+    <xs:element name="vareapconftlsminversion" type="xs:string"/>
+    <xs:element name="ssl_ca_cert" type="xs:string"/>
+    <xs:element name="ssl_ca_crl" type="xs:string"/>
+    <xs:element name="ssl_server_cert" type="xs:string"/>
+    <xs:element name="vareapconfincludelength" type="xs:string"/>
+    <xs:element name="vareapconffragmentsize" type="xs:string"/>
+    <xs:element name="vareapconfenablecheckcertissuer" type="xs:string"/>
+    <xs:element name="vareapconfcasubject" type="xs:string"/>
+    <xs:element name="vareapconfenablecheckcertcn" type="xs:string"/>
+    <xs:element name="vareapconfcacheenablecache" type="xs:string"/>
+    <xs:element name="vareapconfcachelifetime" type="xs:string"/>
+    <xs:element name="vareapconfcachemaxentries" type="xs:string"/>
+    <xs:element name="vareapconfocspenable" type="xs:string"/>
+    <xs:element name="vareapconfocspoverridecerturl" type="xs:string"/>
+    <xs:element name="vareapconfocspurl" type="xs:string"/>
+    <xs:element name="vareapconfttlsdefaulteaptype" type="xs:string"/>
+    <xs:element name="vareapconfttlscopyrequesttotunnel" type="xs:string"/>
+    <xs:element name="vareapconfttlsusetunneledreply" type="xs:string"/>
+    <xs:element name="vareapconfttlsincludelength" type="xs:string"/>
+    <xs:element name="vareapconfpeapdefaulteaptype" type="xs:string"/>
+    <xs:element name="vareapconfpeapcopyrequesttotunnel" type="xs:string"/>
+    <xs:element name="vareapconfpeapusetunneledreply" type="xs:string"/>
+    <xs:element name="vareapconfpeapsohenable" type="xs:string"/>
+    <xs:element name="varinterfaceip" type="xs:string"/>
+    <xs:element name="varinterfaceport">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="1812"/>
+                <xs:enumeration value="1813"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="varinterfacetype">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="auth"/>
+                <xs:enumeration value="acct"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="varinterfaceipversion" type="xs:string"/>
+    <xs:element name="permuser" type="xs:string"/>
+    <xs:element name="enable_upnp" type="xs:string"/>
+    <xs:element name="enable_natpmp" type="xs:string"/>
+    <xs:element name="ext_iface" type="xs:string"/>
+    <xs:element name="iface_array" type="xs:string"/>
+    <xs:element name="download" type="xs:string"/>
+    <xs:element name="upload" type="xs:string"/>
+    <xs:element name="overridewanip" type="xs:string"/>
+    <xs:element name="upnpqueue" type="xs:string"/>
+    <xs:element name="logpackets" type="xs:string"/>
+    <xs:element name="sysuptime" type="xs:string"/>
+    <xs:element name="presentationurl" type="xs:string"/>
+    <xs:element name="modelnumber" type="xs:string"/>
+    <xs:element name="enable_stun" type="xs:string"/>
+    <xs:element name="stun_host" type="xs:string"/>
+    <xs:element name="stun_port" type="xs:string"/>
+    <xs:element name="permdefault" type="xs:string"/>
+    <xs:element name="enable_cb" type="xs:string"/>
+    <xs:element name="pfb_keep" type="xs:string"/>
+    <xs:element name="pfb_reuse" type="xs:string"/>
+    <xs:element name="pfb_interval" type="xs:string"/>
+    <xs:element name="pfb_min" type="xs:string"/>
+    <xs:element name="pfb_hour" type="xs:string"/>
+    <xs:element name="pfb_dailystart" type="xs:string"/>
+    <xs:element name="skipfeed" type="xs:string"/>
+    <xs:element name="log_max_log" type="xs:string"/>
+    <xs:element name="log_max_errlog" type="xs:string"/>
+    <xs:element name="log_max_extraslog" type="xs:string"/>
+    <xs:element name="log_max_ip_blocklog" type="xs:string"/>
+    <xs:element name="log_max_ip_permitlog" type="xs:string"/>
+    <xs:element name="log_max_ip_matchlog" type="xs:string"/>
+    <xs:element name="log_max_dnslog" type="xs:string"/>
+    <xs:element name="log_max_dnsbl_parse_err" type="xs:string"/>
+    <xs:element name="log_max_dnsreplylog" type="xs:string"/>
+    <xs:element name="log_max_unilog" type="xs:string"/>
+    <xs:element name="enable_dup" type="xs:string"/>
+    <xs:element name="suppression">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="on"/>
+                <xs:enumeration value="czMuYW1hem9uYXdzLmNvbQ0KczMtMS5hbWF6b25hd3MuY29tICMgQ05BTUUgZm9yIChzMy5hbWF6b25hd3MuY29tKQ0KLmdpdGh1Yi5jb20NCi5naXRodWJ1c2VyY29udGVudC5jb20gDQpnaXRodWIubWFwLmZhc3RseS5uZXQgIyBDTkFNRSBmb3IgKHJhdy5naXRodWJ1c2VyY29udGVudC5jb20pDQouZ2l0bGFiLmNvbQ0KLnNvdXJjZWZvcmdlLm5ldA0KLmZscy1uYS5hbWF6b24uY29tICMgYWxleGENCi5jb250cm9sLmtvY2hhdmEuY29tICMgYWxleGEgMg0KLmRldmljZS1tZXRyaWNzLXVzLTIuYW1hem9uLmNvbSAjIGFsZXhhIDMNCi5hbWF6b24tYWRzeXN0ZW0uY29tICMgYW1hem9uIGFwcCBhZHMNCi5weC5tb2F0YWRzLmNvbSAjIGFtYXpvbiBhcHAgMg0KLndpbGRjYXJkLm1vYXRhZHMuY29tLmVkZ2VrZXkubmV0ICMgQ05BTUUgZm9yIChweC5tb2F0YWRzLmNvbSkNCi5lMTMxMzYuZy5ha2FtYWllZGdlLm5ldCAjIENOQU1FIGZvciAocHgubW9hdGFkcy5jb20pDQouc2VjdXJlLWdsLmltcndvcmxkd2lkZS5jb20gIyBhbWF6b24gYXBwIDMNCi5waXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tICMgYW1hem9uIGFwcCA0DQouYW55Y2FzdC5waXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tICMgQ05BTUUgZm9yIChwaXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tKQ0KLmJzLnNlcnZpbmctc3lzLmNvbSAjIGFtYXpvbiBhcHAgNQ0KLmJzLmV5ZWJsYXN0ZXIuYWthZG5zLm5ldCAjIENOQU1FIGZvciAoYnMuc2VydmluZy1zeXMuY29tKQ0KLmJzbGEuZXllYmxhc3Rlci5ha2FkbnMubmV0ICMgQ05BTUUgZm9yIChicy5zZXJ2aW5nLXN5cy5jb20pDQouYWRzYWZlcHJvdGVjdGVkLmNvbSAjIGFtYXpvbiBhcHAgNg0KLmFueWNhc3Quc3RhdGljLmFkc2FmZXByb3RlY3RlZC5jb20gIyBDTkFNRSBmb3IgKHN0YXRpYy5hZHNhZmVwcm90ZWN0ZWQuY29tKQ0KZ29vZ2xlLmNvbQ0Kd3d3Lmdvb2dsZS5jb20NCnlvdXR1YmUuY29tDQp3d3cueW91dHViZS5jb20NCnlvdXR1YmUtdWkubC5nb29nbGUuY29tICMgQ05BTUUgZm9yICh5b3V0dWJlLmNvbSkNCnN0YWNrb3ZlcmZsb3cuY29tDQp3d3cuc3RhY2tvdmVyZmxvdy5jb20NCmRyb3Bib3guY29tDQp3d3cuZHJvcGJveC5jb20NCnd3dy5kcm9wYm94LWRucy5jb20gIyBDTkFNRSBmb3IgKGRyb3Bib3guY29tKQ0KLmFkc2FmZXByb3RlY3RlZC5jb20NCmNvbnRyb2wua29jaGF2YS5jb20NCnNlY3VyZS1nbC5pbXJ3b3JsZHdpZGUuY29tDQpwYnMudHdpbWcuY29tICMgdHdpdHRlciBpbWFnZXMNCnd3dy5wYnMudHdpbWcuY29tICMgdHdpdHRlciBpbWFnZXMNCmNzMTk2LndhYy5lZGdlY2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczItd2FjLmFwci04MzE1LmVkZ2VjYXN0ZG5zLm5ldCAjIENOQU1FIGZvciAocGJzLnR3aW1nLmNvbSkNCmNzMi13YWMtdXMuODMxNS5lY2Rucy5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczQ1LndhYy5lZGdlY2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczItd2FjLmFwci04MzE1LmVkZ2VjYXN0ZG5zLm5ldCAjIENOQU1FIGZvciAocGJzLnR3aW1nLmNvbSkNCmNzMi13YWMtdXMuODMxNS5lY2Rucy5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczQ1LndhYy5lZGdlY2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQoucGZzZW5zZS5vcmcNCi5uZXRnYXRlLmNvbQ0K"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="inbound_interface" type="xs:string"/>
+    <xs:element name="inbound_deny_action" type="xs:string"/>
+    <xs:element name="outbound_interface" type="xs:string"/>
+    <xs:element name="outbound_deny_action" type="xs:string"/>
+    <xs:element name="pass_order" type="xs:string"/>
+    <xs:element name="enable_agg" type="xs:string"/>
+    <xs:element name="enable_log" type="xs:string"/>
+    <xs:element name="ip_placeholder" type="xs:string"/>
+    <xs:element name="maxmind_locale" type="xs:string"/>
+    <xs:element name="database_cc" type="xs:string"/>
+    <xs:element name="maxmind_account" type="xs:string"/>
+    <xs:element name="maxmind_key" type="xs:string"/>
+    <xs:element name="asn_reporting" type="xs:string"/>
+    <xs:element name="asn_token" type="xs:string"/>
+    <xs:element name="enable_float" type="xs:string"/>
+    <xs:element name="autorule_suffix" type="xs:string"/>
+    <xs:element name="killstates" type="xs:string"/>
+    <xs:element name="v4suppression" type="xs:string"/>
+    <xs:element name="pfb_dnsvip" type="xs:string"/>
+    <xs:element name="pfb_dnsport" type="xs:string"/>
+    <xs:element name="pfb_dnsport_ssl" type="xs:string"/>
+    <xs:element name="pfb_dnsblv6" type="xs:string"/>
+    <xs:element name="pfb_dnsbl" type="xs:string"/>
+    <xs:element name="dnsbl_webpage" type="xs:string"/>
+    <xs:element name="pfb_tld" type="xs:string"/>
+    <xs:element name="pfb_control" type="xs:string"/>
+    <xs:element name="pfb_dnsvip_type" type="xs:string"/>
+    <xs:element name="pfb_dnsbl_rule" type="xs:string"/>
+    <xs:element name="dnsbl_allow_int" type="xs:string"/>
+    <xs:element name="global_log" type="xs:string"/>
+    <xs:element name="pfb_cache" type="xs:string"/>
+    <xs:element name="pfb_dnsbl_sync" type="xs:string"/>
+    <xs:element name="pfb_py_reply" type="xs:string"/>
+    <xs:element name="pfb_hsts" type="xs:string"/>
+    <xs:element name="pfb_idn" type="xs:string"/>
+    <xs:element name="pfb_regex" type="xs:string"/>
+    <xs:element name="pfb_cname" type="xs:string"/>
+    <xs:element name="pfb_noaaaa" type="xs:string"/>
+    <xs:element name="pfb_gp" type="xs:string"/>
+    <xs:element name="pfb_pytld" type="xs:string"/>
+    <xs:element name="pfb_pytld_sort" type="xs:string"/>
+    <xs:element name="pfb_py_nolog" type="xs:string"/>
+    <xs:element name="pfb_pytlds_gtld" type="xs:string"/>
+    <xs:element name="pfb_pytlds_cctld" type="xs:string"/>
+    <xs:element name="pfb_pytlds_itld" type="xs:string"/>
+    <xs:element name="pfb_pytlds_bgtld" type="xs:string"/>
+    <xs:element name="action">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Disabled"/>
+                <xs:enumeration value="unbound"/>
+                <xs:enumeration value="Deny_Both"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="aliaslog" type="xs:string"/>
+    <xs:element name="autoaddrnot_in" type="xs:string"/>
+    <xs:element name="autoports_in" type="xs:string"/>
+    <xs:element name="aliasports_in" type="xs:string"/>
+    <xs:element name="autoaddr_in" type="xs:string"/>
+    <xs:element name="autonot_in" type="xs:string"/>
+    <xs:element name="aliasaddr_in" type="xs:string"/>
+    <xs:element name="autoproto_in" type="xs:string"/>
+    <xs:element name="agateway_in" type="xs:string"/>
+    <xs:element name="autoaddrnot_out" type="xs:string"/>
+    <xs:element name="autoports_out" type="xs:string"/>
+    <xs:element name="aliasports_out" type="xs:string"/>
+    <xs:element name="autoaddr_out" type="xs:string"/>
+    <xs:element name="autonot_out" type="xs:string"/>
+    <xs:element name="aliasaddr_out" type="xs:string"/>
+    <xs:element name="autoproto_out" type="xs:string"/>
+    <xs:element name="agateway_out" type="xs:string"/>
+    <xs:element name="alexa_enable" type="xs:string"/>
+    <xs:element name="pfb_regex_list" type="xs:string"/>
+    <xs:element name="pfb_noaaaa_list" type="xs:string"/>
+    <xs:element name="pfb_gp_bypass_list" type="xs:string"/>
+    <xs:element name="tldexclusion" type="xs:string"/>
+    <xs:element name="tldblacklist" type="xs:string"/>
+    <xs:element name="tldwhitelist" type="xs:string"/>
+    <xs:element name="alexa_type" type="xs:string"/>
+    <xs:element name="alexa_count" type="xs:string"/>
+    <xs:element name="pfb_py_block" type="xs:string"/>
+    <xs:element name="dnsbl_mode" type="xs:string"/>
+    <xs:element name="dnsbl_interface" type="xs:string"/>
+    <xs:element name="state" type="xs:string"/>
+    <xs:element name="header" type="xs:string"/>
+    <xs:element name="aliasname">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="ADs_Basic"/>
+                <xs:enumeration value="PRI1"/>
+                <xs:enumeration value="TOR"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="cron">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="item" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="logging" type="xs:string"/>
+    <xs:element name="order" type="xs:string"/>
+    <xs:element name="dow" type="xs:string"/>
+    <xs:element name="sort">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="sort"/>
+                <xs:enumeration value="in"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="srcint" type="xs:string"/>
+    <xs:element name="script_pre" type="xs:string"/>
+    <xs:element name="script_post" type="xs:string"/>
+    <xs:element name="stateremoval" type="xs:string"/>
+    <xs:element name="suppression_cidr" type="xs:string"/>
+    <xs:element name="whois_convert" type="xs:string"/>
+    <xs:element name="sortable" type="xs:string"/>
+    <xs:element name="varmacsaddress" type="xs:string"/>
+    <xs:element name="varmacsswisprredirectionurl" type="xs:string"/>
+    <xs:element name="varmacssimultaneousconnect" type="xs:string"/>
+    <xs:element name="varmacsframedipaddress" type="xs:string"/>
+    <xs:element name="varmacsframedipnetmask" type="xs:string"/>
+    <xs:element name="varmacsframedroute" type="xs:string"/>
+    <xs:element name="varmacsframedip6address" type="xs:string"/>
+    <xs:element name="varmacsframedip6route" type="xs:string"/>
+    <xs:element name="varmacsvlanid" type="xs:string"/>
+    <xs:element name="varmacsexpiration" type="xs:string"/>
+    <xs:element name="varmacssessiontimeout" type="xs:string"/>
+    <xs:element name="varmacslogintime" type="xs:string"/>
+    <xs:element name="varmacsamountoftime" type="xs:string"/>
+    <xs:element name="varmacspointoftime" type="xs:string"/>
+    <xs:element name="varmacsmaxtotaloctets" type="xs:string"/>
+    <xs:element name="varmacsmaxtotaloctetstimerange" type="xs:string"/>
+    <xs:element name="varmacsmaxbandwidthdown" type="xs:string"/>
+    <xs:element name="varmacsmaxbandwidthup" type="xs:string"/>
+    <xs:element name="varmacsacctinteriminterval" type="xs:string"/>
+    <xs:element name="varmacstopadditionaloptions" type="xs:string"/>
+    <xs:element name="varmacscheckitemsadditionaloptions" type="xs:string"/>
+    <xs:element name="varmacsreplyitemsadditionaloptions" type="xs:string"/>
+    <xs:element name="varsettingsmaxrequests" type="xs:string"/>
+    <xs:element name="varsettingsmaxrequesttime" type="xs:string"/>
+    <xs:element name="varsettingscleanupdelay" type="xs:string"/>
+    <xs:element name="varsettingsallowcoredumps" type="xs:string"/>
+    <xs:element name="varsettingsregularexpressions" type="xs:string"/>
+    <xs:element name="varsettingsextendedexpressions" type="xs:string"/>
+    <xs:element name="keep_settings" type="xs:string"/>
+    <xs:element name="varsettingslogdir" type="xs:string"/>
+    <xs:element name="varsettingsauth" type="xs:string"/>
+    <xs:element name="varsettingsauthbadpass" type="xs:string"/>
+    <xs:element name="varsettingsauthbadpassmessage" type="xs:string"/>
+    <xs:element name="varsettingsauthgoodpass" type="xs:string"/>
+    <xs:element name="varsettingsauthgoodpassmessage" type="xs:string"/>
+    <xs:element name="varsettingsstrippednames" type="xs:string"/>
+    <xs:element name="varsettingshostnamelookups" type="xs:string"/>
+    <xs:element name="varsettingsmaxattributes" type="xs:string"/>
+    <xs:element name="varsettingsrejectdelay" type="xs:string"/>
+    <xs:element name="varsettingsstartservers" type="xs:string"/>
+    <xs:element name="varsettingsmaxservers" type="xs:string"/>
+    <xs:element name="varsettingsminspareservers" type="xs:string"/>
+    <xs:element name="varsettingsmaxspareservers" type="xs:string"/>
+    <xs:element name="varsettingsmaxqueuesize" type="xs:string"/>
+    <xs:element name="varsettingsmaxrequestsperserver" type="xs:string"/>
+    <xs:element name="varsettingsmotpenable" type="xs:string"/>
+    <xs:element name="varsettingsmotptimespan" type="xs:string"/>
+    <xs:element name="varsettingsmotppasswordattempts" type="xs:string"/>
+    <xs:element name="varsettingsmotpchecksumtype" type="xs:string"/>
+    <xs:element name="varsettingsmotptokenlength" type="xs:string"/>
+    <xs:element name="varsettingsenablemacauth" type="xs:string"/>
+    <xs:element name="varsettingsenableacctunique" type="xs:string"/>
+    <xs:element name="package">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="name"/>
+                <xs:element ref="website"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="pkginfolink"/>
+                <xs:element ref="version"/>
+                <xs:element ref="configurationfile"/>
+                <xs:element ref="tabs"/>
+                <xs:element ref="include_file"/>
+                <xs:element ref="internal_name"/>
+                <xs:element ref="category"/>
+                <xs:element ref="port_category"/>
+                <xs:element ref="plugins"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="menu">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="name"/>
+                <xs:element ref="tooltiptext"/>
+                <xs:element ref="section"/>
+                <xs:element ref="url"/>
+                <xs:element ref="configfile"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="service">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="rcfile"/>
+                <xs:element ref="executable"/>
+                <xs:element ref="description"/>
+                <xs:element ref="starts_on_sync" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="shellcmdsettings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bindacls">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bandwidthd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bind">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bindviews">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bindzone">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="nodeexporter">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="freeradiuseapconf">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="freeradiusinterfaces">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="freeradiusclients" type="xs:string"/>
+    <xs:element name="miniupnpd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockerng">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockerngipsettings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockerngdnsblsettings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockerngdnsbl">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockernglistsv4">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfblockerngblacklist" type="xs:string"/>
+    <xs:element name="pfblockerngglobal" type="xs:string"/>
+    <xs:element name="pfblockerngsafesearch" type="xs:string"/>
+    <xs:element name="freeradiusauthorizedmacs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="freeradiussettings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="config"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ifname">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="WireGuard"/>
+                <xs:enumeration value="InternalNet"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="members">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value=""/>
+                <xs:enumeration value="opt2 opt5"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ifgroupentry">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="ifname"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="members"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="numberofconnections" type="xs:string"/>
+    <xs:element name="numberoflocalinterfaces" type="xs:string"/>
+    <xs:element name="local0downloadscheduler" type="xs:string"/>
+    <xs:element name="local0interface" type="xs:string"/>
+    <xs:element name="conn0uploadscheduler" type="xs:string"/>
+    <xs:element name="conn0upload" type="xs:string"/>
+    <xs:element name="conn0uploadspeed" type="xs:string"/>
+    <xs:element name="conn0download" type="xs:string"/>
+    <xs:element name="conn0downloadspeed" type="xs:string"/>
+    <xs:element name="conn0interface" type="xs:string"/>
+    <xs:element name="bandwidthunit" type="xs:string"/>
+    <xs:element name="bittorrent" type="xs:string"/>
+    <xs:element name="step1">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="numberofconnections"/>
+                <xs:element ref="numberoflocalinterfaces"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="step2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="local0downloadscheduler"/>
+                <xs:element ref="local0interface"/>
+                <xs:element ref="conn0uploadscheduler"/>
+                <xs:element ref="conn0upload"/>
+                <xs:element ref="conn0uploadspeed"/>
+                <xs:element ref="conn0download"/>
+                <xs:element ref="conn0downloadspeed"/>
+                <xs:element ref="conn0interface"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="step5">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enable"/>
+                <xs:element ref="bandwidthunit"/>
+                <xs:element ref="bittorrent"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hostipformat" type="xs:string"/>
+    <xs:element name="day" type="xs:string"/>
+    <xs:element name="rangedescr" type="xs:string"/>
+    <xs:element name="timerange">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="month"/>
+                <xs:element ref="day"/>
+                <xs:element ref="hour"/>
+                <xs:element ref="rangedescr"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="schedlabel" type="xs:string"/>
+    <xs:element name="schedule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" minOccurs="0"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="timerange" minOccurs="0"/>
+                <xs:element ref="schedlabel" minOccurs="0"/>
+                <xs:element ref="skipifempty" minOccurs="0"/>
+                <xs:element ref="frequency" minOccurs="0"/>
+                <xs:element ref="timeofday" minOccurs="0"/>
+                <xs:element ref="minuteofday" minOccurs="0"/>
+                <xs:element ref="text" minOccurs="0"/>
+                <xs:element ref="log" minOccurs="0"/>
+                <xs:element ref="cmd" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ignore_revoked" type="xs:string"/>
+    <xs:element name="expiredays" type="xs:string"/>
+    <xs:element name="ipaddress" type="xs:string"/>
+    <xs:element name="ssl" type="xs:string"/>
+    <xs:element name="sslvalidate" type="xs:string"/>
+    <xs:element name="timeout" type="xs:string"/>
+    <xs:element name="notifyemailaddress" type="xs:string"/>
+    <xs:element name="authentication_mechanism" type="xs:string"/>
+    <xs:element name="fromaddress" type="xs:string"/>
+    <xs:element name="api" type="xs:string"/>
+    <xs:element name="chatid" type="xs:string"/>
+    <xs:element name="apikey" type="xs:string"/>
+    <xs:element name="userkey" type="xs:string"/>
+    <xs:element name="sound" type="xs:string"/>
+    <xs:element name="channel" type="xs:string"/>
+    <xs:element name="certexpire">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enable"/>
+                <xs:element ref="ignore_revoked"/>
+                <xs:element ref="expiredays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="smtp">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ipaddress"/>
+                <xs:element ref="port"/>
+                <xs:element ref="ssl"/>
+                <xs:element ref="sslvalidate"/>
+                <xs:element ref="timeout"/>
+                <xs:element ref="notifyemailaddress"/>
+                <xs:element ref="username"/>
+                <xs:element ref="authentication_mechanism"/>
+                <xs:element ref="fromaddress"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="telegram">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="api"/>
+                <xs:element ref="chatid"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pushover">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="apikey"/>
+                <xs:element ref="userkey"/>
+                <xs:element ref="sound"/>
+                <xs:element ref="priority"/>
+                <xs:element ref="retry"/>
+                <xs:element ref="expire"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="slack">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="api"/>
+                <xs:element ref="channel"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="skipifempty" type="xs:string"/>
+    <xs:element name="frequency" type="xs:string"/>
+    <xs:element name="timeofday" type="xs:string"/>
+    <xs:element name="minuteofday" type="xs:string"/>
+    <xs:element name="xmldata">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="ldfHjqxKFgXQOV/x5ugq8ZBDPIlLvJthEu89fP2ruq2eVUtdR0IKKWBAaMWOOH/+fBXDiy/9n7fB67Yt/WNYL492+H8UPvye/AMkKNMmvX7HLDxHQbNmNU9/FyPie9K530M+6Z5bZNL/LebrYYXje5jdKVKsaQ/o5d+p4+vj7xcLnj7XW1vp60abdBEhZYsnczZwH0zDDVxY3LG1l7DRRh2CeZcpyCndjwvgo/6O5h7RlGJiHS8qoufCjWvpUa0VwcuaVoEupemVZ6j0+GAYdOhebzyIYSq2rqtekL5SaQ0IPcMWxexy3mWjJczvN94/c23WIAm8cNbiKvflx/sCKyvXO0eXwPtllel2Cqo6xO9OGECJYoCAewj3DNveoaCPrnDIE30z/Ish/J676SHBhm102c6g0JAf46VP9I1/T4svK7pNkjFSR1EnjgAjlVE1pJcsEcW2VcecDOK1Zu+GDsjjMx1wm5l6xxPCurZWfjwEThbt6rG80sKPmNNQTnfCYID3721Cm/ozvXd6kEmowp55oWXoYxbd9zY1AbSjq2aWUoELDHmuibXHin4JxfwqsKap4qLQIYBkXkZg6V6tRjLa9595w6+DemkQPOmGUp9oGVKPbnv5JWQXI7ovytoEmiKbR3sIOHQP4nPPCqAx3JDreTDYc5m0IAzxMo9+nzSVvjciWG3nnjgXS4XPqHAcXUofR1kiLUL25kOSGeTeOpITb0DXbbztn8+r0Qco+/rlHdQX6FgfXku68vosY3aA5KS4B4/OgsQyKleVfLydZ3t1SqVsJXRYPaDDtM5CkhyGPN/7Ykj6FQHSXEhQ+SMTT8PhpMtmrI2p2L2MXQFF3vhkvimCzOktZFRl/hhIDEDfpM3Q/KR8x0s98/o2LaWoPqiBfIf/p2zgJ9q/lw38RPv3soGfaP9eNvAT7d/LBn6i/XvZwE+0fy8b+In272UDP9H+vWzgJ9q/lw38RPtbNs19ZfPf8KZpnORO4/Cy7SpGAeqFTJVwM8xPcuU6a42uuAVIDtp997QQZIfl7bEjz/M4ErViHSRwXNnEe6dRbvTgytYePD6bBEuE3mGZ9d0rZDTVN9erQYGwKdUMBzlHXruEYXXRJ54dGsIGGzHknEx+Ld+44se0alrNzqCecxGLhWGFAXWFdO3B88jqGOislClyTRCcMWrpDPTKRIBN+CMjpvoSdYMQkBOPe0+Pk/Xa5TUxnQY/sSxXjmf7IrTTrde9BgIsyxZ7GI6tiyXSNsRgH0R5CRnihGUrzrWoLKjZXPgHBnle6Ho2cX362DCRPFMxDwlKVlRj4KquO/FKGC38dcSYjcUVouTEGYa2aY8bpueotAjmO8riB3qRpKPMo3QvIFVN8gfR10dJIEYHFE/SB+9lsZs6g3mcTjXijB3NzPXMWD8fwesPvTlMeZ9LM5hCTd5Y30VMBgl9MJqnEJUWisuBu+dyvK22VN5fLyYWhNtgPO/BJUE0FTTYhmkZD7QS4U89QAnOIcqXYEGoFkc+O9Q41FAPSgkAuFJOGnclaOkWKrIph3vZkWmAcw8++bQfhOEYs7d6uC02tYRID5+8agTULC5r868UXoQPBhWAFo5BXlOEO7/RV5mpYmhMzXQ++owesZJcPoKQV8Hc3YMO9WvTpczVO4Rem6TSNe91hzdb4y3ga6clha1OySjeuJedPfP36iFFYiJM2cQtHImA7Eie/BDxscU0yIZMwuOjqcNZqTs1u+VtuEChC/qT3O5EQsJZnzZffR8SW7RS1ZQ+54+PRLQfahVDQ+mNQ/EgdnsMqgRF8FgKWD8653ynb4CBcY7VuIJQQXx/XNwO3zJlqJEH+UJvlrmkrc2gsM57quVWYASQX/VVoNdCGSY5QPz8aYnbBtBnafCfiAfd+NJNE58sL+c681mGx7Xw69TC1Ja4nO2syTylyPqV2JClD6XgE/VCPNB+rKHdBkY8FTm6uCSwyOtbvGvNqL9yC0VVMm6jSeHdiP/aO7r6AhW+Po4Ki1qt9cOh42pYzuZzCYJAA242lYcM8WyUdWHr+67HM/QbG6kn5TXjZvKtG+C8TUta/U7wtlTVjMvfiKQwUr31Yk1DYm68AHnE6EdoeNanqiU/UZJwFCJdtq6uXTdX9K1VoQWsC1k9VRkaL1y8PRr282YudioFYZokLCwb4Llpjay7vvsgEVbsc5Wy3fYytdUSeIfum8S1oMIuHTjSEdlZqGqPk9uMutNszDMxlgwvbHcCwL5C5/hk971V0+kdLjM7a1d/PBfVkrP+K4yFPj0jZ2HeIpVgyr2MVaVKdU5G0NNMOMTRM/oAVtx9IZNSEqejDM4rKz9z+0R2N7lMLPxgU6kJMnruNRFi/dkijwNCi2Gm7euN+E3lxD3Hc9gIOG1ITsvn1PTT5f+zwHrABImIIW/IMQw4fYH86WRitYu7yZcbu1oewu+9BAVz4UKtVoFMB6SURfThJ1qPAaGK9mFYzQOrZqyde8/fUUeVFJ+zMqa8YugifHxcjHVYugzMOe7jgCqySScvAa+RutCL2qbAGUk7esavQhd1UjFgPamimqp5XYk0qqBPv/f2MlTRG02temr67XZXeGsaDZdWgJfeVaUQEnErwUhD5DIO4YyTWQtSjqEHt0SFU+jV834hTuXOeRskCmygJR2ZEIwhWZ3iLlMChwtOocI2mAkruLl1uiDifiVcbl8xfJg3lYF5l+hUJmI/aBgV0tJDYx8Uy+4jhE/zUFgMVD1gGcB9Rwui9/8ecmHafZ3iPHNErf7d2bRqJzS65K5hl24h8lxp88UBf5sfXuf+d2P0Lw=="/>
+                <xs:enumeration value="FY+3kqNAAAXz+4rNqVusQARXdWgYhPCDEYgMNyAQIIxwX397L+nqrN80Vb/HKfmSfnZhrSMB9J4x8L/KEpIuPwQSkq+suVOy4RTuvqZoOA1vMJGv9LQ9BX41XtZtLUNOIqz6RMTUmELskDe3xVb7wY91AL1m3dtLx6x2yyjRfle6cKd3LaPy7dBENsOiUNe+RIcZSQ7PAfBJcqsRw267GWZQB2BGVqQZhRp4pNNi+rxPB8KC0WjQ1lAVD8QRDJSdOyBeQlK7KrsAg+lT9fwjrDm8KplzjuzlrkXSiInk4ixqxkFUqu8kc0xQLc8n/0L6gzzy0nsNez4xHOKH7dH0tLHMY2K92kfSwEJp9eq4NfgnkTfA/ClTnaZ4dMHLhR/l8E5LzMPvQ4a5K6R8Dswm1g1irfZL3KjwPCreWAduavNj4Vl8z59B2S2eUdOEtLGYmGLE84OLPbKgNgALuQnU5UrPV7Hv2VsIpqf89DxtABLrT7AUc0iH5tx0RZHzH6Ez5LU8/LCnzoOjFkp9EAlXJaqrg64g1oFxs7V/ySCSos63y5QRGYBEt7Qz/1SI525W/Tq+04EkQHlbeeFd0Jpj95ZfrXe+6U0TwPxkDluzdQnhCsvMur7JxmTPUbTRhphldcTULvNzl+SYwwesGEYzallG6fUavT6yXQUXOp8hoaEpT9vwM+u0DYdrgIsnHablHqvxTEbuPQ4kWZ4TY+Qkqx43UqRSKJom1m7KlbvedEJ5owg/hPYtCcc4n8GphNMwc2Q8oj9/vsa+n/++sVd0U/Gd5Nznd1p+Z3376x8="/>
+                <xs:enumeration value="nZBJb4MwFITv/Ircq6gNiDY94vhBDNQEzBbfMKRkqcnGEvLrW1eq1EsvncPoSfP0aTTT6ZcQOIROghVQxpaTVURSK4aJB2sVTjVhoA/R0HuxmF14fmirPVhKyDF7IRN1gpCvHQ+tHyFlb4Py9l7qdcszLRxpnNwC9bRA4M1lb8c767kbHmFHSJQUdHfDcWWc9k2L4os8NXoifUdBPFweouFsuFBqXv2b+l+opkqjcZZWcpNzejqnV5cxnQ35sSTBTSBcp322d80mBEweOggvYzFPA4LPL3jOSL21o6Pua0CpsZHB5skOukK+c7a+CtXPWbq9MCKrdHjMM/POmbnlOJr5mdv4kvYihIU1hLb2PTFQ/Pf8nw=="/>
+                <xs:enumeration value="Ky7O0E1NMTI1NbRUcAQCZ2O/qkRnw5woF09DvxBXU5CYp2tgUWWiRZi/p0uhuYtFsGd6hltQvpGPq5+fcWquf6qBm39pYm5aVHBkcZJCUX5+iUNBWnBqXnGqXmKKSaluUrpecn4uFwA="/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="sshkeyfile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="filename"/>
+                <xs:element ref="xmldata"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lastchange" type="xs:string"/>
+    <xs:element name="system">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="optimization"/>
+                <xs:element ref="hostname"/>
+                <xs:element ref="domain"/>
+                <xs:element ref="group" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="user" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="nextuid"/>
+                <xs:element ref="nextgid"/>
+                <xs:element ref="timeservers"/>
+                <xs:element ref="webgui"/>
+                <xs:element ref="disablesegmentationoffloading"/>
+                <xs:element ref="disablelargereceiveoffloading"/>
+                <xs:element ref="ipv6allow"/>
+                <xs:element ref="maximumtableentries"/>
+                <xs:element ref="powerd_ac_mode"/>
+                <xs:element ref="powerd_battery_mode"/>
+                <xs:element ref="powerd_normal_mode"/>
+                <xs:element ref="bogons"/>
+                <xs:element ref="hn_altq_enable"/>
+                <xs:element ref="already_run_config_upgrade"/>
+                <xs:element ref="ssh"/>
+                <xs:element ref="timezone"/>
+                <xs:element ref="language"/>
+                <xs:element ref="dns1host"/>
+                <xs:element ref="serialspeed"/>
+                <xs:element ref="primaryconsole"/>
+                <xs:element ref="ipv6dontcreatelocaldns"/>
+                <xs:element ref="prefer_ipv4"/>
+                <xs:element ref="pkg_repo_conf_path"/>
+                <xs:element ref="maximumstates"/>
+                <xs:element ref="aliasesresolveinterval"/>
+                <xs:element ref="maximumfrags"/>
+                <xs:element ref="enablenatreflectionpurenat"/>
+                <xs:element ref="reflectiontimeout"/>
+                <xs:element ref="consolebell"/>
+                <xs:element ref="dnsallowoverride"/>
+                <xs:element ref="earlyshellcmd"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="interfaces">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="wan"/>
+                <xs:element ref="lan"/>
+                <xs:element ref="opt1"/>
+                <xs:element ref="opt2"/>
+                <xs:element ref="opt3"/>
+                <xs:element ref="opt4"/>
+                <xs:element ref="opt5"/>
+                <xs:element ref="opt6"/>
+                <xs:element ref="opt7"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="staticroutes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="route" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dhcpd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lan"/>
+                <xs:element ref="opt2"/>
+                <xs:element ref="opt5"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dhcpdv6">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lan"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="snmpd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="syslocation"/>
+                <xs:element ref="syscontact"/>
+                <xs:element ref="rocommunity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="diag">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ipv6nat"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="syslog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="filterdescriptions"/>
+                <xs:element ref="nentries"/>
+                <xs:element ref="logcompressiontype"/>
+                <xs:element ref="format"/>
+                <xs:element ref="rotatecount"/>
+                <xs:element ref="remoteserver"/>
+                <xs:element ref="remoteserver2"/>
+                <xs:element ref="remoteserver3"/>
+                <xs:element ref="sourceip"/>
+                <xs:element ref="ipproto"/>
+                <xs:element ref="logconfigchanges"/>
+                <xs:element ref="nologbogons"/>
+                <xs:element ref="nologprivatenets"/>
+                <xs:element ref="reverse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="nat">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="outbound"/>
+                <xs:element ref="separator"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="shaper">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="queue" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ipsec">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="client"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="aliases">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="alias" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="proxyarp" type="xs:string"/>
+    <xs:element name="wol" type="xs:string"/>
+    <xs:element name="rrd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="enable"/>
+                <xs:element ref="category"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="widgets">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="sequence"/>
+                <xs:element ref="period"/>
+                <xs:element ref="traffic_graphs"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="openvpn" type="xs:string"/>
+    <xs:element name="dnshaper" type="xs:string"/>
+    <xs:element name="unbound">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dnssec"/>
+                <xs:element ref="active_interface"/>
+                <xs:element ref="outgoing_interface"/>
+                <xs:element ref="custom_options"/>
+                <xs:element ref="hideidentity"/>
+                <xs:element ref="hideversion"/>
+                <xs:element ref="dnssecstripped"/>
+                <xs:element ref="port"/>
+                <xs:element ref="tlsport"/>
+                <xs:element ref="sslcertref"/>
+                <xs:element ref="system_domain_local_zone_type"/>
+                <xs:element ref="acls"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="vlans">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vlan" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="qinqs" type="xs:string"/>
+    <xs:element name="revision">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="time"/>
+                <xs:element ref="description"/>
+                <xs:element ref="username"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gateways">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="gateway_item" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="gateway_group"/>
+                <xs:element ref="defaultgw4"/>
+                <xs:element ref="defaultgw6"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="captiveportal" type="xs:string"/>
+    <xs:element name="dnsmasq" type="xs:string"/>
+    <xs:element name="ntpd">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="gps"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cert">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="refid"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="type"/>
+                <xs:element ref="caref" minOccurs="0"/>
+                <xs:element ref="crt"/>
+                <xs:element ref="prv"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ppps" type="xs:string"/>
+    <xs:element name="installedpackages">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="package" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="menu" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="service" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="wireguard"/>
+                <xs:element ref="shellcmdsettings"/>
+                <xs:element ref="bindacls"/>
+                <xs:element ref="bandwidthd"/>
+                <xs:element ref="bind"/>
+                <xs:element ref="bindviews"/>
+                <xs:element ref="bindzone"/>
+                <xs:element ref="nodeexporter"/>
+                <xs:element ref="freeradiuseapconf"/>
+                <xs:element ref="freeradiusinterfaces"/>
+                <xs:element ref="freeradiusclients"/>
+                <xs:element ref="miniupnpd"/>
+                <xs:element ref="pfblockerng"/>
+                <xs:element ref="pfblockerngipsettings"/>
+                <xs:element ref="pfblockerngdnsblsettings"/>
+                <xs:element ref="pfblockerngdnsbl"/>
+                <xs:element ref="pfblockernglistsv4"/>
+                <xs:element ref="pfblockerngblacklist"/>
+                <xs:element ref="pfblockerngglobal"/>
+                <xs:element ref="pfblockerngsafesearch"/>
+                <xs:element ref="freeradiusauthorizedmacs"/>
+                <xs:element ref="freeradiussettings"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ifgroups">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ifgroupentry" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="virtualip" type="xs:string"/>
+    <xs:element name="dhcpbackend" type="xs:string"/>
+    <xs:element name="ezshaper">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="step1"/>
+                <xs:element ref="step2"/>
+                <xs:element ref="step5"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ca">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="refid"/>
+                <xs:element ref="descr"/>
+                <xs:element ref="serial"/>
+                <xs:element ref="crt"/>
+                <xs:element ref="prv"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="schedules">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="schedule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="notifications">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="certexpire"/>
+                <xs:element ref="smtp"/>
+                <xs:element ref="telegram"/>
+                <xs:element ref="pushover"/>
+                <xs:element ref="slack"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="mailreports">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="schedule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sshdata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="sshkeyfile" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pfsense">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="version"/>
+                <xs:element ref="lastchange"/>
+                <xs:element ref="system"/>
+                <xs:element ref="interfaces"/>
+                <xs:element ref="staticroutes"/>
+                <xs:element ref="dhcpd"/>
+                <xs:element ref="dhcpdv6"/>
+                <xs:element ref="snmpd"/>
+                <xs:element ref="diag"/>
+                <xs:element ref="syslog"/>
+                <xs:element ref="nat"/>
+                <xs:element ref="filter"/>
+                <xs:element ref="shaper"/>
+                <xs:element ref="ipsec"/>
+                <xs:element ref="aliases"/>
+                <xs:element ref="proxyarp"/>
+                <xs:element ref="cron"/>
+                <xs:element ref="wol"/>
+                <xs:element ref="rrd"/>
+                <xs:element ref="widgets"/>
+                <xs:element ref="openvpn"/>
+                <xs:element ref="dnshaper"/>
+                <xs:element ref="unbound"/>
+                <xs:element ref="vlans"/>
+                <xs:element ref="qinqs"/>
+                <xs:element ref="revision"/>
+                <xs:element ref="gateways"/>
+                <xs:element ref="captiveportal"/>
+                <xs:element ref="dnsmasq"/>
+                <xs:element ref="ntpd"/>
+                <xs:element ref="cert" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="ppps"/>
+                <xs:element ref="installedpackages"/>
+                <xs:element ref="ifgroups"/>
+                <xs:element ref="virtualip"/>
+                <xs:element ref="dhcpbackend"/>
+                <xs:element ref="ezshaper"/>
+                <xs:element ref="traffic_graphs"/>
+                <xs:element ref="ca"/>
+                <xs:element ref="schedules"/>
+                <xs:element ref="notifications"/>
+                <xs:element ref="mailreports"/>
+                <xs:element ref="sshdata"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

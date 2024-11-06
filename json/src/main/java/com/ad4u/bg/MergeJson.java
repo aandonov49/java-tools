@@ -1,6 +1,11 @@
 package com.ad4u.bg;
 
+import com.ad4u.bg.network.BlackHoleCommunicator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.ad4ubg.*;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -10,32 +15,41 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 public class MergeJson {
   private static final IpTables ipTables = new IpTables();
   private static final DnsMachines dnsList = new DnsMachines();
-  static Dhcp dhcp = new Dhcp();
-  static Freeradiusauthorizedmacs radius = new Freeradiusauthorizedmacs();
+  private static ObjectFactory factory = new ObjectFactory();
+  private static Dhcpd dhcp = factory.createDhcpd();
+  private static Freeradiusauthorizedmacs radius = factory.createFreeradiusauthorizedmacs();
+  private static String blackHoleUrl =
+      "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts";
 
-  public static void main(String[] args) throws IOException, JAXBException {
+  public static void main(String[] args) throws IOException, JAXBException, InterruptedException {
+    dhcp.setOpt2(factory.createOpt2());
     if (args[0].equals("iptables")) {
       createIptablesFile(args[1], args[2]);
     } else if (args[0].equals("dns")) {
       createDnsFile(args[1], args[2]);
     }
     StringWriter sw = new StringWriter();
+    dhcp.getOpt2().setRange(factory.createRange());
     dhcp.getOpt2().getRange().setFrom("10.10.2.5");
     dhcp.getOpt2().getRange().setTo("10.10.2.253");
-    JAXBContext context = JAXBContext.newInstance(Dhcp.class);
+
+    Installedpackages installedpackages = factory.createInstalledpackages();
+    installedpackages.setBindzone(new BlackHoleCommunicator().fillRequiredData(blackHoleUrl));
+
+    Pfsense pfsenseCof = factory.createPfsense();
+    pfsenseCof.setDhcpd(dhcp);
+    pfsenseCof.setInstalledpackages(installedpackages);
+    JAXBContext context = JAXBContext.newInstance("eu.ad4ubg");
     Marshaller mar = context.createMarshaller();
     mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-    mar.marshal(dhcp, sw);
+    mar.marshal(pfsenseCof, sw);
     String xml = sw.toString();
     // .replaceAll("xsi:nil=\"true\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"", "");
-    System.out.println(xml);
+    java.lang.System.out.println(xml);
   }
 
   private static void createDnsFile(String inputDirectory, String outputFile) throws IOException {
@@ -52,7 +66,7 @@ public class MergeJson {
         .sorted()
         .forEach(
             file -> {
-              System.out.println(file);
+              java.lang.System.out.println(file);
               try {
                 readDsnsNamesFromFileIntoJsonList(file);
               } catch (IOException e) {
@@ -136,12 +150,11 @@ public class MergeJson {
         data.add(row);
         ipTables.getSwitchVlans().put(machine.getVLANId(), data);
       }
-      Staticmap staticmap = new Staticmap();
+      Staticmap staticmap = factory.createStaticmap();
       staticmap.setMac(machine.getMac().toUpperCase());
       staticmap.setIpaddr("10.10.0." + machine.getIp());
       staticmap.setDescr(machine.getId());
       dhcp.getOpt2().getStaticmap().add(staticmap);
-      
     }
   }
 
