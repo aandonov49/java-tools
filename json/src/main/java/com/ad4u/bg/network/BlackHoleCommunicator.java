@@ -1,7 +1,7 @@
 package com.ad4u.bg.network;
 
-import eu.ad4ubg.Bindzone;
-import eu.ad4ubg.Config;
+import eu.ad4ubg.BindzoneType;
+import eu.ad4ubg.ConfigType;
 import eu.ad4ubg.ObjectFactory;
 import java.io.*;
 import java.net.URI;
@@ -16,10 +16,10 @@ import java.util.stream.Stream;
 
 public class BlackHoleCommunicator {
   private HttpClient blackHoleHttpClient;
-  private Bindzone bindzones = new Bindzone();
+  private BindzoneType bindzones = new BindzoneType();
   private ObjectFactory factory = new ObjectFactory();
 
-  public Bindzone fillRequiredData(String blackHoleListUrl)
+  public BindzoneType fillRequiredData(String blackHoleListUrl)
       throws IOException, InterruptedException {
     blackHoleHttpClient =
         HttpClient.newBuilder()
@@ -37,7 +37,7 @@ public class BlackHoleCommunicator {
         blackHoleHttpClient.send(request, HttpResponse.BodyHandlers.ofInputStream()).body();
     BufferedReader reader = new BufferedReader(new InputStreamReader(response));
     Stream<String> stream = reader.lines();
-    List<Config> list =
+    List<ConfigType> list =
         stream
             .filter(line -> line.contains("0.0.0.0"))
             .map(this::parseLine)
@@ -47,33 +47,37 @@ public class BlackHoleCommunicator {
     return bindzones;
   }
 
-  public Config parseLine(String line) {
+  public ConfigType parseLine(String line) {
     String[] string = line.split(" ");
     if (!string[string.length - 1].equals("0.0.0.0")) {
-      Config config = factory.createConfig();
+      ConfigType config = factory.createConfigType();
       config
           .getEnableOrKeepConfOrResolveInterval()
-          .add(factory.createName(string[string.length - 1]));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createType("master"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createView("internal"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createNameserver("ad4u-bg.black"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createRefresh("1d"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createExpire("4w"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createRetry("2h"));
+          .add(factory.createMenuTypeName(string[string.length - 1]));
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeType("master"));
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeView("internal"));
       config
           .getEnableOrKeepConfOrResolveInterval()
-          .add(factory.createAllowquery("localhost,localnets"));
-      config.getEnableOrKeepConfOrResolveInterval().add(factory.createAllowupdate("none"));
-      eu.ad4ubg.Row row = factory.createRow();
-      row.getContent().add(factory.createHostname("@"));
-      row.getContent().add(factory.createHosttype("A"));
-      row.getContent().add(factory.createHostdst("0.0.0.0"));
-      config.getEnableOrKeepConfOrResolveInterval().add(row);
-      row = factory.createRow();
-      row.getContent().add(factory.createHostname("*"));
-      row.getContent().add(factory.createHosttype("A"));
-      row.getContent().add(factory.createHostdst("0.0.0.0"));
-      config.getEnableOrKeepConfOrResolveInterval().add(row);
+          .add(factory.createConfigTypeNameserver("ad4u-bg.black"));
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeRefresh("1d"));
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeExpire("4w"));
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeRetry("2h"));
+      config
+          .getEnableOrKeepConfOrResolveInterval()
+          .add(factory.createConfigTypeAllowquery("localhost,localnets"));
+      config
+          .getEnableOrKeepConfOrResolveInterval()
+          .add(factory.createConfigTypeAllowupdate("none"));
+      eu.ad4ubg.RowType row = factory.createRowType();
+      row.setHostname("@");
+      row.setHosttype("A");
+      row.setHostdst("0.0.0.0");
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeRow(row));
+      row = factory.createRowType();
+      row.setHostname("*");
+      row.setHosttype("A");
+      row.setHostdst("0.0.0.0");
+      config.getEnableOrKeepConfOrResolveInterval().add(factory.createConfigTypeRow(row));
       return config;
     }
     return null;

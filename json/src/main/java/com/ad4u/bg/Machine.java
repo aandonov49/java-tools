@@ -22,6 +22,7 @@ public class Machine {
   @JsonProperty private String order;
   @JsonProperty private String allias = "other";
   @JsonProperty private Boolean iot = false;
+  @JsonProperty private Integer vlan = 0;
 
   public Machine() {}
 
@@ -40,7 +41,8 @@ public class Machine {
       String priority,
       String order,
       String allias,
-      Boolean iot) {
+      Boolean iot,
+      Integer vlan) {
     this.id = id;
     this.mac = mac;
     this.ip = ip;
@@ -56,140 +58,71 @@ public class Machine {
     this.order = order;
     this.allias = allias;
     this.iot = iot;
+    this.vlan = vlan;
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public String getMac() {
     return mac;
-  }
-
-  public void setMac(String mac) {
-    this.mac = mac;
   }
 
   public String getIp() {
     return ip;
   }
 
-  public void setIp(String ip) {
-    this.ip = ip;
-  }
-
   public Boolean getDuplicate() {
     return duplicate;
-  }
-
-  public void setDuplicate(Boolean duplicate) {
-    this.duplicate = duplicate;
   }
 
   public Boolean getActive() {
     return active;
   }
 
-  public void setActive(Boolean active) {
-    this.active = active;
-  }
-
   public Boolean getCheck_mac() {
     return check_mac;
-  }
-
-  public void setCheck_mac(Boolean check_mac) {
-    this.check_mac = check_mac;
   }
 
   public Boolean getInet_access() {
     return inet_access;
   }
 
-  public void setInet_access(Boolean inet_access) {
-    this.inet_access = inet_access;
-  }
-
   public String getForward_chain_firewall() {
     return forward_chain_firewall;
-  }
-
-  public void setForward_chain_firewall(String forward_chain_firewall) {
-    this.forward_chain_firewall = forward_chain_firewall;
   }
 
   public String getClass_download() {
     return class_download;
   }
 
-  public void setClass_download(String class_download) {
-    this.class_download = class_download;
-  }
-
   public String getClass_www() {
     return class_www;
-  }
-
-  public void setClass_www(String class_www) {
-    this.class_www = class_www;
   }
 
   public String getClass_internal() {
     return class_internal;
   }
 
-  public void setClass_internal(String class_internal) {
-    this.class_internal = class_internal;
-  }
-
   public String getPriority() {
     return priority;
-  }
-
-  public void setPriority(String priority) {
-    this.priority = priority;
   }
 
   public String getOrder() {
     return order;
   }
 
-  public void setOrder(String order) {
-    this.order = order;
-  }
-
   public String getAllias() {
     return allias;
-  }
-
-  public void setAllias(String allias) {
-    this.allias = allias;
   }
 
   public Boolean getIot() {
     return iot;
   }
 
-  public void setIot(Boolean iot) {
-    this.iot = iot;
-  }
-
-  public Integer getVLANId() {
-    if (this.iot) {
-      return 20;
-    }
-    return 10;
-  }
-
-  public String getSwitchLabel() {
-    if (id.length() > 8) {
-      return id.substring(0, 8);
-    }
-    return id;
+  public Integer getVlan() {
+    return vlan;
   }
 
   @Override
@@ -235,6 +168,15 @@ public class Machine {
         + '\''
         + ", iot="
         + iot
+        + ", vlan="
+        + vlan
         + '}';
+  }
+
+  public String getSwitchLabel() {
+    if (id.length() > 8) {
+      return id.substring(0, 8);
+    }
+    return id;
   }
 }

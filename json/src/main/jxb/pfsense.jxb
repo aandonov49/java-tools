@@ -2,11 +2,59 @@
         xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xjc="https://jakarta.ee/xml/ns/jaxb/xjc"
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
         xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
         jaxb:extensionBindingPrefixes="xjc">
-<jaxb:globalBindings>
-    <xjc:simple/>
-</jaxb:globalBindings>
+    <jaxb:bindings schemaLocation="../dtd/pfsense-new.xsd">
+        <jaxb:bindings multiple="true" node="//xs:element[@name='descr']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='username']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='description']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='statetype']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='text']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='varusersusername']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='varuserspassword']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='varuserspasswordencryption']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='state']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='stateremoval']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='aclname']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+        <jaxb:bindings multiple="true" node="//xs:element[@name='detail']">
+            <xjc:javaType name="java.lang.String"
+                          adapter="eu.ad4ubg.adapters.CDATAAdapter"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
 
 </jaxb:bindings>

@@ -74,11 +74,11 @@
 <!--                    &lt;!&ndash; Define the directory where we should find the DTD files &ndash;&gt;-->
 <!--                    &lt;!&ndash;                    <sourceType>xsd</sourceType>&ndash;&gt;-->
 <!--                    <sources>-->
-<!--                        <source>src/main/dtd</source>-->
+<!--                        <source>src/main/dtd/pfsense-new.xsd</source>-->
 <!--                    </sources>-->
-<!--&lt;!&ndash;                    <xjbSources>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </xjbSources>&ndash;&gt;-->
+<!--                    <xjbSources>-->
+<!--                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>-->
+<!--                    </xjbSources>-->
 <!--                    <clearOutputDir>false</clearOutputDir>-->
 <!--                    <outputDirectory>src/main/java</outputDirectory>-->
 <!--                    <generateEpisode>true</generateEpisode>-->
