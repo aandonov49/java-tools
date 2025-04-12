@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MergeJson-iptables" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.ad4u.bg.MergeJson" />
+    <module name="json" />
+    <option name="PROGRAM_PARAMETERS" value="iptables $PROJECT_DIR$/../../ansible-linux-osts/data_bags/iptables_data $PROJECT_DIR$/../../ansible-linux-osts/vars/iptables.json" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.ad4u.bg.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
