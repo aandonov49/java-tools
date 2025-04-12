@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.ad4u-bg</groupId>
-    <artifactId>json</artifactId>
+    <artifactId>pfsense</artifactId>
     <version>1.1-SNAPSHOT</version>
 
     <build>
@@ -51,42 +48,41 @@
                     </java>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
-<!--                <version>3.2.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>xjc</id>-->
-<!--                        <phase>generate-sources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>xjc</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; Set the package of the generated code &ndash;&gt;-->
-<!--                    <packageName>eu.ad4ubg</packageName>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Set the package of the generated code -->
+                    <packageName>eu.ad4ubg</packageName>
 
-<!--                    &lt;!&ndash; Indicate that we should use DTD input instead of XSDs &ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <sourceType>dtd</sourceType>&ndash;&gt;-->
+                    <!-- Indicate that we should use DTD input instead of XSDs -->
+                    <!--                    <sourceType>dtd</sourceType>-->
 
-<!--                    &lt;!&ndash; Define the directory where we should find the DTD files &ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <sourceType>xsd</sourceType>&ndash;&gt;-->
-<!--                    <sources>-->
-<!--                        <source>src/main/dtd/pfsense-new.xsd</source>-->
-<!--                    </sources>-->
-<!--                    <xjbSources>-->
-<!--                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>-->
-<!--                    </xjbSources>-->
-<!--                    <clearOutputDir>false</clearOutputDir>-->
-<!--                    <outputDirectory>src/main/java</outputDirectory>-->
-<!--                    <generateEpisode>true</generateEpisode>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+                    <!-- Define the directory where we should find the DTD files -->
+                    <!--                    <sourceType>xsd</sourceType>-->
+                    <sources>
+                        <source>src/main/dtd/pfsense.xsd</source>
+                    </sources>
+                    <xjbSources>
+                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>
+                    </xjbSources>
+                    <clearOutputDir>false</clearOutputDir>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <generateEpisode>true</generateEpisode>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -128,17 +124,16 @@
         <!--            <version>4.0.0.</version>-->
         <!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
-<!--        <dependency>-->
-<!--            <groupId>jakarta.xml.bind</groupId>-->
-<!--            <artifactId>jakarta.xml.bind-api</artifactId>-->
-<!--            <version>4.0.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.glassfish.jaxb</groupId>-->
-<!--            <artifactId>jaxb-runtime</artifactId>-->
-<!--            <version>4.0.1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.1</version>
+        </dependency>
 
     </dependencies>
-
 </project>
