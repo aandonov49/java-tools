@@ -1,23 +1,19 @@
 package com.ad4u.bg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.xml.bind.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MergeJson {
   private static final IpTables ipTables = new IpTables();
   private static final DnsMachines dnsList = new DnsMachines();
 
-  public static void main(String[] args) throws IOException, JAXBException, InterruptedException {
+  public static void main(String[] args) throws IOException, InterruptedException {
 
     if (args[0].equals("iptables")) {
       createIptablesFile(args[1], args[2]);
@@ -106,5 +102,4 @@ public class MergeJson {
     DnsNames dnsName = mapper.readValue(filePath.toFile(), DnsNames.class);
     dnsList.getMachineList().add(dnsName);
   }
-
 }

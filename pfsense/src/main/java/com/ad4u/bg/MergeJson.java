@@ -1,19 +1,15 @@
 package com.ad4u.bg;
 
-import com.ad4u.bg.network.BlackHoleCommunicator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.ad4ubg.*;
 import jakarta.xml.bind.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.lang.System;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MergeJson {
@@ -33,89 +29,92 @@ public class MergeJson {
     Marshaller mar = context.createMarshaller();
     Unmarshaller umar = context.createUnmarshaller();
     Pfsense object = (Pfsense) umar.unmarshal(new FileInputStream(file));
-//    PfsenseType pfsenseCof1 = (PfsenseType) object.getValue();
+    //    PfsenseType pfsenseCof1 = (PfsenseType) object.getValue();
     dhcp = object.getDhcpd();
-//    dhcp.getOpt2().getStaticmap().clear();
-//    dhcp.getOpt5().getStaticmap().clear();
-//    dhcp.getOpt8().getStaticmap().clear();
-//    radius = pfsenseCof1.getInstalledpackages().getFreeradiusauthorizedmacs();
-//    freeradiusType = pfsenseCof1.getInstalledpackages().getFreeradius();
-//    freeradiusType.getConfig().clear();
-//
-//    if (args[0].equals("iptables")) {
-//      createIptablesFile(args[1], args[2]);
-//    } else if (args[0].equals("dns")) {
-//      createDnsFile(args[1], args[2]);
-//    }
-//
-//    StringWriter sw = new StringWriter();
-//
-//    InstalledpackagesType installedpackages = pfsenseCof1.getInstalledpackages();
-//    BindzoneType bindzoneType = installedpackages.getBindzone();
-//    BindzoneType bindzoneTypeNew = new BlackHoleCommunicator().fillRequiredData(blackHoleUrl);
-//    BindzoneType bindzones = new BindzoneType();
-//    List<ConfigType> list = new ArrayList<>();
-//    for (ConfigType confold : bindzoneType.getConfig()) {
-//      List<JAXBElement<?>> elements =
-//          confold.getEnableOrKeepConfOrResolveInterval().stream()
-//              .filter(
-//                  element -> {
-//                    if (((JAXBElement<?>) element).getName().getLocalPart().equals("name")) {
-//                      return (((JAXBElement<?>) element).getValue().equals("ad4u-bg.com")
-//                          || ((JAXBElement<?>) element).getValue().equals("0.1.10.in-addr.arpa"));
-//                    }
-//                    return false;
-//                  })
-//              .collect(Collectors.toList());
-//      if (!elements.isEmpty()) {
-//        list.add(confold);
-//      }
-//    }
-//    List<AliasType> aliasases_new = factory.createAliasesType().getAlias();
-//    AliasesType aliasesType = pfsenseCof1.getAliases();
-//    for (AliasType aliasd : aliasesType.getAlias()) {
-//      List<JAXBElement<?>> ailiasList =
-//          aliasd.getNameOrUrlOrUpdatefreq().stream()
-//              .filter(
-//                  element -> {
-//                    if (((JAXBElement<?>) element).getName().getLocalPart().equals("name")) {
-//                      return !aliases.containsKey(((JAXBElement<?>) element).getValue());
-//                    }
-//                    return false;
-//                  })
-//              .collect(Collectors.toList());
-//      if (!ailiasList.isEmpty()) {
-//        aliasases_new.add(aliasd);
-//      }
-//    }
-//    List<AliasType> aliasases_update = factory.createAliasesType().getAlias();
-//    for (Map.Entry<String, String> entry : aliases.entrySet()) {
-//      AliasType type = factory.createAliasType();
-//      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeName(entry.getKey()));
-//      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeAddress(entry.getValue()));
-//      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeDescr(entry.getKey() + " rule"));
-//      aliasases_update.add(type);
-//    }
-//    pfsenseCof1.getAliases().getAlias().clear();
-//    pfsenseCof1.getAliases().getAlias().addAll(aliasases_new);
-//    pfsenseCof1.getAliases().getAlias().addAll(aliasases_update);
-//    pfsenseCof1.getInstalledpackages().setFreeradius(freeradiusType);
-//    bindzones.getConfig().addAll(list);
-//    //    bindzones.getConfig().addAll(bindzoneTypeNew.getConfig());
-//    //    installedpackages.getBindzone().getConfig().clear();
-//    //    installedpackages.getBindzone().getConfig().addAll(bindzones.getConfig());
-//    //    pfsenseCof1.setInstalledpackages(installedpackages);
-//    pfsenseCof1.setDhcpd(dhcp);
-//
-//    object.setValue(pfsenseCof1);
-//    mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//    mar.setProperty(
-//        "org.glassfish.jaxb.characterEscapeHandler", new CustomCharacterEscapeHandler());
-//    mar.marshal(object, sw);
-//    mar.marshal(object, file);
-//    String xml = sw.toString();
-//    // .replaceAll("xsi:nil=\"true\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"", "");
-//    System.out.println(xml);
+    //    dhcp.getOpt2().getStaticmap().clear();
+    //    dhcp.getOpt5().getStaticmap().clear();
+    //    dhcp.getOpt8().getStaticmap().clear();
+    //    radius = pfsenseCof1.getInstalledpackages().getFreeradiusauthorizedmacs();
+    //    freeradiusType = pfsenseCof1.getInstalledpackages().getFreeradius();
+    //    freeradiusType.getConfig().clear();
+    //
+    //    if (args[0].equals("iptables")) {
+    //      createIptablesFile(args[1], args[2]);
+    //    } else if (args[0].equals("dns")) {
+    //      createDnsFile(args[1], args[2]);
+    //    }
+    //
+    //    StringWriter sw = new StringWriter();
+    //
+    //    InstalledpackagesType installedpackages = pfsenseCof1.getInstalledpackages();
+    //    BindzoneType bindzoneType = installedpackages.getBindzone();
+    //    BindzoneType bindzoneTypeNew = new BlackHoleCommunicator().fillRequiredData(blackHoleUrl);
+    //    BindzoneType bindzones = new BindzoneType();
+    //    List<ConfigType> list = new ArrayList<>();
+    //    for (ConfigType confold : bindzoneType.getConfig()) {
+    //      List<JAXBElement<?>> elements =
+    //          confold.getEnableOrKeepConfOrResolveInterval().stream()
+    //              .filter(
+    //                  element -> {
+    //                    if (((JAXBElement<?>) element).getName().getLocalPart().equals("name")) {
+    //                      return (((JAXBElement<?>) element).getValue().equals("ad4u-bg.com")
+    //                          || ((JAXBElement<?>)
+    // element).getValue().equals("0.1.10.in-addr.arpa"));
+    //                    }
+    //                    return false;
+    //                  })
+    //              .collect(Collectors.toList());
+    //      if (!elements.isEmpty()) {
+    //        list.add(confold);
+    //      }
+    //    }
+    //    List<AliasType> aliasases_new = factory.createAliasesType().getAlias();
+    //    AliasesType aliasesType = pfsenseCof1.getAliases();
+    //    for (AliasType aliasd : aliasesType.getAlias()) {
+    //      List<JAXBElement<?>> ailiasList =
+    //          aliasd.getNameOrUrlOrUpdatefreq().stream()
+    //              .filter(
+    //                  element -> {
+    //                    if (((JAXBElement<?>) element).getName().getLocalPart().equals("name")) {
+    //                      return !aliases.containsKey(((JAXBElement<?>) element).getValue());
+    //                    }
+    //                    return false;
+    //                  })
+    //              .collect(Collectors.toList());
+    //      if (!ailiasList.isEmpty()) {
+    //        aliasases_new.add(aliasd);
+    //      }
+    //    }
+    //    List<AliasType> aliasases_update = factory.createAliasesType().getAlias();
+    //    for (Map.Entry<String, String> entry : aliases.entrySet()) {
+    //      AliasType type = factory.createAliasType();
+    //      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeName(entry.getKey()));
+    //      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeAddress(entry.getValue()));
+    //      type.getNameOrUrlOrUpdatefreq().add(factory.createAliasTypeDescr(entry.getKey() + "
+    // rule"));
+    //      aliasases_update.add(type);
+    //    }
+    //    pfsenseCof1.getAliases().getAlias().clear();
+    //    pfsenseCof1.getAliases().getAlias().addAll(aliasases_new);
+    //    pfsenseCof1.getAliases().getAlias().addAll(aliasases_update);
+    //    pfsenseCof1.getInstalledpackages().setFreeradius(freeradiusType);
+    //    bindzones.getConfig().addAll(list);
+    //    //    bindzones.getConfig().addAll(bindzoneTypeNew.getConfig());
+    //    //    installedpackages.getBindzone().getConfig().clear();
+    //    //    installedpackages.getBindzone().getConfig().addAll(bindzones.getConfig());
+    //    //    pfsenseCof1.setInstalledpackages(installedpackages);
+    //    pfsenseCof1.setDhcpd(dhcp);
+    //
+    //    object.setValue(pfsenseCof1);
+    //    mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+    //    mar.setProperty(
+    //        "org.glassfish.jaxb.characterEscapeHandler", new CustomCharacterEscapeHandler());
+    //    mar.marshal(object, sw);
+    //    mar.marshal(object, file);
+    //    String xml = sw.toString();
+    //    // .replaceAll("xsi:nil=\"true\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+    // "");
+    //    System.out.println(xml);
   }
 
   private static void createDnsFile(String inputDirectory, String outputFile) throws IOException {
@@ -132,7 +131,7 @@ public class MergeJson {
         .sorted()
         .forEach(
             file -> {
-              System.out.println(file);
+              java.lang.System.out.println(file);
               try {
                 readDsnsNamesFromFileIntoJsonList(file);
               } catch (IOException e) {
@@ -191,37 +190,37 @@ public class MergeJson {
       ipTables.getAliasesipList().put(machine.getAllias(), ip);
     }
     if (machine.getActive() && !machine.getDuplicate()) {
-//      //      if (ipTables.getSwitchVlans().containsKey(machine.getVlan())) {
-//      //        List<String> data = ipTables.getSwitchVlans().get(machine.getVlan());
-//      //        String row =
-//      //            "mac-vlan mac-address "
-//      //                + machine.getMac()
-//      //                + " vlan "
-//      //                + machine.getVlan()
-//      //                + " description \""
-//      //                + machine.getSwitchLabel()
-//      //                + "\"";
-//      //        data.add(row);
-//      //        ipTables.getSwitchVlans().put(machine.getVlan(), data);
-//      //      } else {
-//      //        List<String> data = new ArrayList<>();
-//      //        String row =
-//      //            "mac-vlan mac-address "
-//      //                + machine.getMac()
-//      //                + " vlan "
-//      //                + machine.getVlan()
-//      //                + " description \""
-//      //                + machine.getSwitchLabel()
-//      //                + "\"";
-//      //        data.add(row);
-//      //        ipTables.getSwitchVlans().put(machine.getVlan(), data);
-//      //      }
-//      createVlanIpMappingOpt2(machine);
-//      createVlanIpMappingOpt5(machine);
-//      createVlanIpMappingOpt8(machine);
-//      createAliasesNoVlan(machine);
-//      createAliasesVlan10(machine);
-//      freeradiususers(machine);
+      //      //      if (ipTables.getSwitchVlans().containsKey(machine.getVlan())) {
+      //      //        List<String> data = ipTables.getSwitchVlans().get(machine.getVlan());
+      //      //        String row =
+      //      //            "mac-vlan mac-address "
+      //      //                + machine.getMac()
+      //      //                + " vlan "
+      //      //                + machine.getVlan()
+      //      //                + " description \""
+      //      //                + machine.getSwitchLabel()
+      //      //                + "\"";
+      //      //        data.add(row);
+      //      //        ipTables.getSwitchVlans().put(machine.getVlan(), data);
+      //      //      } else {
+      //      //        List<String> data = new ArrayList<>();
+      //      //        String row =
+      //      //            "mac-vlan mac-address "
+      //      //                + machine.getMac()
+      //      //                + " vlan "
+      //      //                + machine.getVlan()
+      //      //                + " description \""
+      //      //                + machine.getSwitchLabel()
+      //      //                + "\"";
+      //      //        data.add(row);
+      //      //        ipTables.getSwitchVlans().put(machine.getVlan(), data);
+      //      //      }
+      //      createVlanIpMappingOpt2(machine);
+      //      createVlanIpMappingOpt5(machine);
+      //      createVlanIpMappingOpt8(machine);
+      //      createAliasesNoVlan(machine);
+      //      createAliasesVlan10(machine);
+      //      freeradiususers(machine);
     }
   }
 
@@ -232,40 +231,40 @@ public class MergeJson {
     dnsList.getMachineList().add(dnsName);
   }
 
-//  private static void createVlanIpMappingOpt2(Machine machine) {
-//    StaticmapType staticmap = factory.createStaticmapType();
-//    staticmap.setMac(machine.getMac().toUpperCase());
-//    staticmap.setIpaddr("10.10.0." + machine.getIp());
-//    staticmap.setDescr(machine.getId());
-//    staticmap.setHostname(machine.getId());
-//    staticmap.setHostname(machine.getId());
-//    setEmptyFields(staticmap);
-//    dhcp.getOpt2().getStaticmap().add(staticmap);
-//  }
+  //  private static void createVlanIpMappingOpt2(Machine machine) {
+  //    StaticmapType staticmap = factory.createStaticmapType();
+  //    staticmap.setMac(machine.getMac().toUpperCase());
+  //    staticmap.setIpaddr("10.10.0." + machine.getIp());
+  //    staticmap.setDescr(machine.getId());
+  //    staticmap.setHostname(machine.getId());
+  //    staticmap.setHostname(machine.getId());
+  //    setEmptyFields(staticmap);
+  //    dhcp.getOpt2().getStaticmap().add(staticmap);
+  //  }
 
-//  private static void createVlanIpMappingOpt5(Machine machine) {
-//    if (machine.getVlan() == 10) {
-//      StaticmapType staticmap = factory.createStaticmapType();
-//      staticmap.setMac(machine.getMac().toUpperCase());
-//      staticmap.setIpaddr("10.10." + machine.getVlan() + "." + machine.getIp());
-//      staticmap.setDescr(machine.getId());
-//      staticmap.setHostname(machine.getId());
-//      setEmptyFields(staticmap);
-//      dhcp.getOpt5().getStaticmap().add(staticmap);
-//    }
-//  }
+  //  private static void createVlanIpMappingOpt5(Machine machine) {
+  //    if (machine.getVlan() == 10) {
+  //      StaticmapType staticmap = factory.createStaticmapType();
+  //      staticmap.setMac(machine.getMac().toUpperCase());
+  //      staticmap.setIpaddr("10.10." + machine.getVlan() + "." + machine.getIp());
+  //      staticmap.setDescr(machine.getId());
+  //      staticmap.setHostname(machine.getId());
+  //      setEmptyFields(staticmap);
+  //      dhcp.getOpt5().getStaticmap().add(staticmap);
+  //    }
+  //  }
 
-//  private static void createVlanIpMappingOpt8(Machine machine) {
-//    if (machine.getVlan() == 4) {
-//      StaticmapType staticmap = factory.createStaticmapType();
-//      staticmap.setMac(machine.getMac().toUpperCase());
-//      staticmap.setIpaddr("10.10." + machine.getVlan() + "." + machine.getIp());
-//      staticmap.setDescr(machine.getId());
-//      staticmap.setHostname(machine.getId());
-//      setEmptyFields(staticmap);
-//      dhcp.getOpt8().getStaticmap().add(staticmap);
-//    }
-//  }
+  //  private static void createVlanIpMappingOpt8(Machine machine) {
+  //    if (machine.getVlan() == 4) {
+  //      StaticmapType staticmap = factory.createStaticmapType();
+  //      staticmap.setMac(machine.getMac().toUpperCase());
+  //      staticmap.setIpaddr("10.10." + machine.getVlan() + "." + machine.getIp());
+  //      staticmap.setDescr(machine.getId());
+  //      staticmap.setHostname(machine.getId());
+  //      setEmptyFields(staticmap);
+  //      dhcp.getOpt8().getStaticmap().add(staticmap);
+  //    }
+  //  }
 
   private static void createAliasesNoVlan(Machine machine) {
     String aliastext = "";
@@ -291,62 +290,62 @@ public class MergeJson {
     }
   }
 
-//  public static void setEmptyFields(StaticmapType staticmap) {
-//    staticmap.setCid("");
-//    staticmap.setArpTableStaticEntry("");
-//    staticmap.setFilename("");
-//    staticmap.setRootpath("");
-//    staticmap.setDefaultleasetime("");
-//    staticmap.setMaxleasetime("");
-//    staticmap.setGateway("");
-//    staticmap.setDomain("");
-//    staticmap.setDomainsearchlist("");
-//    staticmap.setDdnsdomain("");
-//    staticmap.setDdnsdomainkey("");
-//    staticmap.setDdnsdomainkeyalgorithm("");
-//    staticmap.setDdnsdomainkeyname("");
-//    staticmap.setDdnsdomainprimary("");
-//    staticmap.setDdnsdomainsecondary("");
-//    staticmap.setTftp("");
-//    staticmap.setLdap("");
-//    staticmap.setNextserver("");
-//    staticmap.setFilename32("");
-//    staticmap.setFilename32Arm("");
-//    staticmap.setFilename64("");
-//    staticmap.setFilename64Arm("");
-//    staticmap.setUefihttpboot("");
-//    staticmap.setNumberoptions("");
-//  }
+  //  public static void setEmptyFields(StaticmapType staticmap) {
+  //    staticmap.setCid("");
+  //    staticmap.setArpTableStaticEntry("");
+  //    staticmap.setFilename("");
+  //    staticmap.setRootpath("");
+  //    staticmap.setDefaultleasetime("");
+  //    staticmap.setMaxleasetime("");
+  //    staticmap.setGateway("");
+  //    staticmap.setDomain("");
+  //    staticmap.setDomainsearchlist("");
+  //    staticmap.setDdnsdomain("");
+  //    staticmap.setDdnsdomainkey("");
+  //    staticmap.setDdnsdomainkeyalgorithm("");
+  //    staticmap.setDdnsdomainkeyname("");
+  //    staticmap.setDdnsdomainprimary("");
+  //    staticmap.setDdnsdomainsecondary("");
+  //    staticmap.setTftp("");
+  //    staticmap.setLdap("");
+  //    staticmap.setNextserver("");
+  //    staticmap.setFilename32("");
+  //    staticmap.setFilename32Arm("");
+  //    staticmap.setFilename64("");
+  //    staticmap.setFilename64Arm("");
+  //    staticmap.setUefihttpboot("");
+  //    staticmap.setNumberoptions("");
+  //  }
 
-//  private static void freeradiususers(Machine machine) {
-//    if (machine.getVlan() > 1) {
-//      ConfigType config = factory.createConfigType();
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(
-//              factory.createConfigTypeVarusersusername(
-//                  machine.getMac().replaceAll(":", "").toLowerCase()));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(
-//              factory.createConfigTypeVaruserspassword(
-//                  machine.getMac().replaceAll(":", "").toLowerCase()));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(factory.createConfigTypeVarusersauthmethod("motp"));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(factory.createConfigTypeDescription(machine.getId()));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(factory.createConfigTypeVaruserspointoftime("Daily"));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(factory.createConfigTypeVarusersmaxtotaloctetstimerange("daily"));
-//      config
-//          .getEnableOrKeepConfOrResolveInterval()
-//          .add(factory.createConfigTypeVarusersvlanid(machine.getVlan().byteValue()));
-//      freeradiusType.getConfig().add(config);
-//    }
-//  }
+  //  private static void freeradiususers(Machine machine) {
+  //    if (machine.getVlan() > 1) {
+  //      ConfigType config = factory.createConfigType();
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(
+  //              factory.createConfigTypeVarusersusername(
+  //                  machine.getMac().replaceAll(":", "").toLowerCase()));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(
+  //              factory.createConfigTypeVaruserspassword(
+  //                  machine.getMac().replaceAll(":", "").toLowerCase()));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(factory.createConfigTypeVarusersauthmethod("motp"));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(factory.createConfigTypeDescription(machine.getId()));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(factory.createConfigTypeVaruserspointoftime("Daily"));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(factory.createConfigTypeVarusersmaxtotaloctetstimerange("daily"));
+  //      config
+  //          .getEnableOrKeepConfOrResolveInterval()
+  //          .add(factory.createConfigTypeVarusersvlanid(machine.getVlan().byteValue()));
+  //      freeradiusType.getConfig().add(config);
+  //    }
+  //  }
 }

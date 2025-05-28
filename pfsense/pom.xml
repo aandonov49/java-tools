@@ -48,39 +48,39 @@
                     </java>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- Set the package of the generated code -->
-                    <packageName>eu.ad4ubg</packageName>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>xjc</id>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>xjc</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Set the package of the generated code &ndash;&gt;-->
+<!--                    <packageName>eu.ad4ubg</packageName>-->
 
-                    <!-- Indicate that we should use DTD input instead of XSDs -->
-                    <!--                    <sourceType>dtd</sourceType>-->
+<!--                    &lt;!&ndash; Indicate that we should use DTD input instead of XSDs &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <sourceType>dtd</sourceType>&ndash;&gt;-->
 
-                    <!-- Define the directory where we should find the DTD files -->
-                    <!--                    <sourceType>xsd</sourceType>-->
-                    <sources>
-                        <source>src/main/dtd/pfsense.xsd</source>
-                    </sources>
-                    <xjbSources>
-                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>
-                    </xjbSources>
-                    <clearOutputDir>false</clearOutputDir>
-                    <outputDirectory>src/main/java</outputDirectory>
-                    <generateEpisode>true</generateEpisode>
-                </configuration>
-            </plugin>
+<!--                    &lt;!&ndash; Define the directory where we should find the DTD files &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <sourceType>xsd</sourceType>&ndash;&gt;-->
+<!--                    <sources>-->
+<!--                        <source>src/main/dtd/pfsense.xsd</source>-->
+<!--                    </sources>-->
+<!--                    <xjbSources>-->
+<!--                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>-->
+<!--                    </xjbSources>-->
+<!--                    <clearOutputDir>false</clearOutputDir>-->
+<!--                    <outputDirectory>src/main/java</outputDirectory>-->
+<!--                    <generateEpisode>true</generateEpisode>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
     <properties>
