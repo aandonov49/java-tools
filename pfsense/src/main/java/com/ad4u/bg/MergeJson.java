@@ -3,9 +3,7 @@ package com.ad4u.bg;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.ad4ubg.*;
 import jakarta.xml.bind.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,13 +22,14 @@ public class MergeJson {
   private static Freeradius freeradiusType;
 
   public static void main(String[] args) throws IOException, JAXBException, InterruptedException {
-    File file = new File(args[3]);
+    File file = new File(args[args.length - 1]);
+    createUniFiCsvFile(args[1], args[2]);
     JAXBContext context = JAXBContext.newInstance(Pfsense.class);
     Marshaller mar = context.createMarshaller();
     Unmarshaller umar = context.createUnmarshaller();
-    Pfsense object = (Pfsense) umar.unmarshal(new FileInputStream(file));
-    //    PfsenseType pfsenseCof1 = (PfsenseType) object.getValue();
-    dhcp = object.getDhcpd();
+    // Pfsense object = (Pfsense) umar.unmarshal(new FileInputStream(file));
+    ////    PfsenseType pfsenseCof1 = (PfsenseType) object.getValue();
+    // dhcp = object.getDhcpd();
     //    dhcp.getOpt2().getStaticmap().clear();
     //    dhcp.getOpt5().getStaticmap().clear();
     //    dhcp.getOpt8().getStaticmap().clear();
@@ -173,6 +172,72 @@ public class MergeJson {
     ObjectMapper mapper = new ObjectMapper();
     mapper.readerFor(IpTables.class);
     mapper.writerWithDefaultPrettyPrinter().writeValue(new File(outputFile), ipTables);
+  }
+
+  private static void createUniFiCsvFile(String inputDirectory, String outputFile)
+      throws IOException {
+    ObjectMapper mapper = new ObjectMapper();
+    Path directoryPath = Paths.get(inputDirectory);
+    Stream<Path> files =
+        Files.find(
+            directoryPath,
+            1,
+            (path, basicFileAttributes) -> {
+              File file = path.toFile();
+              return !file.isDirectory() && file.getName().contains(".json");
+            });
+    List<String> records = new ArrayList<>();
+    records.add(
+        "\"MAC Address\",\"IP Address\",Hostname,\"Local DNS Record\",\"Lease Type\",Name,\"Expiration Time\"");
+
+    files
+        .sorted()
+        .forEach(
+            file -> {
+              try {
+                readFromJsonFileAndCreateCsvRecord(mapper, file, records);
+              } catch (IOException e) {
+                e.printStackTrace();
+              }
+            });
+    if (!Files.exists(Paths.get(outputFile).toFile().getParentFile().toPath()))
+      Files.createDirectory(Paths.get(outputFile).toFile().getParentFile().toPath());
+    if (!Files.exists(Paths.get(outputFile))) Files.createFile(Paths.get(outputFile));
+    File fileOut = new File(outputFile);
+    FileWriter fileWriter = new FileWriter(fileOut);
+    PrintWriter printWriter = new PrintWriter(fileWriter);
+    records.forEach(
+        record -> {
+          printWriter.println(record);
+        });
+    printWriter.close();
+  }
+
+  private static void readFromJsonFileAndCreateCsvRecord(
+      ObjectMapper mapper, Path filePath, List<String> records) throws IOException {
+    StringBuilder builder = new StringBuilder();
+    mapper.readerFor(Machine.class);
+    Machine machine = mapper.readValue(filePath.toFile(), Machine.class);
+    if (machine.getActive()) {
+      builder.append(machine.getMac()); // MAC
+      builder.append(",");
+      //String ip = "10.90." + machine.getVlan() + "." + machine.getIp(); // IP
+      String ip = "10.90.1." + machine.getIp(); // IP
+      builder.append(ip);
+      builder.append(",");
+      String hostName = machine.getId().replace("_", "");
+      hostName = hostName.substring(0, hostName.length() > 10 ? 9 : hostName.length());
+      builder.append(""); // HOSTNAME
+      builder.append(",");
+      builder.append(""); // Local DNS Record
+      builder.append(",");
+      builder.append("Fixed"); // Lease Type "Fixed/Dynamic"
+      builder.append(",");
+      builder.append(machine.getId()); // Name
+      builder.append(",");
+      builder.append(""); // Expiration Time
+      records.add(builder.toString());
+    }
   }
 
   private static void readIptablesFromFileIntoJsonList(Path filePath) throws IOException {

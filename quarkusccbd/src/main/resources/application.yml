@@ -3,9 +3,9 @@ quarkus:
     port: 8091
     ssl-port: 8090
     ssl:
-     certificate:
-      files: META-INF/ca.cert.pem
-      key-files: META-INF/ca.key.pem
+      certificate:
+        files: META-INF/ca.cert.pem
+        key-files: META-INF/ca.key.pem
   package:
     type: uber-jar
   log:
