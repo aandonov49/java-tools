@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ad4u-bg</groupId>
     <artifactId>tv-proxy</artifactId>
@@ -58,6 +57,10 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-scheduler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit</artifactId>
             <scope>test</scope>
         </dependency>
@@ -70,6 +73,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.22.0</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>7.5.2</version>
         </dependency>
     </dependencies>
 
@@ -122,46 +130,45 @@
                 <configuration>
                     <argLine>@{argLine}</argLine>
                     <systemPropertyVariables>
-                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner
-                        </native.image.path>
+                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- Set the package of the generated code -->
-                    <packageName>eu.ad4ubg</packageName>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>xjc</id>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>xjc</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Set the package of the generated code &ndash;&gt;-->
+<!--                    <packageName>eu.ad4ubg</packageName>-->
 
-                    <!-- Indicate that we should use DTD input instead of XSDs -->
-                    <!--                    <sourceType>dtd</sourceType>-->
+<!--                    &lt;!&ndash; Indicate that we should use DTD input instead of XSDs &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <sourceType>dtd</sourceType>&ndash;&gt;-->
 
-                    <!-- Define the directory where we should find the DTD files -->
-                    <!--                                        <sourceType>xsd</sourceType>-->
-                    <sources>
-                        <source>src/main/dtd/xmltv.xsd</source>
-                    </sources>
-                    <!--                    <xjbSources>-->
-                    <!--                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>-->
-                    <!--                    </xjbSources>-->
-                    <clearOutputDir>false</clearOutputDir>
-                    <outputDirectory>src/main/java</outputDirectory>
-                    <generateEpisode>true</generateEpisode>
-                </configuration>
-            </plugin>
+<!--                    &lt;!&ndash; Define the directory where we should find the DTD files &ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <sourceType>xsd</sourceType>&ndash;&gt;-->
+<!--                    <sources>-->
+<!--                        <source>src/main/dtd/xmltv.xsd</source>-->
+<!--                    </sources>-->
+<!--                    &lt;!&ndash;                    <xjbSources>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <xjbSource>src/main/jxb/pfsense.jxb</xjbSource>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </xjbSources>&ndash;&gt;-->
+<!--                    <clearOutputDir>false</clearOutputDir>-->
+<!--                    <outputDirectory>src/main/java</outputDirectory>-->
+<!--                    <generateEpisode>true</generateEpisode>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>

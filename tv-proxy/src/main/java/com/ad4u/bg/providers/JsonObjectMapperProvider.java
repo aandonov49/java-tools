@@ -1,16 +1,19 @@
 package com.ad4u.bg.providers;
 
-import jakarta.inject.Inject;
-import jakarta.ws.rs.ext.ContextResolver;
+import jakarta.inject.Singleton;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.quarkus.jackson.ObjectMapperCustomizer;
 
-public class JsonObjectMapperProvider implements ContextResolver<ObjectMapper> {
-  @Inject
-  ObjectMapper objectMapper;
+@Singleton
+public class JsonObjectMapperProvider implements ObjectMapperCustomizer {
+
+  private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
-  public ObjectMapper getContext(Class<?> aClass) {
-    return objectMapper;
+  public void customize(ObjectMapper objectMapper) {
+    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    objectMapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
   }
 }

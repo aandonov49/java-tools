@@ -10,14 +10,17 @@ import java.util.List;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
+import com.ad4u.bg.providers.JsonObjectMapperProvider;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.ad4ubg.TvCategory;
 import eu.ad4ubg.TvList;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 
 // @ApplicationScoped
+@RegisterProvider(JsonObjectMapperProvider.class)
 @RequestScoped
 public class TvServiceOldFashioned {
   @Inject

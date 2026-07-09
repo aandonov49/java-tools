@@ -1,6 +1,7 @@
 package eu.ad4ubg;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -43,7 +44,7 @@ public class TvList {
   @JsonProperty("tv_archive_duration")
   private int tv_archive_duration;
 
-  // @JsonIgnore
+  @JsonIgnore
   private TvCategory tvCategory;
 
   public int getNum() {
